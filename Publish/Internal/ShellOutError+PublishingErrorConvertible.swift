@@ -4,6 +4,7 @@
 *  MIT license, see LICENSE file for details
 */
 
+#if canImport(ShellOut)
 import ShellOut
 
 extension ShellOutError: PublishingErrorConvertible {
@@ -16,3 +17,4 @@ extension ShellOutError: PublishingErrorConvertible {
         )
     }
 }
+#endif

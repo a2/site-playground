@@ -6,7 +6,9 @@
 
 import Foundation
 import Files
+#if canImport(ShellOut)
 import ShellOut
+#endif
 
 /// Type used to implement deployment functionality for a website.
 /// When implementing reusable deployment methods that are vended as
@@ -33,6 +35,7 @@ public struct DeploymentMethod<Site: Website> {
     }
 }
 
+#if canImport(ShellOut)
 public extension DeploymentMethod {
     /// Deploy a website to a given remote using Git.
     /// - parameter remote: The full address of the remote to deploy to.
@@ -93,3 +96,4 @@ public extension DeploymentMethod {
         return git("\(prefix)\(repository).git")
     }
 }
+#endif
