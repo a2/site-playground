@@ -180,6 +180,7 @@
 		8292A19F264C4C470080087D /* libUserModule.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8292A175264C4C1C0080087D /* libUserModule.a */; };
 		8292A1A9264C4FC90080087D /* Sass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8292A1A8264C4FC90080087D /* Sass.swift */; };
 		8292A1BB264C53810080087D /* LocalPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8292A1BA264C53810080087D /* LocalPath.swift */; };
+		8292A1D5264C54EE0080087D /* JavaScriptCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8292A1D4264C54EE0080087D /* JavaScriptCore.swift */; };
 		82DA4BE22649C05E001ED636 /* libPublish.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 82DA4B642649C001001ED636 /* libPublish.a */; };
 		82DA4BF32649C0FE001ED636 /* libFiles.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 82DA4BE72649C0E3001ED636 /* libFiles.a */; };
 		82DA4C5D2649C19D001ED636 /* libPlot.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 82DA4BFA2649C180001ED636 /* libPlot.a */; };
@@ -374,6 +375,7 @@
 		8292A175264C4C1C0080087D /* libUserModule.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libUserModule.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		8292A1A8264C4FC90080087D /* Sass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sass.swift; sourceTree = "<group>"; };
 		8292A1BA264C53810080087D /* LocalPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalPath.swift; sourceTree = "<group>"; };
+		8292A1D4264C54EE0080087D /* JavaScriptCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JavaScriptCore.swift; sourceTree = "<group>"; };
 		82DA4B562649BFB0001ED636 /* Site */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Site; sourceTree = BUILT_PRODUCTS_DIR; };
 		82DA4B642649C001001ED636 /* libPublish.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPublish.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		82DA4BE72649C0E3001ED636 /* libFiles.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libFiles.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -531,6 +533,7 @@
 				82929FA0264C4B5D0080087D /* InMemoryCache.swift */,
 				8292A1BA264C53810080087D /* LocalPath.swift */,
 				82929F9F264C4B5D0080087D /* Phone.swift */,
+				8292A1D4264C54EE0080087D /* JavaScriptCore.swift */,
 				8292A1A8264C4FC90080087D /* Sass.swift */,
 				82929F9E264C4B5D0080087D /* Server.swift */,
 				82929F9C264C4B5D0080087D /* ServerConnection.swift */,
@@ -1041,6 +1044,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8292A18E264C4C2D0080087D /* A2.swift in Sources */,
+				8292A1D5264C54EE0080087D /* JavaScriptCore.swift in Sources */,
 				8292A18F264C4C2D0080087D /* App.swift in Sources */,
 				8292A190264C4C2D0080087D /* HTMLFactory.swift in Sources */,
 				8292A1A9264C4FC90080087D /* Sass.swift in Sources */,

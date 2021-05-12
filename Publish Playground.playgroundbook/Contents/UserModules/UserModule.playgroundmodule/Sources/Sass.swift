@@ -1,22 +1,4 @@
 import Foundation
-import JavaScriptCore
-
-typealias JSFunction = @convention(block) () -> Any?
-
-extension JSValue {
-    subscript(key: Any?) -> JSValue? {
-        get { objectForKeyedSubscript(key) }
-        set { setObject(newValue, forKeyedSubscript: key) }
-    }
-
-    func define(name: String, value: JSValue) {
-        defineProperty(name, descriptor: [JSPropertyDescriptorValueKey: value])
-    }
-
-    func define(name: String, function: @convention(block) @escaping () -> Any?) {
-        defineProperty(name, descriptor: [JSPropertyDescriptorValueKey: function])
-    }
-}
 
 public class Sass {
     let context: JSContext
@@ -53,7 +35,7 @@ public class Sass {
     }
 
     public func compile(string: String) -> String {
-        let renderResult = context.globalObject["exports"]!["renderSync"]!.call(withArguments: [["data": string]])
-        return renderResult!["css"]!.toString()
+        let renderResult = context.globalObject["exports"]["renderSync"].call(withArguments: [["data": string]])
+        return renderResult!["css"].toString()
     }
 }

@@ -28,7 +28,6 @@ public class Server {
             print("Server ready on port \(listener!.port!)")
         case .failed(let error):
             print("Server failure, error: \(error.localizedDescription)")
-            exit(EXIT_FAILURE)
         default:
             break
         }
