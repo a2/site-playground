@@ -42,30 +42,39 @@ class ServerConnection {
                 let firstLine = message.rangeOfCharacter(from: .newlines).map { range in String(message[..<range.lowerBound]) } ?? message
                 print(firstLine)
 
-                let path = firstLine.components(separatedBy: " ")[1]
-                let (targetPath, mimeType): (String, String) = {
-                    if let slashRange = path.range(of: "/", options: .backwards), slashRange.upperBound != path.endIndex, let dotRange = path.range(of: ".", range: slashRange.upperBound ..< path.endIndex) {
-                        let uti = UTType(filenameExtension: String(path[dotRange.upperBound...]))
-                        return (path, uti?.preferredMIMEType ?? "text/plain")
-                    } else {
-                        return (path + (path.hasSuffix("/") ? "" : "/") + "index.html", "text/html")
-                    }
-                }()
-
-                if let contents = self.fileManager.contents(atPath: "/Output\(targetPath)") {
+                let firstLineComponents = firstLine.components(separatedBy: " ")
+                if firstLineComponents[0].caseInsensitiveCompare("GET") != .orderedSame {
                     let headerData = Data("""
-                    HTTP/1.1 200 OK
-                    Content-Length: \(contents.count)
-                    Content-Type: \(mimeType)
-                    Connection: close\n\n
-                    """.utf8)
-                    self.send(data: headerData + contents, isFinal: true)
-                } else {
-                    let headerData = Data("""
-                    HTTP/1.1 404 Not Found
+                    HTTP/1.1 405 Method Not Allowed
                     Connection: close
                     """.utf8)
                     self.send(data: headerData, isFinal: true)
+                } else {
+                    let path = firstLineComponents[1]
+                    let (targetPath, mimeType): (String, String) = {
+                        if let slashRange = path.range(of: "/", options: .backwards), slashRange.upperBound != path.endIndex, let dotRange = path.range(of: ".", range: slashRange.upperBound ..< path.endIndex) {
+                            let uti = UTType(filenameExtension: String(path[dotRange.upperBound...]))
+                            return (path, uti?.preferredMIMEType ?? "text/plain")
+                        } else {
+                            return (path + (path.hasSuffix("/") ? "" : "/") + "index.html", "text/html")
+                        }
+                    }()
+
+                    if let contents = self.fileManager.contents(atPath: "/Output\(targetPath)") {
+                        let headerData = Data("""
+                        HTTP/1.1 200 OK
+                        Content-Length: \(contents.count)
+                        Content-Type: \(mimeType)
+                        Connection: close\n\n
+                        """.utf8)
+                        self.send(data: headerData + contents, isFinal: true)
+                    } else {
+                        let headerData = Data("""
+                        HTTP/1.1 404 Not Found
+                        Connection: close
+                        """.utf8)
+                        self.send(data: headerData, isFinal: true)
+                    }
                 }
             }
 

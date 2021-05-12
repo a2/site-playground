@@ -1,14 +1,14 @@
 import Foundation
 
 extension A2 {
-    struct App {
-        var name: String
-        var title: String?
-        var hasInvertedStatusBar: Bool
+    public struct App {
+        public var name: String
+        public var title: String?
+        public var hasInvertedStatusBar: Bool
 
-        var id: String { name.lowercased().replacingOccurrences(of: " ", with: "-") }
+        public var id: String { name.lowercased().replacingOccurrences(of: " ", with: "-") }
 
-        init(name: String, title: String? = nil, hasInvertedStatusBar: Bool = true) {
+        public init(name: String, title: String? = nil, hasInvertedStatusBar: Bool = false) {
             self.name = name
             self.title = title
             self.hasInvertedStatusBar = hasInvertedStatusBar
@@ -16,7 +16,7 @@ extension A2 {
     }
 }
 
-extension A2.Website {
+public extension A2.Website {
     var homescreen: [A2.App] {
         [
             A2.App(name: "Babelgum", hasInvertedStatusBar: true),

@@ -63,9 +63,17 @@ struct Phone: Component {
                                     .class("app app-\(app.id)")
                                     .attribute(named: "title", value: app.name)
                             }
-                        }
-                        .listStyle(.unordered)
+                        }.listStyle(.unordered)
                     }.class("icons animated")
+                    Div {
+                        List(dock) { app in
+                            ListItem {
+                                Link(app.name, url: "#\(app.id)")
+                                    .class("app app-\(app.id)")
+                                    .attribute(named: "title", value: app.name)
+                            }
+                        }.listStyle(.unordered)
+                    }.class("dock")
                 }.class("homescreen animated")
 
                 ComponentGroup(members: homescreen.map { app in

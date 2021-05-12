@@ -155,7 +155,7 @@ private extension PublishingPipeline {
     }
 
     func postNotification(named name: String) {
-        #if canImport(Cocoa)
+        #if canImport(Cocoa) && !targetEnvironment(macCatalyst)
         let center = DistributedNotificationCenter.default()
         let name = Notification.Name(rawValue: "Publish.\(name)")
         center.post(Notification(name: name))

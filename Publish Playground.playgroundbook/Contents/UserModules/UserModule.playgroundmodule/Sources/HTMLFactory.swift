@@ -2,7 +2,7 @@ import Foundation
 import Plot
 import Publish
 
-extension A2 {
+public extension A2 {
     static var theme: Theme<Website> {
         Theme(htmlFactory: HTMLFactory(), resourcePaths: [], file: "HTMLFactory.swift")
     }
@@ -353,7 +353,7 @@ body {
     z-index: -1;
 }
 
-.phone .screen .app::before {
+.phone .app::before {
     -webkit-mask: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="1.4" clip-rule="evenodd" viewBox="0 0 460 460"%3E%3Cpath d="M460 316v30a202 202 0 01-3 31c-2 10-5 19-9 28a97 97 0 01-43 43 102 102 0 01-28 9c-10 2-20 3-31 3a649 649 0 01-13 0H127a649 649 0 01-13 0 201 201 0 01-31-3c-10-2-19-5-28-9a97 97 0 01-43-43 102 102 0 01-9-28 202 202 0 01-3-31v-13-189-17-13a202 202 0 013-31c2-10 5-19 9-28a97 97 0 0143-43 102 102 0 0128-9 203 203 0 0144-3h206a649 649 0 0113 0c11 0 21 1 31 3s19 5 28 9a97 97 0 0143 43 102 102 0 019 28 202 202 0 013 31 643 643 0 010 30v172z"/%3E%3C/svg%3E') center/100% 100% no-repeat;
     background: url("/images/icons/blank.png") center/cover;
     content: "";
@@ -385,17 +385,17 @@ body {
 
 \(context.site.homescreen.map { app in """
 .phone .app-\(app.id)::before {
-    background-image: url("/images/icons/\(app.id).png";
+    background-image: url("/images/icons/\(app.id).png");
 }
 
 .phone .screen-\(app.id) {
-    background-image: url("/images/screens/\(app.id).jpg";
+    background-image: url("/images/screens/\(app.id).jpg");
 }
 """ }.joined(separator: "\n\n"))
 
 \(context.site.dock.map { app in """
 .phone .app-\(app.id)::before {
-    background-image: url("/images/icons/\(app.id).png";
+    background-image: url("/images/icons/\(app.id).png");
 }
 """ }.joined(separator: "\n\n"))
 

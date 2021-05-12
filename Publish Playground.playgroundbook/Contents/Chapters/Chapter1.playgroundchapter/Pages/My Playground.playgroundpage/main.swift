@@ -4,19 +4,29 @@ import Network
 import Plot
 import Publish
 
-#if canImport(PlaygroundSupport)
-import PlaygroundSupport
+#if canImport(UserModule)
+import UserModule
 #endif
+
+func localFile(named fileName: String) -> URL {
+    #if canImport(PlaygroundSupport)
+    return URL(fileReferenceLiteralResourceName: fileName)
+    #else
+    return URL(fileURLWithPath: "../../../../PublicResources/" + fileName, relativeTo: URL(fileURLWithPath: #filePath))
+        .standardizedFileURL
+    #endif
+}
+
 
 let fileManager = InMemoryFileManager()
 
-// Required for Foundation theme
 /*
-try fileManager.createDirectory(atPath: "/Resources/FoundationTheme", withIntermediateDirectories: true)
-_ = fileManager.createFile(atPath: "/Package.swift", contents: nil)
-_ = fileManager.createFile(atPath: "/Theme+Foundation.swift", contents: nil)
-_ = fileManager.createFile(atPath: "/Resources/FoundationTheme/styles.css", contents: Data(base64Encoded: "LyoqCiogIFB1Ymxpc2ggRm91bmRhdGlvbiB0aGVtZQoqICBDb3B5cmlnaHQgKGMpIEpvaG4gU3VuZGVsbCAyMDE5CiogIE1JVCBsaWNlbnNlLCBzZWUgTElDRU5TRSBmaWxlIGZvciBkZXRhaWxzCiovCgoqIHsKICAgIG1hcmdpbjogMDsKICAgIHBhZGRpbmc6IDA7CiAgICBib3gtc2l6aW5nOiBib3JkZXItYm94Owp9Cgpib2R5IHsKICAgIGJhY2tncm91bmQ6ICNmZmY7CiAgICBjb2xvcjogIzAwMDsKICAgIGZvbnQtZmFtaWx5OiBIZWx2ZXRpY2EsIEFyaWFsOwogICAgdGV4dC1hbGlnbjogY2VudGVyOwp9Cgoud3JhcHBlciB7CiAgICBtYXgtd2lkdGg6IDkwMHB4OwogICAgbWFyZ2luLWxlZnQ6IGF1dG87CiAgICBtYXJnaW4tcmlnaHQ6IGF1dG87CiAgICBwYWRkaW5nOiA0MHB4OwogICAgdGV4dC1hbGlnbjogbGVmdDsKfQoKaGVhZGVyIHsKICAgIGJhY2tncm91bmQtY29sb3I6ICNlZWU7Cn0KCmhlYWRlciAud3JhcHBlciB7CiAgICBwYWRkaW5nLXRvcDogMzBweDsKICAgIHBhZGRpbmctYm90dG9tOiAzMHB4OwogICAgdGV4dC1hbGlnbjogY2VudGVyOwp9CgpoZWFkZXIgYSB7CiAgICB0ZXh0LWRlY29yYXRpb246IG5vbmU7Cn0KCmhlYWRlciAuc2l0ZS1uYW1lIHsKICAgIGZvbnQtc2l6ZTogMS41ZW07CiAgICBjb2xvcjogIzAwMDsKICAgIGZvbnQtd2VpZ2h0OiBib2xkOwp9CgpuYXYgewogICAgbWFyZ2luLXRvcDogMjBweDsKfQoKbmF2IGxpIHsKICAgIGRpc3BsYXk6IGlubGluZS1ibG9jazsKICAgIG1hcmdpbjogMCA3cHg7CiAgICBsaW5lLWhlaWdodDogMS41ZW07Cn0KCm5hdiBsaSBhLnNlbGVjdGVkIHsKICAgIHRleHQtZGVjb3JhdGlvbjogdW5kZXJsaW5lOwp9CgpoMSB7CiAgICBtYXJnaW4tYm90dG9tOiAyMHB4OwogICAgZm9udC1zaXplOiAyZW07Cn0KCmgyIHsKICAgIG1hcmdpbjogMjBweCAwOwp9CgpwIHsKICAgIG1hcmdpbi1ib3R0b206IDEwcHg7Cn0KCmEgewogICAgY29sb3I6IGluaGVyaXQ7Cn0KCi5kZXNjcmlwdGlvbiB7CiAgICBtYXJnaW4tYm90dG9tOiA0MHB4Owp9CgouaXRlbS1saXN0ID4gbGkgewogICAgZGlzcGxheTogYmxvY2s7CiAgICBwYWRkaW5nOiAyMHB4OwogICAgYm9yZGVyLXJhZGl1czogMjBweDsKICAgIGJhY2tncm91bmQtY29sb3I6ICNlZWU7CiAgICBtYXJnaW4tYm90dG9tOiAyMHB4Owp9CgouaXRlbS1saXN0ID4gbGk6bGFzdC1jaGlsZCB7CiAgICBtYXJnaW4tYm90dG9tOiAwOwp9CgouaXRlbS1saXN0IGgxIHsKICAgIG1hcmdpbi1ib3R0b206IDE1cHg7CiAgICBmb250LXNpemU6IDEuM2VtOwp9CgouaXRlbS1saXN0IHAgewogICAgbWFyZ2luLWJvdHRvbTogMDsKfQoKLnRhZy1saXN0IHsKICAgIG1hcmdpbi1ib3R0b206IDE1cHg7Cn0KCi50YWctbGlzdCBsaSwKLnRhZyB7CiAgICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7CiAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjMDAwOwogICAgY29sb3I6ICNkZGQ7CiAgICBwYWRkaW5nOiA0cHggNnB4OwogICAgYm9yZGVyLXJhZGl1czogNXB4OwogICAgbWFyZ2luLXJpZ2h0OiA1cHg7Cn0KCi50YWctbGlzdCBhLAoudGFnIGEgewogICAgdGV4dC1kZWNvcmF0aW9uOiBub25lOwp9CgouaXRlbS1wYWdlIC50YWctbGlzdCB7CiAgICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7Cn0KCi5jb250ZW50IHsKICAgIG1hcmdpbi1ib3R0b206IDQwcHg7Cn0KCi5icm93c2UtYWxsIHsKICAgIGRpc3BsYXk6IGJsb2NrOwogICAgbWFyZ2luLWJvdHRvbTogMzBweDsKfQoKLmFsbC10YWdzIGxpIHsKICAgIGZvbnQtc2l6ZTogMS40ZW07CiAgICBtYXJnaW4tcmlnaHQ6IDEwcHg7CiAgICBwYWRkaW5nOiA2cHggMTBweDsKfQoKZm9vdGVyIHsKICAgIGNvbG9yOiAjOGE4YThhOwp9CgpAbWVkaWEgKHByZWZlcnMtY29sb3Itc2NoZW1lOiBkYXJrKSB7CiAgICBib2R5IHsKICAgICAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjMjIyOwogICAgfQoKICAgIGJvZHksCiAgICBoZWFkZXIgLnNpdGUtbmFtZSB7CiAgICAgICAgY29sb3I6ICNkZGQ7CiAgICB9CgogICAgLml0ZW0tbGlzdCA+IGxpIHsKICAgICAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjMzMzOwogICAgfQoKICAgIGhlYWRlciB7CiAgICAgICAgYmFja2dyb3VuZC1jb2xvcjogIzAwMDsKICAgIH0KfQoKQG1lZGlhKG1heC13aWR0aDogNjAwcHgpIHsKICAgIC53cmFwcGVyIHsKICAgICAgICBwYWRkaW5nOiA0MHB4IDIwcHg7CiAgICB9Cn0K")!)
-*/
+ /// Required for Foundation theme
+ try fileManager.createDirectory(atPath: "/Resources/FoundationTheme", withIntermediateDirectories: true)
+ _ = fileManager.createFile(atPath: "/Package.swift", contents: nil)
+ _ = fileManager.createFile(atPath: "/Theme+Foundation.swift", contents: nil)
+ _ = fileManager.createFile(atPath: "/Resources/FoundationTheme/styles.css", contents: Data(base64Encoded: "LyoqCiogIFB1Ymxpc2ggRm91bmRhdGlvbiB0aGVtZQoqICBDb3B5cmlnaHQgKGMpIEpvaG4gU3VuZGVsbCAyMDE5CiogIE1JVCBsaWNlbnNlLCBzZWUgTElDRU5TRSBmaWxlIGZvciBkZXRhaWxzCiovCgoqIHsKICAgIG1hcmdpbjogMDsKICAgIHBhZGRpbmc6IDA7CiAgICBib3gtc2l6aW5nOiBib3JkZXItYm94Owp9Cgpib2R5IHsKICAgIGJhY2tncm91bmQ6ICNmZmY7CiAgICBjb2xvcjogIzAwMDsKICAgIGZvbnQtZmFtaWx5OiBIZWx2ZXRpY2EsIEFyaWFsOwogICAgdGV4dC1hbGlnbjogY2VudGVyOwp9Cgoud3JhcHBlciB7CiAgICBtYXgtd2lkdGg6IDkwMHB4OwogICAgbWFyZ2luLWxlZnQ6IGF1dG87CiAgICBtYXJnaW4tcmlnaHQ6IGF1dG87CiAgICBwYWRkaW5nOiA0MHB4OwogICAgdGV4dC1hbGlnbjogbGVmdDsKfQoKaGVhZGVyIHsKICAgIGJhY2tncm91bmQtY29sb3I6ICNlZWU7Cn0KCmhlYWRlciAud3JhcHBlciB7CiAgICBwYWRkaW5nLXRvcDogMzBweDsKICAgIHBhZGRpbmctYm90dG9tOiAzMHB4OwogICAgdGV4dC1hbGlnbjogY2VudGVyOwp9CgpoZWFkZXIgYSB7CiAgICB0ZXh0LWRlY29yYXRpb246IG5vbmU7Cn0KCmhlYWRlciAuc2l0ZS1uYW1lIHsKICAgIGZvbnQtc2l6ZTogMS41ZW07CiAgICBjb2xvcjogIzAwMDsKICAgIGZvbnQtd2VpZ2h0OiBib2xkOwp9CgpuYXYgewogICAgbWFyZ2luLXRvcDogMjBweDsKfQoKbmF2IGxpIHsKICAgIGRpc3BsYXk6IGlubGluZS1ibG9jazsKICAgIG1hcmdpbjogMCA3cHg7CiAgICBsaW5lLWhlaWdodDogMS41ZW07Cn0KCm5hdiBsaSBhLnNlbGVjdGVkIHsKICAgIHRleHQtZGVjb3JhdGlvbjogdW5kZXJsaW5lOwp9CgpoMSB7CiAgICBtYXJnaW4tYm90dG9tOiAyMHB4OwogICAgZm9udC1zaXplOiAyZW07Cn0KCmgyIHsKICAgIG1hcmdpbjogMjBweCAwOwp9CgpwIHsKICAgIG1hcmdpbi1ib3R0b206IDEwcHg7Cn0KCmEgewogICAgY29sb3I6IGluaGVyaXQ7Cn0KCi5kZXNjcmlwdGlvbiB7CiAgICBtYXJnaW4tYm90dG9tOiA0MHB4Owp9CgouaXRlbS1saXN0ID4gbGkgewogICAgZGlzcGxheTogYmxvY2s7CiAgICBwYWRkaW5nOiAyMHB4OwogICAgYm9yZGVyLXJhZGl1czogMjBweDsKICAgIGJhY2tncm91bmQtY29sb3I6ICNlZWU7CiAgICBtYXJnaW4tYm90dG9tOiAyMHB4Owp9CgouaXRlbS1saXN0ID4gbGk6bGFzdC1jaGlsZCB7CiAgICBtYXJnaW4tYm90dG9tOiAwOwp9CgouaXRlbS1saXN0IGgxIHsKICAgIG1hcmdpbi1ib3R0b206IDE1cHg7CiAgICBmb250LXNpemU6IDEuM2VtOwp9CgouaXRlbS1saXN0IHAgewogICAgbWFyZ2luLWJvdHRvbTogMDsKfQoKLnRhZy1saXN0IHsKICAgIG1hcmdpbi1ib3R0b206IDE1cHg7Cn0KCi50YWctbGlzdCBsaSwKLnRhZyB7CiAgICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7CiAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjMDAwOwogICAgY29sb3I6ICNkZGQ7CiAgICBwYWRkaW5nOiA0cHggNnB4OwogICAgYm9yZGVyLXJhZGl1czogNXB4OwogICAgbWFyZ2luLXJpZ2h0OiA1cHg7Cn0KCi50YWctbGlzdCBhLAoudGFnIGEgewogICAgdGV4dC1kZWNvcmF0aW9uOiBub25lOwp9CgouaXRlbS1wYWdlIC50YWctbGlzdCB7CiAgICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7Cn0KCi5jb250ZW50IHsKICAgIG1hcmdpbi1ib3R0b206IDQwcHg7Cn0KCi5icm93c2UtYWxsIHsKICAgIGRpc3BsYXk6IGJsb2NrOwogICAgbWFyZ2luLWJvdHRvbTogMzBweDsKfQoKLmFsbC10YWdzIGxpIHsKICAgIGZvbnQtc2l6ZTogMS40ZW07CiAgICBtYXJnaW4tcmlnaHQ6IDEwcHg7CiAgICBwYWRkaW5nOiA2cHggMTBweDsKfQoKZm9vdGVyIHsKICAgIGNvbG9yOiAjOGE4YThhOwp9CgpAbWVkaWEgKHByZWZlcnMtY29sb3Itc2NoZW1lOiBkYXJrKSB7CiAgICBib2R5IHsKICAgICAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjMjIyOwogICAgfQoKICAgIGJvZHksCiAgICBoZWFkZXIgLnNpdGUtbmFtZSB7CiAgICAgICAgY29sb3I6ICNkZGQ7CiAgICB9CgogICAgLml0ZW0tbGlzdCA+IGxpIHsKICAgICAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjMzMzOwogICAgfQoKICAgIGhlYWRlciB7CiAgICAgICAgYmFja2dyb3VuZC1jb2xvcjogIzAwMDsKICAgIH0KfQoKQG1lZGlhKG1heC13aWR0aDogNjAwcHgpIHsKICAgIC53cmFwcGVyIHsKICAgICAgICBwYWRkaW5nOiA0MHB4IDIwcHg7CiAgICB9Cn0K")!)
+ */
 
 try fileManager.createDirectory(atPath: "/Content", withIntermediateDirectories: true)
 
@@ -103,43 +113,26 @@ Nunc lobortis, justo eget dictum cursus, purus est eleifend nulla, vitae hendrer
 Duis iaculis nibh nec nunc fringilla pellentesque. Vivamus aliquam lacus at leo lobortis, vitae scelerisque dui commodo. Proin sed ligula interdum, tristique nisl in, gravida urna. Ut porta in lorem non volutpat. Ut ac nibh vel mi ultrices fermentum vitae ut ex. Nullam ac nisl nec velit consequat ultrices ac nec sem. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Suspendisse at magna ac mi dictum ultrices eget at libero. Nam ac eros est. Nam a sollicitudin lacus, nec tincidunt diam.
 """.utf8))
 
+try fileManager.createDirectory(atPath: "/Resources/images", withIntermediateDirectories: true)
+// _ = fileManager.createFile(atPath: "/Resources/images/background.jpg", contents: try! Data(contentsOf: #fileLiteral(resourceName: "background.jpg")))
+_ = fileManager.createFile(atPath: "/Resources/images/background.jpg", contents: try! Data(contentsOf: localFile(named: "background.jpg")))
+
 // _ = fileManager.createFile(atPath: "/Content/about.md", contents: Data("---\n---\n\nHi, I'm Alex!".utf8))
 // _ = fileManager.createFile(atPath: "/Content/work.md", contents: Data("---\n---\n\nAlex works for Microsoft in NYC.".utf8))
 // _ = fileManager.createFile(atPath: "/Content/contact.md", contents: Data("---\n---\n\n".utf8))
 
-let indentation = Indentation.Kind.spaces(2)
+let indentation: Indentation.Kind = .spaces(2)
 let publishedWebsite = try fileManager.performAsDefault {
     try A2.Website().publish(at: Path("/"), using: [
         .addMarkdownFiles(),
-        /*
-        .step(named: "Add Markdown files from 'Content' folder") { context in
-            let parentPath: Path = "Content"
-            let folder = try context.folder(at: parentPath)
-            let markdownExtensions: Set<String> = ["md", "markdown", "txt", "text"]
-            let now = Date()
-
-            for file in folder.files {
-                guard markdownExtensions.contains(where: { ext in ext.caseInsensitiveCompare(file.extension ?? "") == .orderedSame }) else {
-                    continue
-                }
-
-                let fileContents = try file.readAsString()
-                let markdown = context.markdownParser.parse(fileContents)
-                let body = Content.Body(html: markdown.html)
-
-                let content = Content(title: "", description: "", body: body, date: now, lastModified: now)
-                let item = Item<A2.Website>(path: Path("#\(file.nameExcludingExtension)"), sectionID: .work, metadata: .init(), tags: [], content: content, rssProperties: .init())
-                context.addItem(item)
-            }
-        },
-        */
+        .copyResources(at: "/Resources/images", to: "/images", includingFolder: true),
         .generateHTML(withTheme: A2.theme, indentation: indentation),
         .generateRSSFeed(including: Set(A2.Website.SectionID.allCases), config: .init(indentation: indentation)),
-        .generateSiteMap(indentedBy: indentation)
+        .generateSiteMap(indentedBy: indentation),
     ])
 }
 
-let outputPath = "/Output/"
+let outputPath = "/Output"
 let paths = try fileManager.subpathsOfDirectory(atPath: outputPath)
     .map { path in "- " + path[String.Index(outputPath.endIndex, within: outputPath)!...]}
     .sorted()
@@ -152,4 +145,16 @@ print()
 let server = Server(fileManager: fileManager)
 try server.start(port: 8000)
 
+#if canImport(PlaygroundSupport)
+import PlaygroundSupport
+import WebKit
+
+let webView = WKWebView()
+webView.load(URLRequest(url: URL(string: "http://localhost:8000")!))
+
+let page = PlaygroundPage.current
+page.wantsFullScreenLiveView = true
+page.liveView = webView
+#else
 RunLoop.current.run()
+#endif

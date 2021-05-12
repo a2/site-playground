@@ -21,7 +21,7 @@ internal extension CommandLine {
             string = "\(emoji) \(string)"
         }
 
-        fputs(string, kind.target)
+        print(string, terminator: "")
     }
 }
 
@@ -36,15 +36,6 @@ private extension CommandLine.OutputKind {
             return "❌"
         case .success:
             return "✅"
-        }
-    }
-
-    var target: UnsafeMutablePointer<FILE> {
-        switch self {
-        case .info, .warning, .success:
-            return stdout
-        case .error:
-            return stdout
         }
     }
 }
