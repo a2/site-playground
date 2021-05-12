@@ -7,6 +7,35 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		82745592264AE4D700B10099 /* PlotModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82745590264AE4D700B10099 /* PlotModifiers.swift */; };
+		82745593264AE4D700B10099 /* PlotEnvironmentKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82745591264AE4D700B10099 /* PlotEnvironmentKeys.swift */; };
+		827455B0264AE57400B10099 /* ElementClosingMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 827455A2264AE57300B10099 /* ElementClosingMode.swift */; };
+		827455B1264AE57400B10099 /* HTMLListStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 827455A3264AE57300B10099 /* HTMLListStyle.swift */; };
+		827455B2264AE57400B10099 /* Optional+Component.swift in Sources */ = {isa = PBXBuildFile; fileRef = 827455A4264AE57300B10099 /* Optional+Component.swift */; };
+		827455B3264AE57400B10099 /* ElementDefinition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 827455A5264AE57300B10099 /* ElementDefinition.swift */; };
+		827455B4264AE57400B10099 /* EmptyComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 827455A6264AE57300B10099 /* EmptyComponent.swift */; };
+		827455B5264AE57400B10099 /* ComponentBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 827455A7264AE57300B10099 /* ComponentBuilder.swift */; };
+		827455B6264AE57400B10099 /* EnvironmentKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 827455A8264AE57300B10099 /* EnvironmentKey.swift */; };
+		827455B7264AE57400B10099 /* ComponentAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 827455A9264AE57300B10099 /* ComponentAttributes.swift */; };
+		827455B8264AE57400B10099 /* ElementComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 827455AA264AE57300B10099 /* ElementComponent.swift */; };
+		827455B9264AE57400B10099 /* EnvironmentValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 827455AB264AE57300B10099 /* EnvironmentValue.swift */; };
+		827455BA264AE57400B10099 /* ComponentContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 827455AC264AE57400B10099 /* ComponentContainer.swift */; };
+		827455BB264AE57400B10099 /* Component.swift in Sources */ = {isa = PBXBuildFile; fileRef = 827455AD264AE57400B10099 /* Component.swift */; };
+		827455BC264AE57400B10099 /* ComponentGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 827455AE264AE57400B10099 /* ComponentGroup.swift */; };
+		827455BD264AE57400B10099 /* NodeConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 827455AF264AE57400B10099 /* NodeConvertible.swift */; };
+		827455CD264AE57C00B10099 /* AnyAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 827455C5264AE57B00B10099 /* AnyAttribute.swift */; };
+		827455CE264AE57C00B10099 /* AnyEnvironmentValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 827455C6264AE57B00B10099 /* AnyEnvironmentValue.swift */; };
+		827455CF264AE57C00B10099 /* ElementWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 827455C7264AE57B00B10099 /* ElementWrapper.swift */; };
+		827455D0264AE57C00B10099 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 827455C8264AE57B00B10099 /* Environment.swift */; };
+		827455D1264AE57C00B10099 /* ModifiedComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 827455C9264AE57C00B10099 /* ModifiedComponent.swift */; };
+		827455D2264AE57C00B10099 /* AnyElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 827455CA264AE57C00B10099 /* AnyElement.swift */; };
+		827455D3264AE57C00B10099 /* ElementRenderingBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 827455CB264AE57C00B10099 /* ElementRenderingBuffer.swift */; };
+		827455D4264AE57C00B10099 /* Renderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 827455CC264AE57C00B10099 /* Renderer.swift */; };
+		82929C65264AEE5B0080087D /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82929C64264AEE5B0080087D /* App.swift */; };
+		82929C75264AFFE90080087D /* Phone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82929C74264AFFE90080087D /* Phone.swift */; };
+		82BA8D5A264A0333000DC95A /* Website.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82BA8D59264A0333000DC95A /* Website.swift */; };
+		82BA8D5C264A0370000DC95A /* A2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82BA8D5B264A0370000DC95A /* A2.swift */; };
+		82BA8D5E264A0551000DC95A /* HTMLFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82BA8D5D264A0551000DC95A /* HTMLFactory.swift */; };
 		82DA4B5A2649BFB0001ED636 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DA4B592649BFB0001ED636 /* main.swift */; };
 		82DA4BA82649C055001ED636 /* SectionMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DA4B6E2649C055001ED636 /* SectionMap.swift */; };
 		82DA4BA92649C055001ED636 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DA4B6F2649C055001ED636 /* Location.swift */; };
@@ -69,9 +98,7 @@
 		82DA4BF32649C0FE001ED636 /* libFiles.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 82DA4BE72649C0E3001ED636 /* libFiles.a */; };
 		82DA4BF52649C173001ED636 /* Files.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DA4BF42649C173001ED636 /* Files.swift */; };
 		82DA4C312649C189001ED636 /* String+Escaping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DA4C042649C189001ED636 /* String+Escaping.swift */; };
-		82DA4C322649C189001ED636 /* ElementRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DA4C052649C189001ED636 /* ElementRenderer.swift */; };
 		82DA4C332649C189001ED636 /* AnyNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DA4C062649C189001ED636 /* AnyNode.swift */; };
-		82DA4C342649C189001ED636 /* NodeConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DA4C072649C189001ED636 /* NodeConvertible.swift */; };
 		82DA4C352649C189001ED636 /* XMLAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DA4C092649C189001ED636 /* XMLAttributes.swift */; };
 		82DA4C362649C189001ED636 /* XMLElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DA4C0A2649C189001ED636 /* XMLElements.swift */; };
 		82DA4C372649C189001ED636 /* PodcastElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DA4C0B2649C189001ED636 /* PodcastElements.swift */; };
@@ -152,6 +179,10 @@
 		82DA4CC12649C22A001ED636 /* libSweep.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 82DA4CB62649C216001ED636 /* libSweep.a */; };
 		82DA4CD02649C24E001ED636 /* Codextended.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DA4CCF2649C24E001ED636 /* Codextended.swift */; };
 		82DA4CD12649C257001ED636 /* libCodextended.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 82DA4CC62649C243001ED636 /* libCodextended.a */; };
+		82DA4CD32649C353001ED636 /* FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DA4CD22649C353001ED636 /* FileManager.swift */; };
+		82DA4CD52649C3E9001ED636 /* InMemoryCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DA4CD42649C3E9001ED636 /* InMemoryCache.swift */; };
+		82DA4CEC2649DBB9001ED636 /* Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DA4CEB2649DBB9001ED636 /* Server.swift */; };
+		82DA4CEE2649DBD2001ED636 /* ServerConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DA4CED2649DBD2001ED636 /* ServerConnection.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -167,6 +198,35 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		82745590264AE4D700B10099 /* PlotModifiers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlotModifiers.swift; sourceTree = "<group>"; };
+		82745591264AE4D700B10099 /* PlotEnvironmentKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlotEnvironmentKeys.swift; sourceTree = "<group>"; };
+		827455A2264AE57300B10099 /* ElementClosingMode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ElementClosingMode.swift; sourceTree = "<group>"; };
+		827455A3264AE57300B10099 /* HTMLListStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTMLListStyle.swift; sourceTree = "<group>"; };
+		827455A4264AE57300B10099 /* Optional+Component.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Optional+Component.swift"; sourceTree = "<group>"; };
+		827455A5264AE57300B10099 /* ElementDefinition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ElementDefinition.swift; sourceTree = "<group>"; };
+		827455A6264AE57300B10099 /* EmptyComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyComponent.swift; sourceTree = "<group>"; };
+		827455A7264AE57300B10099 /* ComponentBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComponentBuilder.swift; sourceTree = "<group>"; };
+		827455A8264AE57300B10099 /* EnvironmentKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnvironmentKey.swift; sourceTree = "<group>"; };
+		827455A9264AE57300B10099 /* ComponentAttributes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComponentAttributes.swift; sourceTree = "<group>"; };
+		827455AA264AE57300B10099 /* ElementComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ElementComponent.swift; sourceTree = "<group>"; };
+		827455AB264AE57300B10099 /* EnvironmentValue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnvironmentValue.swift; sourceTree = "<group>"; };
+		827455AC264AE57400B10099 /* ComponentContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComponentContainer.swift; sourceTree = "<group>"; };
+		827455AD264AE57400B10099 /* Component.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Component.swift; sourceTree = "<group>"; };
+		827455AE264AE57400B10099 /* ComponentGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComponentGroup.swift; sourceTree = "<group>"; };
+		827455AF264AE57400B10099 /* NodeConvertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NodeConvertible.swift; sourceTree = "<group>"; };
+		827455C5264AE57B00B10099 /* AnyAttribute.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyAttribute.swift; sourceTree = "<group>"; };
+		827455C6264AE57B00B10099 /* AnyEnvironmentValue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyEnvironmentValue.swift; sourceTree = "<group>"; };
+		827455C7264AE57B00B10099 /* ElementWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ElementWrapper.swift; sourceTree = "<group>"; };
+		827455C8264AE57B00B10099 /* Environment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
+		827455C9264AE57C00B10099 /* ModifiedComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModifiedComponent.swift; sourceTree = "<group>"; };
+		827455CA264AE57C00B10099 /* AnyElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyElement.swift; sourceTree = "<group>"; };
+		827455CB264AE57C00B10099 /* ElementRenderingBuffer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ElementRenderingBuffer.swift; sourceTree = "<group>"; };
+		827455CC264AE57C00B10099 /* Renderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Renderer.swift; sourceTree = "<group>"; };
+		82929C64264AEE5B0080087D /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
+		82929C74264AFFE90080087D /* Phone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Phone.swift; sourceTree = "<group>"; };
+		82BA8D59264A0333000DC95A /* Website.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Website.swift; sourceTree = "<group>"; };
+		82BA8D5B264A0370000DC95A /* A2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = A2.swift; sourceTree = "<group>"; };
+		82BA8D5D264A0551000DC95A /* HTMLFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLFactory.swift; sourceTree = "<group>"; };
 		82DA4B562649BFB0001ED636 /* Site */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Site; sourceTree = BUILT_PRODUCTS_DIR; };
 		82DA4B592649BFB0001ED636 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		82DA4B642649C001001ED636 /* libPublish.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPublish.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -231,9 +291,7 @@
 		82DA4BF42649C173001ED636 /* Files.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Files.swift; sourceTree = "<group>"; };
 		82DA4BFA2649C180001ED636 /* libPlot.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPlot.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		82DA4C042649C189001ED636 /* String+Escaping.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Escaping.swift"; sourceTree = "<group>"; };
-		82DA4C052649C189001ED636 /* ElementRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ElementRenderer.swift; sourceTree = "<group>"; };
 		82DA4C062649C189001ED636 /* AnyNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyNode.swift; sourceTree = "<group>"; };
-		82DA4C072649C189001ED636 /* NodeConvertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NodeConvertible.swift; sourceTree = "<group>"; };
 		82DA4C092649C189001ED636 /* XMLAttributes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XMLAttributes.swift; sourceTree = "<group>"; };
 		82DA4C0A2649C189001ED636 /* XMLElements.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XMLElements.swift; sourceTree = "<group>"; };
 		82DA4C0B2649C189001ED636 /* PodcastElements.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PodcastElements.swift; sourceTree = "<group>"; };
@@ -313,6 +371,10 @@
 		82DA4CBF2649C220001ED636 /* Sweep.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sweep.swift; sourceTree = "<group>"; };
 		82DA4CC62649C243001ED636 /* libCodextended.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libCodextended.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		82DA4CCF2649C24E001ED636 /* Codextended.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Codextended.swift; sourceTree = "<group>"; };
+		82DA4CD22649C353001ED636 /* FileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManager.swift; sourceTree = "<group>"; };
+		82DA4CD42649C3E9001ED636 /* InMemoryCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InMemoryCache.swift; sourceTree = "<group>"; };
+		82DA4CEB2649DBB9001ED636 /* Server.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Server.swift; sourceTree = "<group>"; };
+		82DA4CED2649DBD2001ED636 /* ServerConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerConnection.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -374,18 +436,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		82BA8D5F264A0558000DC95A /* UserModules */ = {
+			isa = PBXGroup;
+			children = (
+				82DA4CD42649C3E9001ED636 /* InMemoryCache.swift */,
+				82DA4CEB2649DBB9001ED636 /* Server.swift */,
+				82DA4CED2649DBD2001ED636 /* ServerConnection.swift */,
+			);
+			path = UserModules;
+			sourceTree = "<group>";
+		};
 		82DA4B4D2649BFB0001ED636 = {
 			isa = PBXGroup;
 			children = (
 				82DA4B582649BFB0001ED636 /* Site */,
-				82DA4B652649C001001ED636 /* Publish */,
-				82DA4BE82649C0E3001ED636 /* Files */,
-				82DA4BFB2649C180001ED636 /* Plot */,
-				82DA4C632649C1C7001ED636 /* Ink */,
-				82DA4CB72649C216001ED636 /* Sweep */,
 				82DA4CC72649C243001ED636 /* Codextended */,
+				82DA4BE82649C0E3001ED636 /* Files */,
+				82DA4C632649C1C7001ED636 /* Ink */,
+				82DA4BFB2649C180001ED636 /* Plot */,
+				82DA4B652649C001001ED636 /* Publish */,
+				82DA4CB72649C216001ED636 /* Sweep */,
 				82DA4B572649BFB0001ED636 /* Products */,
-				82DA4BF22649C0FE001ED636 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -406,6 +477,12 @@
 		82DA4B582649BFB0001ED636 /* Site */ = {
 			isa = PBXGroup;
 			children = (
+				82BA8D5F264A0558000DC95A /* UserModules */,
+				82BA8D5B264A0370000DC95A /* A2.swift */,
+				82929C64264AEE5B0080087D /* App.swift */,
+				82BA8D5D264A0551000DC95A /* HTMLFactory.swift */,
+				82929C74264AFFE90080087D /* Phone.swift */,
+				82BA8D59264A0333000DC95A /* Website.swift */,
 				82DA4B592649BFB0001ED636 /* main.swift */,
 			);
 			path = Site;
@@ -423,46 +500,48 @@
 		82DA4B6D2649C055001ED636 /* API */ = {
 			isa = PBXGroup;
 			children = (
-				82DA4B6E2649C055001ED636 /* SectionMap.swift */,
-				82DA4B6F2649C055001ED636 /* Location.swift */,
-				82DA4B702649C055001ED636 /* PodcastCompatibleWebsiteItemMetadata.swift */,
-				82DA4B712649C055001ED636 /* PlotComponents.swift */,
-				82DA4B722649C055001ED636 /* Website.swift */,
-				82DA4B732649C055001ED636 /* TagHTMLConfiguration.swift */,
-				82DA4B742649C055001ED636 /* PublishingStep.swift */,
-				82DA4B752649C055001ED636 /* Index.swift */,
-				82DA4B762649C055001ED636 /* Predicate.swift */,
-				82DA4B772649C055001ED636 /* DeploymentMethod.swift */,
-				82DA4B782649C055001ED636 /* Item.swift */,
-				82DA4B792649C055001ED636 /* HTMLFileMode.swift */,
-				82DA4B7A2649C055001ED636 /* PodcastEpisodeMetadata.swift */,
-				82DA4B7B2649C055001ED636 /* FeedConfiguration.swift */,
-				82DA4B7C2649C055001ED636 /* HTMLFactory.swift */,
-				82DA4B7D2649C055001ED636 /* PodcastFeedConfiguration.swift */,
-				82DA4B7E2649C055001ED636 /* RSSFeedConfiguration.swift */,
-				82DA4B7F2649C055001ED636 /* PublishingError.swift */,
-				82DA4B802649C055001ED636 /* TagListPage.swift */,
-				82DA4B812649C055001ED636 /* SortOrder.swift */,
-				82DA4B822649C055001ED636 /* Path.swift */,
-				82DA4B832649C055001ED636 /* Favicon.swift */,
-				82DA4B842649C055001ED636 /* Section.swift */,
-				82DA4B852649C055001ED636 /* Mutations.swift */,
+				82DA4B8A2649C055001ED636 /* AnyItem.swift */,
+				82DA4B8C2649C055001ED636 /* Audio.swift */,
 				82DA4B862649C055001ED636 /* Content.swift */,
 				82DA4B872649C055001ED636 /* ContentProtocol.swift */,
-				82DA4B882649C055001ED636 /* StringWrapper.swift */,
+				82DA4B772649C055001ED636 /* DeploymentMethod.swift */,
+				82DA4B832649C055001ED636 /* Favicon.swift */,
+				82DA4B7B2649C055001ED636 /* FeedConfiguration.swift */,
+				82DA4B7C2649C055001ED636 /* HTMLFactory.swift */,
+				82DA4B792649C055001ED636 /* HTMLFileMode.swift */,
+				82DA4B752649C055001ED636 /* Index.swift */,
+				82DA4B782649C055001ED636 /* Item.swift */,
 				82DA4B892649C055001ED636 /* ItemRSSProperties.swift */,
-				82DA4B8A2649C055001ED636 /* AnyItem.swift */,
-				82DA4B8B2649C055001ED636 /* Theme.swift */,
-				82DA4B8C2649C055001ED636 /* Audio.swift */,
-				82DA4B8D2649C055001ED636 /* Tag.swift */,
-				82DA4B8E2649C055001ED636 /* Video.swift */,
-				82DA4B8F2649C055001ED636 /* PublishedWebsite.swift */,
+				82DA4B6F2649C055001ED636 /* Location.swift */,
+				82DA4B852649C055001ED636 /* Mutations.swift */,
 				82DA4B902649C055001ED636 /* Page.swift */,
-				82DA4B912649C055001ED636 /* PodcastAuthor.swift */,
-				82DA4B922649C055001ED636 /* Theme+Foundation.swift */,
-				82DA4B932649C055001ED636 /* PublishingContext.swift */,
-				82DA4B942649C055001ED636 /* TagDetailsPage.swift */,
+				82DA4B822649C055001ED636 /* Path.swift */,
+				82DA4B712649C055001ED636 /* PlotComponents.swift */,
+				82745591264AE4D700B10099 /* PlotEnvironmentKeys.swift */,
+				82745590264AE4D700B10099 /* PlotModifiers.swift */,
 				82DA4B952649C055001ED636 /* Plugin.swift */,
+				82DA4B912649C055001ED636 /* PodcastAuthor.swift */,
+				82DA4B702649C055001ED636 /* PodcastCompatibleWebsiteItemMetadata.swift */,
+				82DA4B7A2649C055001ED636 /* PodcastEpisodeMetadata.swift */,
+				82DA4B7D2649C055001ED636 /* PodcastFeedConfiguration.swift */,
+				82DA4B762649C055001ED636 /* Predicate.swift */,
+				82DA4B8F2649C055001ED636 /* PublishedWebsite.swift */,
+				82DA4B932649C055001ED636 /* PublishingContext.swift */,
+				82DA4B7F2649C055001ED636 /* PublishingError.swift */,
+				82DA4B742649C055001ED636 /* PublishingStep.swift */,
+				82DA4B7E2649C055001ED636 /* RSSFeedConfiguration.swift */,
+				82DA4B842649C055001ED636 /* Section.swift */,
+				82DA4B6E2649C055001ED636 /* SectionMap.swift */,
+				82DA4B812649C055001ED636 /* SortOrder.swift */,
+				82DA4B882649C055001ED636 /* StringWrapper.swift */,
+				82DA4B8D2649C055001ED636 /* Tag.swift */,
+				82DA4B942649C055001ED636 /* TagDetailsPage.swift */,
+				82DA4B732649C055001ED636 /* TagHTMLConfiguration.swift */,
+				82DA4B802649C055001ED636 /* TagListPage.swift */,
+				82DA4B8B2649C055001ED636 /* Theme.swift */,
+				82DA4B922649C055001ED636 /* Theme+Foundation.swift */,
+				82DA4B8E2649C055001ED636 /* Video.swift */,
+				82DA4B722649C055001ED636 /* Website.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -470,23 +549,23 @@
 		82DA4B962649C055001ED636 /* Internal */ = {
 			isa = PBXGroup;
 			children = (
-				82DA4B972649C055001ED636 /* FileIOError.swift */,
-				82DA4B982649C055001ED636 /* String+Normalized.swift */,
-				82DA4B992649C055001ED636 /* MarkdownMetadataDecoder.swift */,
-				82DA4B9A2649C055001ED636 /* Folder+Group.swift */,
-				82DA4B9B2649C055001ED636 /* File+SwiftPackageFolder.swift */,
-				82DA4B9C2649C055001ED636 /* HTMLGenerator.swift */,
 				82DA4B9D2649C055001ED636 /* Array+Appending.swift */,
 				82DA4B9E2649C055001ED636 /* CommandLine+Output.swift */,
-				82DA4B9F2649C055001ED636 /* PodcastError.swift */,
-				82DA4BA02649C055001ED636 /* SiteMapGenerator.swift */,
-				82DA4BA12649C055001ED636 /* PodcastFeedGenerator.swift */,
-				82DA4BA22649C055001ED636 /* MarkdownContentFactory.swift */,
-				82DA4BA32649C055001ED636 /* PublishingPipeline.swift */,
-				82DA4BA42649C055001ED636 /* MarkdownFileHandler.swift */,
-				82DA4BA52649C055001ED636 /* RSSFeedGenerator.swift */,
 				82DA4BA62649C055001ED636 /* ContentError.swift */,
+				82DA4B9B2649C055001ED636 /* File+SwiftPackageFolder.swift */,
+				82DA4B972649C055001ED636 /* FileIOError.swift */,
+				82DA4B9A2649C055001ED636 /* Folder+Group.swift */,
+				82DA4B9C2649C055001ED636 /* HTMLGenerator.swift */,
+				82DA4BA22649C055001ED636 /* MarkdownContentFactory.swift */,
+				82DA4BA42649C055001ED636 /* MarkdownFileHandler.swift */,
+				82DA4B992649C055001ED636 /* MarkdownMetadataDecoder.swift */,
+				82DA4B9F2649C055001ED636 /* PodcastError.swift */,
+				82DA4BA12649C055001ED636 /* PodcastFeedGenerator.swift */,
+				82DA4BA32649C055001ED636 /* PublishingPipeline.swift */,
+				82DA4BA52649C055001ED636 /* RSSFeedGenerator.swift */,
 				82DA4BA72649C055001ED636 /* ShellOutError+PublishingErrorConvertible.swift */,
+				82DA4BA02649C055001ED636 /* SiteMapGenerator.swift */,
+				82DA4B982649C055001ED636 /* String+Normalized.swift */,
 			);
 			path = Internal;
 			sourceTree = "<group>";
@@ -495,15 +574,9 @@
 			isa = PBXGroup;
 			children = (
 				82DA4BF42649C173001ED636 /* Files.swift */,
+				82DA4CD22649C353001ED636 /* FileManager.swift */,
 			);
 			path = Files;
-			sourceTree = "<group>";
-		};
-		82DA4BF22649C0FE001ED636 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		82DA4BFB2649C180001ED636 /* Plot */ = {
@@ -518,10 +591,16 @@
 		82DA4C032649C189001ED636 /* Internal */ = {
 			isa = PBXGroup;
 			children = (
-				82DA4C042649C189001ED636 /* String+Escaping.swift */,
-				82DA4C052649C189001ED636 /* ElementRenderer.swift */,
+				827455C5264AE57B00B10099 /* AnyAttribute.swift */,
+				827455CA264AE57C00B10099 /* AnyElement.swift */,
+				827455C6264AE57B00B10099 /* AnyEnvironmentValue.swift */,
 				82DA4C062649C189001ED636 /* AnyNode.swift */,
-				82DA4C072649C189001ED636 /* NodeConvertible.swift */,
+				827455CB264AE57C00B10099 /* ElementRenderingBuffer.swift */,
+				827455C7264AE57B00B10099 /* ElementWrapper.swift */,
+				827455C8264AE57B00B10099 /* Environment.swift */,
+				827455C9264AE57C00B10099 /* ModifiedComponent.swift */,
+				827455CC264AE57C00B10099 /* Renderer.swift */,
+				82DA4C042649C189001ED636 /* String+Escaping.swift */,
 			);
 			path = Internal;
 			sourceTree = "<group>";
@@ -529,46 +608,60 @@
 		82DA4C082649C189001ED636 /* API */ = {
 			isa = PBXGroup;
 			children = (
-				82DA4C092649C189001ED636 /* XMLAttributes.swift */,
-				82DA4C0A2649C189001ED636 /* XMLElements.swift */,
-				82DA4C0B2649C189001ED636 /* PodcastElements.swift */,
-				82DA4C0C2649C189001ED636 /* SiteMapElements.swift */,
-				82DA4C0D2649C189001ED636 /* RSSElements.swift */,
-				82DA4C0E2649C189001ED636 /* PodcastAttributes.swift */,
-				82DA4C0F2649C189001ED636 /* Language.swift */,
-				82DA4C102649C189001ED636 /* RSSAttributes.swift */,
-				82DA4C112649C189001ED636 /* HTMLAttributes.swift */,
-				82DA4C122649C189001ED636 /* PodcastEpisodeType.swift */,
-				82DA4C132649C189001ED636 /* HTMLViewportWidthMode.swift */,
-				82DA4C142649C189001ED636 /* HTMLFormMethod.swift */,
-				82DA4C152649C189001ED636 /* HTMLAnchorTarget.swift */,
-				82DA4C162649C189001ED636 /* PodcastMediaType.swift */,
-				82DA4C172649C189001ED636 /* URLRepresentable.swift */,
-				82DA4C182649C189001ED636 /* Indentation.swift */,
-				82DA4C192649C189001ED636 /* Renderable.swift */,
-				82DA4C1A2649C189001ED636 /* PodcastType.swift */,
-				82DA4C1B2649C189001ED636 /* HTMLLinkRelationship.swift */,
-				82DA4C1C2649C189001ED636 /* TwitterCardType.swift */,
-				82DA4C1D2649C189001ED636 /* Element.swift */,
-				82DA4C1E2649C189001ED636 /* HTML.swift */,
-				82DA4C1F2649C189001ED636 /* DocumentEncoding.swift */,
-				82DA4C202649C189001ED636 /* HTMLAnchorRelationship.swift */,
-				82DA4C212649C189001ED636 /* RSS.swift */,
-				82DA4C222649C189001ED636 /* HTMLElements.swift */,
+				82DA4C2C2649C189001ED636 /* Attribute.swift */,
+				827455AD264AE57400B10099 /* Component.swift */,
+				827455A9264AE57300B10099 /* ComponentAttributes.swift */,
+				827455A7264AE57300B10099 /* ComponentBuilder.swift */,
 				82DA4C232649C189001ED636 /* ControlFlow.swift */,
 				82DA4C242649C189001ED636 /* Document.swift */,
-				82DA4C252649C189001ED636 /* HTMLVideoFormat.swift */,
-				82DA4C262649C189001ED636 /* XML.swift */,
-				82DA4C272649C189001ED636 /* SiteMapChangeFrequency.swift */,
+				82DA4C1F2649C189001ED636 /* DocumentEncoding.swift */,
+				82DA4C1D2649C189001ED636 /* Element.swift */,
+				827455AC264AE57400B10099 /* ComponentContainer.swift */,
+				827455AE264AE57400B10099 /* ComponentGroup.swift */,
+				827455A2264AE57300B10099 /* ElementClosingMode.swift */,
+				827455AA264AE57300B10099 /* ElementComponent.swift */,
+				827455A5264AE57300B10099 /* ElementDefinition.swift */,
+				827455A6264AE57300B10099 /* EmptyComponent.swift */,
+				827455A8264AE57300B10099 /* EnvironmentKey.swift */,
+				827455AB264AE57300B10099 /* EnvironmentValue.swift */,
+				82DA4C1E2649C189001ED636 /* HTML.swift */,
+				82DA4C202649C189001ED636 /* HTMLAnchorRelationship.swift */,
+				82DA4C152649C189001ED636 /* HTMLAnchorTarget.swift */,
+				82DA4C112649C189001ED636 /* HTMLAttributes.swift */,
 				82DA4C282649C189001ED636 /* HTMLAudioFormat.swift */,
-				82DA4C292649C189001ED636 /* PodcastComponents.swift */,
-				82DA4C2A2649C189001ED636 /* HTMLFormContentType.swift */,
-				82DA4C2B2649C189001ED636 /* Node.swift */,
-				82DA4C2C2649C189001ED636 /* Attribute.swift */,
 				82DA4C2D2649C189001ED636 /* HTMLComponents.swift */,
-				82DA4C2E2649C189001ED636 /* PodcastFeed.swift */,
+				82DA4C222649C189001ED636 /* HTMLElements.swift */,
+				82DA4C2A2649C189001ED636 /* HTMLFormContentType.swift */,
+				82DA4C142649C189001ED636 /* HTMLFormMethod.swift */,
 				82DA4C2F2649C189001ED636 /* HTMLInputType.swift */,
+				82DA4C1B2649C189001ED636 /* HTMLLinkRelationship.swift */,
+				827455A3264AE57300B10099 /* HTMLListStyle.swift */,
+				82DA4C252649C189001ED636 /* HTMLVideoFormat.swift */,
+				82DA4C132649C189001ED636 /* HTMLViewportWidthMode.swift */,
+				82DA4C182649C189001ED636 /* Indentation.swift */,
+				82DA4C0F2649C189001ED636 /* Language.swift */,
+				82DA4C2B2649C189001ED636 /* Node.swift */,
+				827455AF264AE57400B10099 /* NodeConvertible.swift */,
+				827455A4264AE57300B10099 /* Optional+Component.swift */,
+				82DA4C0E2649C189001ED636 /* PodcastAttributes.swift */,
+				82DA4C292649C189001ED636 /* PodcastComponents.swift */,
+				82DA4C0B2649C189001ED636 /* PodcastElements.swift */,
+				82DA4C122649C189001ED636 /* PodcastEpisodeType.swift */,
+				82DA4C2E2649C189001ED636 /* PodcastFeed.swift */,
+				82DA4C162649C189001ED636 /* PodcastMediaType.swift */,
+				82DA4C1A2649C189001ED636 /* PodcastType.swift */,
+				82DA4C192649C189001ED636 /* Renderable.swift */,
+				82DA4C212649C189001ED636 /* RSS.swift */,
+				82DA4C102649C189001ED636 /* RSSAttributes.swift */,
+				82DA4C0D2649C189001ED636 /* RSSElements.swift */,
 				82DA4C302649C189001ED636 /* SiteMap.swift */,
+				82DA4C272649C189001ED636 /* SiteMapChangeFrequency.swift */,
+				82DA4C0C2649C189001ED636 /* SiteMapElements.swift */,
+				82DA4C1C2649C189001ED636 /* TwitterCardType.swift */,
+				82DA4C172649C189001ED636 /* URLRepresentable.swift */,
+				82DA4C262649C189001ED636 /* XML.swift */,
+				82DA4C092649C189001ED636 /* XMLAttributes.swift */,
+				82DA4C0A2649C189001ED636 /* XMLElements.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -877,7 +970,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				82DA4CEE2649DBD2001ED636 /* ServerConnection.swift in Sources */,
+				82DA4CD52649C3E9001ED636 /* InMemoryCache.swift in Sources */,
+				82BA8D5E264A0551000DC95A /* HTMLFactory.swift in Sources */,
+				82BA8D5C264A0370000DC95A /* A2.swift in Sources */,
+				82929C75264AFFE90080087D /* Phone.swift in Sources */,
+				82DA4CEC2649DBB9001ED636 /* Server.swift in Sources */,
+				82929C65264AEE5B0080087D /* App.swift in Sources */,
 				82DA4B5A2649BFB0001ED636 /* main.swift in Sources */,
+				82BA8D5A264A0333000DC95A /* Website.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -897,6 +998,7 @@
 				82DA4BDA2649C055001ED636 /* PodcastFeedGenerator.swift in Sources */,
 				82DA4BD92649C055001ED636 /* SiteMapGenerator.swift in Sources */,
 				82DA4BC12649C055001ED636 /* ContentProtocol.swift in Sources */,
+				82745593264AE4D700B10099 /* PlotEnvironmentKeys.swift in Sources */,
 				82DA4BAB2649C055001ED636 /* PlotComponents.swift in Sources */,
 				82DA4BCB2649C055001ED636 /* PodcastAuthor.swift in Sources */,
 				82DA4BB92649C055001ED636 /* PublishingError.swift in Sources */,
@@ -906,6 +1008,7 @@
 				82DA4BBD2649C055001ED636 /* Favicon.swift in Sources */,
 				82DA4BAE2649C055001ED636 /* PublishingStep.swift in Sources */,
 				82DA4BA92649C055001ED636 /* Location.swift in Sources */,
+				82745592264AE4D700B10099 /* PlotModifiers.swift in Sources */,
 				82DA4BCD2649C055001ED636 /* PublishingContext.swift in Sources */,
 				82DA4BA82649C055001ED636 /* SectionMap.swift in Sources */,
 				82DA4BB22649C055001ED636 /* Item.swift in Sources */,
@@ -950,6 +1053,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				82DA4BF52649C173001ED636 /* Files.swift in Sources */,
+				82DA4CD32649C353001ED636 /* FileManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -959,48 +1063,68 @@
 			files = (
 				82DA4C552649C189001ED636 /* PodcastComponents.swift in Sources */,
 				82DA4C522649C189001ED636 /* XML.swift in Sources */,
+				827455B1264AE57400B10099 /* HTMLListStyle.swift in Sources */,
 				82DA4C4A2649C189001ED636 /* HTML.swift in Sources */,
+				827455D4264AE57C00B10099 /* Renderer.swift in Sources */,
 				82DA4C432649C189001ED636 /* URLRepresentable.swift in Sources */,
+				827455B3264AE57400B10099 /* ElementDefinition.swift in Sources */,
 				82DA4C3F2649C189001ED636 /* HTMLViewportWidthMode.swift in Sources */,
+				827455B9264AE57400B10099 /* EnvironmentValue.swift in Sources */,
 				82DA4C3C2649C189001ED636 /* RSSAttributes.swift in Sources */,
 				82DA4C582649C189001ED636 /* Attribute.swift in Sources */,
 				82DA4C462649C189001ED636 /* PodcastType.swift in Sources */,
+				827455CF264AE57C00B10099 /* ElementWrapper.swift in Sources */,
+				827455B6264AE57400B10099 /* EnvironmentKey.swift in Sources */,
 				82DA4C592649C189001ED636 /* HTMLComponents.swift in Sources */,
 				82DA4C4F2649C189001ED636 /* ControlFlow.swift in Sources */,
+				827455D1264AE57C00B10099 /* ModifiedComponent.swift in Sources */,
 				82DA4C312649C189001ED636 /* String+Escaping.swift in Sources */,
 				82DA4C4E2649C189001ED636 /* HTMLElements.swift in Sources */,
 				82DA4C482649C189001ED636 /* TwitterCardType.swift in Sources */,
 				82DA4C5B2649C189001ED636 /* HTMLInputType.swift in Sources */,
+				827455D0264AE57C00B10099 /* Environment.swift in Sources */,
 				82DA4C572649C189001ED636 /* Node.swift in Sources */,
 				82DA4C392649C189001ED636 /* RSSElements.swift in Sources */,
 				82DA4C452649C189001ED636 /* Renderable.swift in Sources */,
+				827455B0264AE57400B10099 /* ElementClosingMode.swift in Sources */,
 				82DA4C362649C189001ED636 /* XMLElements.swift in Sources */,
-				82DA4C342649C189001ED636 /* NodeConvertible.swift in Sources */,
 				82DA4C402649C189001ED636 /* HTMLFormMethod.swift in Sources */,
 				82DA4C372649C189001ED636 /* PodcastElements.swift in Sources */,
+				827455D2264AE57C00B10099 /* AnyElement.swift in Sources */,
 				82DA4C4D2649C189001ED636 /* RSS.swift in Sources */,
 				82DA4C532649C189001ED636 /* SiteMapChangeFrequency.swift in Sources */,
 				82DA4C332649C189001ED636 /* AnyNode.swift in Sources */,
+				827455BB264AE57400B10099 /* Component.swift in Sources */,
+				827455B4264AE57400B10099 /* EmptyComponent.swift in Sources */,
 				82DA4C382649C189001ED636 /* SiteMapElements.swift in Sources */,
+				827455B7264AE57400B10099 /* ComponentAttributes.swift in Sources */,
 				82DA4C3E2649C189001ED636 /* PodcastEpisodeType.swift in Sources */,
+				827455CE264AE57C00B10099 /* AnyEnvironmentValue.swift in Sources */,
 				82DA4C492649C189001ED636 /* Element.swift in Sources */,
+				827455B5264AE57400B10099 /* ComponentBuilder.swift in Sources */,
 				82DA4C352649C189001ED636 /* XMLAttributes.swift in Sources */,
 				82DA4C422649C189001ED636 /* PodcastMediaType.swift in Sources */,
 				82DA4C3B2649C189001ED636 /* Language.swift in Sources */,
 				82DA4C5A2649C189001ED636 /* PodcastFeed.swift in Sources */,
 				82DA4C4C2649C189001ED636 /* HTMLAnchorRelationship.swift in Sources */,
+				827455BA264AE57400B10099 /* ComponentContainer.swift in Sources */,
 				82DA4C512649C189001ED636 /* HTMLVideoFormat.swift in Sources */,
 				82DA4C472649C189001ED636 /* HTMLLinkRelationship.swift in Sources */,
 				82DA4C562649C189001ED636 /* HTMLFormContentType.swift in Sources */,
+				827455B8264AE57400B10099 /* ElementComponent.swift in Sources */,
+				827455B2264AE57400B10099 /* Optional+Component.swift in Sources */,
 				82DA4C5C2649C189001ED636 /* SiteMap.swift in Sources */,
 				82DA4C502649C189001ED636 /* Document.swift in Sources */,
 				82DA4C412649C189001ED636 /* HTMLAnchorTarget.swift in Sources */,
 				82DA4C4B2649C189001ED636 /* DocumentEncoding.swift in Sources */,
+				827455CD264AE57C00B10099 /* AnyAttribute.swift in Sources */,
+				827455D3264AE57C00B10099 /* ElementRenderingBuffer.swift in Sources */,
 				82DA4C3A2649C189001ED636 /* PodcastAttributes.swift in Sources */,
 				82DA4C542649C189001ED636 /* HTMLAudioFormat.swift in Sources */,
-				82DA4C322649C189001ED636 /* ElementRenderer.swift in Sources */,
 				82DA4C442649C189001ED636 /* Indentation.swift in Sources */,
+				827455BC264AE57400B10099 /* ComponentGroup.swift in Sources */,
 				82DA4C3D2649C189001ED636 /* HTMLAttributes.swift in Sources */,
+				827455BD264AE57400B10099 /* NodeConvertible.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1115,7 +1239,6 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 11.3;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1171,7 +1294,6 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 11.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = macosx;

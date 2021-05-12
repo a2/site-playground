@@ -62,14 +62,10 @@ public extension Location {
         return storage.path
     }
 
-    /// A URL representation of the location's `path`.
-    var url: URL {
-        return URL(fileURLWithPath: path)
-    }
-
     /// The name of the location, including any `extension`.
     var name: String {
-        return url.pathComponents.last!
+        guard let index = path.range(of: "/", options: .backwards) else { return path }
+        return String(path[index.upperBound...])
     }
 
     /// The name of the location, excluding its `extension`.
@@ -111,7 +107,7 @@ public extension Location {
     init(path: String) throws {
         try self.init(storage: Storage(
             path: path,
-            fileManager: .default
+            fileManager: defaultFileManager
         ))
     }
 
@@ -201,7 +197,7 @@ public extension Location {
 /// exposed by `Location`, `File`, and `Folder`.
 public final class Storage<LocationType: Location> {
     fileprivate private(set) var path: String
-    private let fileManager: FileManager
+    fileprivate let fileManager: FileManager
 
     fileprivate init(path: String, fileManager: FileManager) throws {
         self.path = path
@@ -380,7 +376,7 @@ public extension File {
     /// - throws: `WriteError` in case the operation couldn't be completed.
     func write(_ data: Data) throws {
         do {
-            try data.write(to: url)
+            try storage.fileManager.setContents(data, atPath: path)
         } catch {
             throw WriteError(path: path, reason: .writeFailed(error))
         }
@@ -403,10 +399,9 @@ public extension File {
     /// - throws: `WriteError` in case the operation couldn't be completed.
     func append(_ data: Data) throws {
         do {
-            let handle = try FileHandle(forWritingTo: url)
-            handle.seekToEndOfFile()
-            handle.write(data)
-            handle.closeFile()
+            var newData = try read()
+            newData.append(data)
+            try write(newData)
         } catch {
             throw WriteError(path: path, reason: .writeFailed(error))
         }
@@ -427,8 +422,11 @@ public extension File {
     /// Read the contents of the file as binary data.
     /// - throws: `ReadError` if the file couldn't be read.
     func read() throws -> Data {
-        do { return try Data(contentsOf: url) }
-        catch { throw ReadError(path: path, reason: .readFailed(error)) }
+        guard let data = storage.fileManager.contents(atPath: path) else {
+            throw ReadError(path: path, reason: .readFailed(CocoaError(.fileNoSuchFile)))
+        }
+
+        return data
     }
 
     /// Read the contents of the file as a string.
@@ -881,16 +879,12 @@ public extension Folder {
 public extension Folder {
     /// The current user's Documents folder
     static var documents: Folder? {
-        let urls = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-        guard let url = urls.first else { return nil }
-        return try? Folder(path: url.relativePath)
+        return try? Folder(path: defaultFileManager.userDocumentsDirectoryPath)
     }
 
     /// The current user's Library folder
     static var library: Folder? {
-        let urls = FileManager.default.urls(for: .libraryDirectory, in: .userDomainMask)
-        guard let url = urls.first else { return nil }
-        return try? Folder(path: url.relativePath)
+        return try? Folder(path: defaultFileManager.userLibraryDirectoryPath)
     }
 }
 #endif
