@@ -90,16 +90,10 @@ final class JSValue: NSObject {
 
 extension JSValue {
     subscript(key: String) -> JSValue {
-        get {
-            let selector = Selector(("valueForProperty:"))
-            let rawChildValue = rawValue.perform(selector, with: key)?
-                .takeUnretainedValue() as! NSObject
-            return JSValue(rawChildValue)
-        }
-        set {
-            let selector = Selector(("setValue:forProperty:"))
-            rawValue.perform(selector, with: newValue.rawValue, with: key)
-        }
+        let selector = Selector(("valueForProperty:"))
+        let rawChildValue = rawValue.perform(selector, with: key)?
+            .takeUnretainedValue() as! NSObject
+        return JSValue(rawChildValue)
     }
 
     func define(name: String, value: JSValue) {

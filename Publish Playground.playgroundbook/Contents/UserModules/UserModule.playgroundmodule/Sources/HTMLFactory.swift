@@ -452,11 +452,12 @@ $transition-duration: 0.4s;
                             .class("content-default")
 
                             ComponentGroup(members: context.site.homescreen.compactMap { app in
-                                guard let page = context.pages[Path(app.id)] else { return nil }
+                                let file = try! context.file(at: app.markdownPath)
+                                let contents = try! file.readAsString()
 
                                 return Div {
                                     H2(app.title ?? app.name)
-                                    page.body
+                                    Markdown(contents)
                                     Link("&larr; Back", url: "#")
 
                                 }

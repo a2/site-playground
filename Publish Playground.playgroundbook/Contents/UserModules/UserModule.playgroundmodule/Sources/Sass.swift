@@ -10,7 +10,7 @@ public class Sass {
 
     func configureContext(sourceURL: URL) {
         let global = context.globalObject!
-        global["global"] = global
+        global.define(name: "global", value: global)
         global.define(name: "require", function: { JSValue(newObjectIn: JSContext.current()) })
 
         let exports = JSValue(newObjectIn: context)!

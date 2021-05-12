@@ -1,4 +1,5 @@
 import Foundation
+import Publish
 
 extension A2 {
     public struct App {
@@ -7,6 +8,7 @@ extension A2 {
         public var hasInvertedStatusBar: Bool
 
         public var id: String { name.lowercased().replacingOccurrences(of: " ", with: "-") }
+        public var markdownPath: Path { Path("Apps/\(id).md") }
 
         public init(name: String, title: String? = nil, hasInvertedStatusBar: Bool = false) {
             self.name = name

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		823B832E264C6F59008C08A2 /* libPublish.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 82DA4B642649C001001ED636 /* libPublish.a */; };
+		823B832F264C6F5B008C08A2 /* libPlot.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 82DA4BFA2649C180001ED636 /* libPlot.a */; };
 		82929F65264C4B520080087D /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82929F64264C4B520080087D /* main.swift */; };
 		8292A058264C4B8B0080087D /* Sweep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82929FA9264C4B5D0080087D /* Sweep.swift */; };
 		8292A060264C4BB20080087D /* AnyItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8292A01D264C4B5D0080087D /* AnyItem.swift */; };
@@ -390,6 +392,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				823B832E264C6F59008C08A2 /* libPublish.a in Frameworks */,
+				823B832F264C6F5B008C08A2 /* libPlot.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -531,9 +535,9 @@
 				82929FA1264C4B5D0080087D /* App.swift */,
 				82929F9D264C4B5D0080087D /* HTMLFactory.swift */,
 				82929FA0264C4B5D0080087D /* InMemoryCache.swift */,
+				8292A1D4264C54EE0080087D /* JavaScriptCore.swift */,
 				8292A1BA264C53810080087D /* LocalPath.swift */,
 				82929F9F264C4B5D0080087D /* Phone.swift */,
-				8292A1D4264C54EE0080087D /* JavaScriptCore.swift */,
 				8292A1A8264C4FC90080087D /* Sass.swift */,
 				82929F9E264C4B5D0080087D /* Server.swift */,
 				82929F9C264C4B5D0080087D /* ServerConnection.swift */,

@@ -10,16 +10,26 @@ import UserModule
 
 let fileManager = InMemoryFileManager()
 
+try fileManager.createDirectory(atPath: "/Apps", withIntermediateDirectories: true)
 try fileManager.createDirectory(atPath: "/Content", withIntermediateDirectories: true)
-_ = fileManager.createFile(atPath: "/Content/index.md", contents: try Data(contentsOf: localFile(named: "index.md")))
+try fileManager.createDirectory(atPath: "/Resources/images", withIntermediateDirectories: true)
+try fileManager.createDirectory(atPath: "/Resources/images/icons", withIntermediateDirectories: true)
+try fileManager.createDirectory(atPath: "/Resources/images/screens", withIntermediateDirectories: true)
 
-let appsURL = localFile(named: "apps")
-for child in try Foundation.FileManager.default.subpathsOfDirectory(atPath: appsURL.path) {
-    _ = fileManager.createFile(atPath: "/Apps/\(child)", contents: try Data(contentsOf: appsURL.appendingPathComponent(child)))
+let contents = ["index.md"]
+for child in contents {
+    _ = fileManager.createFile(atPath: "/Content/\(child)", contents: try Data(contentsOf: localFile(named: child)))
 }
 
-try fileManager.createDirectory(atPath: "/Resources/images", withIntermediateDirectories: true)
-_ = fileManager.createFile(atPath: "/Resources/images/background.jpg", contents: try! Data(contentsOf: localFile(named: "background.jpg")))
+let apps = ["apps/babelgum.md", "apps/backgammon.md", "apps/bean.md", "apps/foursquare.md", "apps/outlook.md", "apps/rooms.md", "apps/shutterstock.md", "apps/to-do.md"]
+for child in apps {
+    _ = fileManager.createFile(atPath: "/Apps/\((child as NSString).lastPathComponent)", contents: try Data(contentsOf: localFile(named: child)))
+}
+
+let images = ["images/background.jpg", "images/icons/babelgum.png", "images/icons/backgammon.png", "images/icons/bean.png", "images/icons/blank.png", "images/icons/contacts.png", "images/icons/foursquare.png", "images/icons/mail.png", "images/icons/maps.png", "images/icons/messages.png", "images/icons/music.png", "images/icons/outlook.png", "images/icons/photos.png", "images/icons/rooms.png", "images/icons/safari.png", "images/icons/shutterstock.png", "images/icons/to-do.png", "images/icons/twitter.png", "images/screens/babelgum.jpg", "images/screens/backgammon.jpg", "images/screens/bean.jpg", "images/screens/foursquare.jpg", "images/screens/outlook.jpg", "images/screens/rooms.jpg", "images/screens/shutterstock.jpg", "images/screens/to-do.jpg"]
+for child in images {
+    _ = fileManager.createFile(atPath: "/Resources/\(child)", contents: try Data(contentsOf: localFile(named: child)))
+}
 
 let indentation: Indentation.Kind = .spaces(2)
 let publishedWebsite = try fileManager.performAsDefault {
