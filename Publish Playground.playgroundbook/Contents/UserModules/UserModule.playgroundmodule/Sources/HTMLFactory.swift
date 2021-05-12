@@ -9,337 +9,345 @@ public extension A2 {
 
     private struct HTMLFactory: Publish.HTMLFactory {
         func makeStylesCSS(context: PublishingContext<Website>) throws -> String {
-            func format(_ value: Decimal) -> String { value.isZero ? "0" : "\(value * 0.02)rem" }
-            return """
+            let sass = """
 html,
 body {
-    padding: 0;
-    margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-    font-size: 16px;
-    height: 100%;
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-size: 16px;
+  height: 100%;
 }
 
 .content {
-    display: flex;
-}
+  display: flex;
 
-.content h1, .content h2 {
+  h1, h2 {
     margin: 0;
-}
+  }
 
-.content p {
+  p {
     line-height: 1.5;
+  }
 }
 
+@function unit($value) {
+  @return 0.02rem * $value;
+}
+
+$transition-duration: 0.4s;
 @media (prefers-reduced-motion) {
-    .animated {
-        transition: none !important;
-    }
+  .animated {
+    transition: none !important;
+  }
 }
 
 .phone {
-    background: #233a4a;
-    border-radius: \(format(205));
-    box-shadow: inset 0 0 \(format(3)) \(format(2)) rgba(0, 0, 0, 0.5), inset 0 0 \(format(2)) \(format(5)) #203747, inset 0 0 \(format(2)) \(format(8)) #ADCEE4, inset 0 \(format(1)) \(format(4)) \(format(10)) rgba(0, 0, 0, 0.35);
-    flex-shrink: 0;
-    font-size: \(format(36));
-    height: \(format(2658));
-    position: relative;
-    width: \(format(1296));
-    margin: \(format(120));
-}
+  background: #233a4a;
+  border-radius: unit(205);
+  box-shadow: inset 0 0 unit(3) unit(2) rgba(0, 0, 0, 0.5), inset 0 0 unit(2) unit(5) #203747, inset 0 0 unit(2) unit(8) #ADCEE4, inset 0 unit(1) unit(4) unit(10) rgba(0, 0, 0, 0.35);
+  flex-shrink: 0;
+  font-size: unit(36);
+  height: unit(2658);
+  position: relative;
+  width: unit(1296);
+  margin: unit(120);
 
-.phone::before, .phone::after {
-    border-radius: \(format(183));
+  &::before, &::after {
+    border-radius: unit(183);
     content: "";
-}
+  }
 
-.phone::before {
+  &::before {
     background: #2e2c2a;
-    box-shadow: \(format(-6)) 0 \(format(3)) 0 rgba(255, 255, 255, 0.08), 0 0 \(format(2)) \(format(1)) rgba(0, 0, 0, 0.6), inset 0 0 \(format(1)) \(format(1)) rgba(0, 0, 0, 0.5);
-    height: calc(100% - \(format(36)));
+    box-shadow: unit(-6) 0 unit(3) 0 rgba(255, 255, 255, 0.08), 0 0 unit(2) unit(1) rgba(0, 0, 0, 0.6), inset 0 0 unit(1) unit(1) rgba(0, 0, 0, 0.5);
+    height: calc(100% - #{unit(36)});
     position: absolute;
-    top: \(format(18));
-    left: \(format(18));
-    width: calc(100% - \(format(36)));
-}
+    top: unit(18);
+    left: unit(18);
+    width: calc(100% - #{unit(36)});
+  }
 
-.phone::after {
+  &::after {
     background: #000;
-    height: calc(100% - \(format(42)));
-    top: \(format(21));
-    left: \(format(21));
+    height: calc(100% - #{unit(42)});
+    top: unit(21);
+    left: unit(21);
     position: absolute;
-    width: calc(100% - \(format(42)));
-}
+    width: calc(100% - #{unit(42)});
+  }
 
-.phone .buttons * {
-    border-radius: \(format(2));
-    box-shadow: inset \(format(-10)) 0 \(format(3)) 0 rgba(0, 0, 0, 0.4), inset \(format(2)) 0 \(format(1)) 0 rgba(0, 0, 0, 0.6), inset 0 \(format(3)) \(format(2)) 0 rgba(0, 0, 0, 0.85), inset 0 \(format(-3)) \(format(2)) 0 rgba(0, 0, 0, 0.85), inset 0 \(format(6)) \(format(1)) 0 #BDE1F7, inset 0 \(format(-6)) \(format(1)) 0 #BDE1F7, inset \(format(4)) 0 \(format(1)) 0 #BDE1F7;
+  .buttons {
+    * {
+      border-radius: unit(2);
+      box-shadow: inset unit(-10) 0 unit(3) 0 rgba(0, 0, 0, 0.4), inset unit(2) 0 unit(1) 0 rgba(0, 0, 0, 0.6), inset 0 unit(3) unit(2) 0 rgba(0, 0, 0, 0.85), inset 0 unit(-3) unit(2) 0 rgba(0, 0, 0, 0.85), inset 0 unit(6) unit(1) 0 #BDE1F7, inset 0 unit(-6) unit(1) 0 #BDE1F7, inset unit(4) 0 unit(1) 0 #BDE1F7;
+      position: absolute;
+      width: unit(17);
+      z-index: -1;
+    }
+
+    .power {
+      background: linear-gradient(0deg, #0B212B 3%, #668091 8%, #668192 93%, #11232E 98%);
+      border-radius: unit(4);
+      box-shadow: inset unit(-10) 0 unit(3) 0 rgba(0, 0, 0, 0.4), inset unit(2) 0 unit(1) 0 rgba(0, 0, 0, 0.6), inset 0 unit(3) unit(2) 0 rgba(0, 0, 0, 0.85), inset 0 unit(-3) unit(2) 0 rgba(0, 0, 0, 0.85), inset 0 unit(6) unit(1) 0 #BDE1F7, inset 0 unit(-6) unit(1) 0 #BDE1F7, inset unit(4) 0 unit(1) 0 #BDE1F7;
+      height: unit(316);
+      right: unit(-8.5);
+      top: unit(681);
+    }
+
+    .mute {
+      background: linear-gradient(0deg, #0B212B 5%, #668091 14%, #668192 86%, #11232E 96%);
+      box-shadow: inset unit(-9) 0 unit(3) 0 rgba(0, 0, 0, 0.5), inset unit(1) 0 unit(1) 0 rgba(0, 0, 0, 0.6), inset 0 unit(2) unit(2) 0 rgba(0, 0, 0, 0.85), inset 0 unit(-2) unit(2) 0 rgba(0, 0, 0, 0.85), inset 0 unit(4) unit(1) 0 #BDE1F7, inset 0 unit(-4) unit(1) 0 #BDE1F7, inset unit(3) 0 unit(1) 0 rgba(189,225,247, 0.75);
+      height: unit(100);
+      left: unit(-8.5);
+      top: unit(422);
+    }
+
+    .volume-up,
+    .volume-down {
+      background: linear-gradient(0deg, #0B212B 5%, #668091 10%, #668192 90%, #11232E 96%);
+      box-shadow: inset unit(-11) 0 unit(3) 0 rgba(0, 0, 0, 0.5), inset unit(1) 0 unit(1) 0 rgba(0, 0, 0, 0.6), inset 0 unit(2) unit(2) 0 rgba(0, 0, 0, 0.85), inset 0 unit(-2) unit(2) 0 rgba(0, 0, 0, 0.85), inset 0 unit(4) unit(1) 0 #BDE1F7, inset 0 unit(-4) unit(1) 0 #BDE1F7, inset unit(3) 0 unit(1) 0 rgba(189, 225, 247, 0.75);
+      height: unit(200);
+      left: unit(-8.5);
+    }
+
+    .volume-up {
+      top: unit(613);
+    }
+
+    .volume-down {
+      top: unit(867);
+    }
+  }
+
+  .bands {
+    * {
+      opacity: 0.8;
+      width: unit(19);
+      height: unit(18);
+      position: absolute;
+    }
+
+    .right {
+      right: 0;
+    }
+
+    .left {
+      left: 0;
+    }
+
+    .bottom.left,
+    .bottom.right {
+      bottom: unit(269);
+    }
+
+    .bottom.right {
+      background: #3C494F;
+    }
+
+    .bottom.center {
+      background: #39464E;
+      width: unit(18);
+      height: unit(19);
+      left: unit(262);
+      bottom: 0;
+    }
+
+    .bottom.left {
+      background: #3C464F;
+      width: unit(19);
+      height: unit(17);
+    }
+
+    .top.left,
+    .top.right {
+      top: unit(269);
+    }
+
+    .top.center {
+      background: #59656F;
+      top: 0;
+      right: unit(259);
+    }
+
+    .top.left {
+      background: #56646C;
+    }
+
+    .top.right {
+      background: #57646C;
+    }
+  }
+
+  .display {
+    border-radius: unit(142);
+    width: unit(1170);
+    height: unit(2532);
     position: absolute;
-    width: \(format(17));
-    z-index: -1;
-}
-
-.phone .buttons .power {
-    background: linear-gradient(0deg, #0B212B 3%, #668091 8%, #668192 93%, #11232E 98%);
-    border-radius: \(format(4));
-    box-shadow: inset \(format(-10)) 0 \(format(3)) 0 rgba(0, 0, 0, 0.4), inset \(format(2)) 0 \(format(1)) 0 rgba(0, 0, 0, 0.6), inset 0 \(format(3)) \(format(2)) 0 rgba(0, 0, 0, 0.85), inset 0 \(format(-3)) \(format(2)) 0 rgba(0, 0, 0, 0.85), inset 0 \(format(6)) \(format(1)) 0 #BDE1F7, inset 0 \(format(-6)) \(format(1)) 0 #BDE1F7, inset \(format(4)) 0 \(format(1)) 0 #BDE1F7;
-    height: \(format(316));
-    right: \(format(-8.5));
-    top: \(format(681));
-}
-
-.phone .buttons .mute {
-    background: linear-gradient(0deg, #0B212B 5%, #668091 14%, #668192 86%, #11232E 96%);
-    box-shadow: inset \(format(-9)) 0 \(format(3)) 0 rgba(0, 0, 0, 0.5), inset \(format(1)) 0 \(format(1)) 0 rgba(0, 0, 0, 0.6), inset 0 \(format(2)) \(format(2)) 0 rgba(0, 0, 0, 0.85), inset 0 \(format(-2)) \(format(2)) 0 rgba(0, 0, 0, 0.85), inset 0 \(format(4)) \(format(1)) 0 #BDE1F7, inset 0 \(format(-4)) \(format(1)) 0 #BDE1F7, inset \(format(3)) 0 \(format(1)) 0 rgba(189,225,247, 0.75);
-    height: \(format(100));
-    left: \(format(-8.5));
-    top: \(format(422));
-}
-
-.phone .buttons .volume-up, .phone .buttons .volume-down {
-    background: linear-gradient(0deg, #0B212B 5%, #668091 10%, #668192 90%, #11232E 96%);
-    box-shadow: inset \(format(-11)) 0 \(format(3)) 0 rgba(0, 0, 0, 0.5), inset \(format(1)) 0 \(format(1)) 0 rgba(0, 0, 0, 0.6), inset 0 \(format(2)) \(format(2)) 0 rgba(0, 0, 0, 0.85), inset 0 \(format(-2)) \(format(2)) 0 rgba(0, 0, 0, 0.85), inset 0 \(format(4)) \(format(1)) 0 #BDE1F7, inset 0 \(format(-4)) \(format(1)) 0 #BDE1F7, inset \(format(3)) 0 \(format(1)) 0 rgba(189, 225, 247, 0.75);
-    height: \(format(200));
-    left: \(format(-8.5));
-}
-
-.phone .buttons .volume-up {
-    top: \(format(613));
-}
-
-.phone .buttons .volume-down {
-    top: \(format(867));
-}
-
-.phone .bands * {
-    opacity: 0.8;
-    width: \(format(19));
-    height: \(format(18));
-    position: absolute;
-}
-
-.phone .bands .right {
-    right: 0;
-}
-
-.phone .bands .left {
-    left: 0;
-}
-
-.phone .bands .bottom.left,
-.phone .bands .bottom.right {
-    bottom: \(format(269));
-}
-
-.phone .bands .bottom.right {
-    background: #3C494F;
-}
-
-.phone .bands .bottom.center {
-    background: #39464E;
-    width: \(format(18));
-    height: \(format(19));
-    left: \(format(262));
-    bottom: 0;
-}
-
-.phone .bands .bottom.left {
-    background: #3C464F;
-    width: \(format(19));
-    height: \(format(17));
-}
-
-.phone .bands .top.left,
-.phone .bands .top.right {
-    top: \(format(269));
-}
-
-.phone .bands .top.center {
-    background: #59656F;
-    top: 0;
-    right: \(format(259));
-}
-
-.phone .bands .top.left {
-    background: #56646C;
-}
-
-.phone .bands .top.right {
-    background: #57646C;
-}
-
-.phone .display {
-    border-radius: \(format(142));
-    width: \(format(1170));
-    height: \(format(2532));
-    position: absolute;
-    top: \(format(63));
-    left: \(format(63));
+    top: unit(63);
+    left: unit(63);
     background: black;
     z-index: 1;
     overflow: hidden;
-}
 
-.phone .display .notch {
-    background-color: #000;
-    border-radius: 0 0 \(format(66)) \(format(66));
-    content: "";
-    height: \(format(95.5));
-    left: 50%;
-    transform: translateX(-50%);
-    position: absolute;
-    top: 0;
-    width: \(format(632));
-    z-index: 2;
-}
+    .notch {
+      background-color: #000;
+      border-radius: 0 0 unit(66) unit(66);
+      content: "";
+      height: unit(95.5);
+      left: 50%;
+      transform: translateX(-50%);
+      position: absolute;
+      top: 0;
+      width: unit(632);
+      z-index: 2;
 
-.phone .display .notch::before,
-.phone .display .notch::after {
-    background-image: radial-gradient(circle at 0 100%, transparent \(format(18)), #000 \(format(18)));
-    background-repeat: no-repeat;
-    background-size: 50% 100%;
-    content: "";
-    height: \(format(18));
-    left: \(format(-18));
-    position: absolute;
-    top: 0;
-    width: \(format(36));
-}
+      &::before,
+      &::after {
+        background-image: radial-gradient(circle at 0 100%, transparent unit(18), #000 unit(18));
+        background-repeat: no-repeat;
+        background-size: 50% 100%;
+        content: "";
+        height: unit(18);
+        left: unit(-18);
+        position: absolute;
+        top: 0;
+        width: unit(36);
+      }
 
-.phone .display .notch::after {
-    background-image: radial-gradient(circle at 100% 100%, transparent \(format(18)), #000 \(format(18)));
-    left: 100%;
-}
+      &::after {
+        background-image: radial-gradient(circle at 100% 100%, transparent unit(18), #000 unit(18));
+        left: 100%;
+      }
+    }
 
-.phone .display .homescreen {
-    color: #fff;
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    transition: 0.4s filter;
-    width: 100%;
-}
+    .homescreen {
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      transition: $transition-duration filter;
+      width: 100%;
 
-:target ~ .phone .display .homescreen {
-    filter: blur(30px) brightness(0.5);
-}
+      :target ~ & {
+        filter: blur(30px) brightness(0.5);
+      }
 
-.phone .display .homescreen .background {
-    border-radius: \(format(142));
-    background: url("/images/background.jpg") center/115% no-repeat;
-    height: 100%;
-    left: 0;
-    position: absolute;
-    top: 0;
-    width: 100%;
-}
+      .background {
+        border-radius: unit(142);
+        background: url("/images/background.jpg") center/115% no-repeat;
+        height: 100%;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;
+      }
 
-.phone .display .homescreen .icons {
-    flex: 1;
-    margin-top: \(format(231));
-    transition-duration: 0.4s;
-    transition-property: transform, opacity;
-    width: 100%;
+      .icons {
+        flex: 1;
+        margin-top: unit(231);
+        transition-duration: $transition-duration;
+        transition-property: transform, opacity;
+        width: 100%;
 
-}
+        :target ~ & {
+          transform: scale(0.8);
+          opacity: 0.8;
+        }
+      }
+    }
+  }
 
-:target ~ .phone .display .homescreen .icons {
-    transform: scale(0.8);
-    opacity: 0.8;
-}
-
-.phone .status-bar {
+  .status-bar {
     color: #fff;
     display: flex;
     flex-direction: row;
-    font-size: \(format(48));
+    font-size: unit(48);
     font-weight: 500;
-    height: \(format(144));
+    height: unit(144);
     justify-content: space-between;
     position: absolute;
-    transition: 0.4s color;
+    transition: $transition-duration color;
     width: 100%;
     z-index: 2;
-}
 
-.phone .status-bar > * {
-    align-self: center;
-    text-align: center;
-    width: \(format(312));
-}
+    > * {
+      align-self: center;
+      text-align: center;
+      width: unit(312);
+    }
 
-.phone .status-bar .status {
-    height: \(format(36));
-}
+    .status {
+      height: unit(36);
+    }
 
-.phone .status-bar .path-fill {
-    transition: 0.4s fill;
-}
+    .path-fill {
+      transition: $transition-duration fill;
+    }
 
-.phone .status-bar .path-stroke {
-    transition: 0.4s stroke;
-}
+    .path-stroke {
+      transition: $transition-duration stroke;
+    }
+  }
 
-.phone .icons ul {
-    column-gap: \(format(30));
-    margin: 0 \(format(60));
-    row-gap: \(format(54));
-}
+  .icons ul {
+    column-gap: unit(30);
+    margin: 0 unit(60);
+    row-gap: unit(54);
 
-.phone .icons ul li {
-    width: \(format(240));
-}
+    li {
+      width: unit(240);
 
-.phone .icons ul li a {
-    color: #fff;
-    text-decoration: none;
-    text-overflow: clip;
-}
+      a {
+        color: #fff;
+        text-decoration: none;
+        text-overflow: clip;
+      }
+    }
+  }
 
-.phone .icons ul, .phone .dock ul {
+  .icons ul,
+  .dock ul {
     list-style: none;
     padding-left: 0;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-}
 
-.phone .icons ul li, .phone .dock ul li {
-    overflow: hidden;
-    padding-top: \(format(192));
-    position: relative;
-    text-align: center;
-    text-overflow: ellipsis;
-}
+    li {
+      overflow: hidden;
+      padding-top: unit(192);
+      position: relative;
+      text-align: center;
+      text-overflow: ellipsis;
+    }
+  }
 
-.phone .dock {
+  .dock {
     -webkit-backdrop-filter: blur(30px) saturate(110%);
     backdrop-filter: blur(30px) saturate(110%);
     background: rgba(255, 255, 255, 0.3);
-    border-radius: \(format(93));
-    height: \(format(287));
-    margin: \(format(36));
-}
+    border-radius: unit(93);
+    height: unit(287);
+    margin: unit(36);
 
-.phone .dock .app::before {
-    left: 0;
-}
+    .app::before {
+      left: 0;
+    }
 
-.phone .dock ul {
-    column-gap: \(format(90));
-    margin: \(format(51)) \(format(42));
-}
+    ul {
+      column-gap: unit(90);
+      margin: unit(51) unit(42);
 
-.phone .dock ul li {
-    font-size: \(format(0));
-    width: \(format(180));
-}
+      li {
+        font-size: unit(0);
+        width: unit(180);
+      }
+    }
+  }
 
-.phone .screen {
+  .screen {
     background-size: cover;
-    border-radius: \(format(141));
+    border-radius: unit(141);
     height: 100%;
     left: 0;
     opacity: 0;
@@ -347,28 +355,30 @@ body {
     text-indent: -9999rem;
     top: 0;
     transform: scale(0.1);
-    transition-duration: 0.4s;
+    transition-duration: $transition-duration;
     transition-property: opacity, transform, z-index;
     width: 100%;
     z-index: -1;
-}
+  }
 
-.phone .app::before {
-    -webkit-mask: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="1.4" clip-rule="evenodd" viewBox="0 0 460 460"%3E%3Cpath d="M460 316v30a202 202 0 01-3 31c-2 10-5 19-9 28a97 97 0 01-43 43 102 102 0 01-28 9c-10 2-20 3-31 3a649 649 0 01-13 0H127a649 649 0 01-13 0 201 201 0 01-31-3c-10-2-19-5-28-9a97 97 0 01-43-43 102 102 0 01-9-28 202 202 0 01-3-31v-13-189-17-13a202 202 0 013-31c2-10 5-19 9-28a97 97 0 0143-43 102 102 0 0128-9 203 203 0 0144-3h206a649 649 0 0113 0c11 0 21 1 31 3s19 5 28 9a97 97 0 0143 43 102 102 0 019 28 202 202 0 013 31 643 643 0 010 30v172z"/%3E%3C/svg%3E') center/100% 100% no-repeat;
+  .app::before {
+    $mask: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="1.4" clip-rule="evenodd" viewBox="0 0 460 460"%3E%3Cpath d="M460 316v30a202 202 0 01-3 31c-2 10-5 19-9 28a97 97 0 01-43 43 102 102 0 01-28 9c-10 2-20 3-31 3a649 649 0 01-13 0H127a649 649 0 01-13 0 201 201 0 01-31-3c-10-2-19-5-28-9a97 97 0 01-43-43 102 102 0 01-9-28 202 202 0 01-3-31v-13-189-17-13a202 202 0 013-31c2-10 5-19 9-28a97 97 0 0143-43 102 102 0 0128-9 203 203 0 0144-3h206a649 649 0 0113 0c11 0 21 1 31 3s19 5 28 9a97 97 0 0143 43 102 102 0 019 28 202 202 0 013 31 643 643 0 010 30v172z"/%3E%3C/svg%3E');
+    -webkit-mask: $mask center/100% 100% no-repeat;
     background: url("/images/icons/blank.png") center/cover;
     content: "";
-    height: \(format(180));
-    left: \(format(30));
-    mask: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="1.4" clip-rule="evenodd" viewBox="0 0 460 460"%3E%3Cpath d="M460 316v30a202 202 0 01-3 31c-2 10-5 19-9 28a97 97 0 01-43 43 102 102 0 01-28 9c-10 2-20 3-31 3a649 649 0 01-13 0H127a649 649 0 01-13 0 201 201 0 01-31-3c-10-2-19-5-28-9a97 97 0 01-43-43 102 102 0 01-9-28 202 202 0 01-3-31v-13-189-17-13a202 202 0 013-31c2-10 5-19 9-28a97 97 0 0143-43 102 102 0 0128-9 203 203 0 0144-3h206a649 649 0 0113 0c11 0 21 1 31 3s19 5 28 9a97 97 0 0143 43 102 102 0 019 28 202 202 0 013 31 643 643 0 010 30v172z"/%3E%3C/svg%3E') center/100% 100% no-repeat;
+    height: unit(180);
+    left: unit(30);
+    mask: $mask center/100% 100% no-repeat;
     position: absolute;
     top: 0;
-    width: \(format(180));
+    width: unit(180);
+  }
 }
 
 .text-content {
-    padding-top: \(format(120));
-    padding-right: \(format(120));
-    min-width: \(format(1500));
+  padding-top: unit(120);
+  padding-right: unit(120);
+  min-width: unit(1500);
 }
 
 \(context.site.homescreen.filter { $0.hasInvertedStatusBar }.map { app in "#\(app.id):target ~ .phone .status-bar" }.joined(separator: ",\n")) {
@@ -412,8 +422,10 @@ body {
     opacity: unset;
     transform: unset;
 }
-
 """
+
+            return Sass(sourceURL: localFile(named: "sass.dart.js"))
+                .compile(string: sass)
         }
 
         func makeIndexHTML(for index: Index, context: PublishingContext<Website>) throws -> HTML {

@@ -52,8 +52,8 @@ public class Sass {
         context.evaluateScript(script)
     }
 
-    public func compile(string: String) -> String? {
+    public func compile(string: String) -> String {
         let renderResult = context.globalObject["exports"]!["renderSync"]!.call(withArguments: [["data": string]])
-        return renderResult?["css"]?.toString()
+        return renderResult!["css"]!.toString()
     }
 }

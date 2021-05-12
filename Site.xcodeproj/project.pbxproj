@@ -179,6 +179,7 @@
 		8292A195264C4C2D0080087D /* Website.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82929F9B264C4B5D0080087D /* Website.swift */; };
 		8292A19F264C4C470080087D /* libUserModule.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8292A175264C4C1C0080087D /* libUserModule.a */; };
 		8292A1A9264C4FC90080087D /* Sass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8292A1A8264C4FC90080087D /* Sass.swift */; };
+		8292A1BB264C53810080087D /* LocalPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8292A1BA264C53810080087D /* LocalPath.swift */; };
 		82DA4BE22649C05E001ED636 /* libPublish.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 82DA4B642649C001001ED636 /* libPublish.a */; };
 		82DA4BF32649C0FE001ED636 /* libFiles.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 82DA4BE72649C0E3001ED636 /* libFiles.a */; };
 		82DA4C5D2649C19D001ED636 /* libPlot.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 82DA4BFA2649C180001ED636 /* libPlot.a */; };
@@ -372,6 +373,7 @@
 		8292A02B264C4B5D0080087D /* ShellOutError+PublishingErrorConvertible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ShellOutError+PublishingErrorConvertible.swift"; sourceTree = "<group>"; };
 		8292A175264C4C1C0080087D /* libUserModule.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libUserModule.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		8292A1A8264C4FC90080087D /* Sass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sass.swift; sourceTree = "<group>"; };
+		8292A1BA264C53810080087D /* LocalPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalPath.swift; sourceTree = "<group>"; };
 		82DA4B562649BFB0001ED636 /* Site */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Site; sourceTree = BUILT_PRODUCTS_DIR; };
 		82DA4B642649C001001ED636 /* libPublish.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPublish.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		82DA4BE72649C0E3001ED636 /* libFiles.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libFiles.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -527,6 +529,7 @@
 				82929FA1264C4B5D0080087D /* App.swift */,
 				82929F9D264C4B5D0080087D /* HTMLFactory.swift */,
 				82929FA0264C4B5D0080087D /* InMemoryCache.swift */,
+				8292A1BA264C53810080087D /* LocalPath.swift */,
 				82929F9F264C4B5D0080087D /* Phone.swift */,
 				8292A1A8264C4FC90080087D /* Sass.swift */,
 				82929F9E264C4B5D0080087D /* Server.swift */,
@@ -775,7 +778,7 @@
 			children = (
 				82929F64264C4B520080087D /* main.swift */,
 			);
-			path = Site;
+			name = Site;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1045,6 +1048,7 @@
 				8292A192264C4C2D0080087D /* Phone.swift in Sources */,
 				8292A193264C4C2D0080087D /* Server.swift in Sources */,
 				8292A194264C4C2D0080087D /* ServerConnection.swift in Sources */,
+				8292A1BB264C53810080087D /* LocalPath.swift in Sources */,
 				8292A195264C4C2D0080087D /* Website.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

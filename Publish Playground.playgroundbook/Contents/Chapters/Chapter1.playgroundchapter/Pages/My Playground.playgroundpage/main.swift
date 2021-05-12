@@ -8,16 +8,6 @@ import Publish
 import UserModule
 #endif
 
-func localFile(named fileName: String) -> URL {
-    #if canImport(PlaygroundSupport)
-    return URL(fileReferenceLiteralResourceName: fileName)
-    #else
-    return URL(fileURLWithPath: "../../../../PublicResources/" + fileName, relativeTo: URL(fileURLWithPath: #filePath))
-        .standardizedFileURL
-    #endif
-}
-
-
 let fileManager = InMemoryFileManager()
 
 /*
