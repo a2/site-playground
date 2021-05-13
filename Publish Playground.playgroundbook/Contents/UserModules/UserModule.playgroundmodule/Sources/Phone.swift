@@ -58,21 +58,17 @@ struct Phone: Component {
                     Div().class("background")
                     Div {
                         List(homescreen) { app in
-                            ListItem {
-                                Link(app.name, url: "#\(app.id)")
-                                    .class("app app-\(app.id)")
-                                    .attribute(named: "title", value: app.name)
-                            }
-                        }.listStyle(.unordered)
+                            Link(app.name, url: "#\(app.id)")
+                                .class("app app-\(app.id)")
+                                .attribute(named: "title", value: app.name)
+                        }
                     }.class("icons animated")
                     Div {
                         List(dock) { app in
-                            ListItem {
-                                Link(app.name, url: "#\(app.id)")
-                                    .class("app app-\(app.id)")
-                                    .attribute(named: "title", value: app.name)
-                            }
-                        }.listStyle(.unordered)
+                            Link(app.name, url: "#\(app.id)")
+                                .class("app app-\(app.id)")
+                                .attribute(named: "title", value: app.name)
+                        }
                     }.class("dock")
                 }.class("homescreen animated")
 
