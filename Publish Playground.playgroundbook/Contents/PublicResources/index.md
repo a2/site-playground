@@ -2,8 +2,8 @@
 title: Home
 ---
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. In euismod hendrerit dolor, eu pretium sem condimentum quis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin consectetur odio accumsan odio tempus consectetur. In metus ex, rhoncus a ultrices vitae, venenatis facilisis mi. Quisque feugiat nisl nec lorem molestie cursus. Ut placerat nisl vitae risus mattis, semper porta felis fringilla. Aenean id lectus orci. Nulla euismod eleifend dui. Aenean dui magna, varius vel consectetur a, gravida ac ante.
+I’m a **Software Engineer** specializing in Apple platform technologies. I love to create polished visuals and delightful experiences that users love. I work at Microsoft in New York City, helping people achieve more with Outlook Mobile for iOS.
 
-Nam mollis faucibus eros at pellentesque. Aenean lacinia auctor velit, et faucibus metus commodo vel. Phasellus bibendum commodo mi vitae scelerisque. Curabitur sodales facilisis orci, ac tristique ligula dictum ut. Phasellus sed blandit lacus. Duis iaculis sapien at lorem tempus, at bibendum leo tincidunt. Aliquam aliquet nunc tellus, sed laoreet ligula sollicitudin ac.
+I’m an avid learner of languages, both human and for computer programming. I’m an English native speaker but also proficient in Spanish, French, and German. I gave a talk at Macoun, Europe’s largest conference for German-speaking Apple developers, in Frankfurt in October 2019.
 
-Integer molestie consequat ante id malesuada. Vivamus aliquet tellus in enim tempor fringilla. Aliquam eleifend elementum interdum. Nullam id felis et eros pharetra sodales nec sit amet eros. Maecenas eget venenatis risus, at aliquam tellus. Donec aliquet nulla enim, sed vestibulum lorem pretium quis. Nam sit amet tellus quis risus tristique lobortis eget non turpis. In nibh est, luctus ac ante eu, feugiat consectetur quam. Aenean at consectetur erat. Nullam dolor lacus, sagittis nec suscipit ut, sagittis quis mi.
+I’m most knowledgeable in Swift as well as Objective-C. You might also find me writing little sites like this with HTML and CSS or scripts in JavaScript, Ruby, Python, or even Bash. I’ve also dabbled with Lua within the PICO-8 fantasy console to make some smaller projects.
