@@ -52,12 +52,16 @@ class ServerConnection {
                 } else {
                     let path = firstLineComponents[1]
                     let (targetPath, mimeType): (String, String) = {
-                        if let slashRange = path.range(of: "/", options: .backwards), slashRange.upperBound != path.endIndex, let dotRange = path.range(of: ".", range: slashRange.upperBound ..< path.endIndex) {
-                            let uti = UTType(filenameExtension: String(path[dotRange.upperBound...]))
-                            return (path, uti?.preferredMIMEType ?? "text/plain")
-                        } else {
-                            return (path + (path.hasSuffix("/") ? "" : "/") + "index.html", "text/html")
+                        guard let slashRange = path.range(of: "/", options: .backwards), slashRange.upperBound != path.endIndex,
+                              let dotRange = path.range(of: ".", range: slashRange.upperBound ..< path.endIndex) else {
+
+                            // Look for index.html
+                            let pathToIndexHTML = path + (path.hasSuffix("/") ? "" : "/") + "index.html"
+                            return (pathToIndexHTML, "text/html")
                         }
+
+                        let uti = UTType(filenameExtension: String(path[dotRange.upperBound...]))
+                        return (path, uti?.preferredMIMEType ?? "text/plain")
                     }()
 
                     if let contents = self.fileManager.contents(atPath: "/Output\(targetPath)") {
