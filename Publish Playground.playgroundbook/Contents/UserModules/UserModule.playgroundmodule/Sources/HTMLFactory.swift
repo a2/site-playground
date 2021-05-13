@@ -424,7 +424,7 @@ $transition-duration: 0.4s;
 }
 """
 
-            return try Sass(scriptSource: String(contentsOf: localFile(named: "sass.dart.js")))
+            return try Sass(compressedScriptURL: localFile(named: "sass.js.aar"))!
                 .compileSync(styles: sass)
         }
 
@@ -710,7 +710,7 @@ private struct ItemTagList<Site: Website>: Component {
 }
 
 private struct SiteFooter: Component {
-    var body: Component {
+    @ComponentBuilder var body: Component {
         Footer {
             Paragraph {
                 Text("Generated using ")
