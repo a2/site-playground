@@ -1,41 +1,62 @@
 import Foundation
+import WebKit
 
-public class Sass {
-    let context: JSContext
+public enum SassError: Error {
+    case typeCoercionFailure
+}
 
-    public init(sourceURL: URL) {
-        self.context = JSContext()
-        self.configureContext(sourceURL: sourceURL)
+public final class Sass {
+    let scriptSource: String
+    let webView: WKWebView
+
+    public init(scriptSource: String) {
+        self.scriptSource = scriptSource
+        self.webView = WKWebView()
     }
 
-    func configureContext(sourceURL: URL) {
-        let global = context.globalObject!
-        global.define(name: "global", value: global)
-        global.define(name: "require", function: { JSValue(newObjectIn: JSContext.current()) })
+    private static func parseValue(_ value: Any) -> Result<String, Error> {
+        guard let object = value as? [AnyHashable: Any], let css = object["css"] as? String else {
+            return .failure(SassError.typeCoercionFailure)
+        }
 
-        let exports = JSValue(newObjectIn: context)!
-        global.define(name: "exports", value: exports)
-
-        let process = JSValue(newObjectIn: context)!
-        process.define(name: "cwd", function: { "/" })
-        process.define(name: "env", value: JSValue(newObjectIn: context))
-        global.define(name: "process", value: process)
-
-        let buffer = JSValue(newObjectIn: context)!
-        buffer.define(name: "from", function: { JSContext.currentArguments()![0] as! JSValue })
-        global.define(name: "Buffer", value: buffer)
-
-        global.define(name: "print", function: {
-            print("print:", JSContext.currentArguments()![0] as! JSValue)
-            return JSValue(undefinedIn: JSContext.current())
-        })
-
-        let script = try! String(contentsOf: sourceURL)
-        context.evaluateScript(script)
+        return .success(css)
     }
 
-    public func compile(string: String) -> String {
-        let renderResult = context.globalObject["exports"]["renderSync"].call(withArguments: [["data": string]])
-        return renderResult!["css"].toString()
+    public func compile(styles: String, completionHandler: @escaping (Result<String, Error>) -> Void) {
+        let wrapperScript = "return exports = {}, require = () => {}, process = { env: {}, cwd: () => \"\" }, Buffer = { from: x => x }, eval(script), exports.renderSync(options)"
+        webView.callAsyncJavaScript(wrapperScript, arguments: ["script": scriptSource, "options": ["data": styles]], in: nil, in: .defaultClient) { result in
+            completionHandler(result.flatMap(Self.parseValue))
+        }
+    }
+
+    public func compileSync(styles: String) throws -> String {
+        var finished = false
+        var result: Result<String, Error>?
+
+        func evaluate() {
+            compile(styles: styles) { innerResult in
+                result = innerResult
+                finished = true
+            }
+
+            RunLoop.current.run(until: { finished })
+        }
+
+        if Thread.isMainThread {
+            evaluate()
+        } else {
+            DispatchQueue.main.sync(execute: evaluate)
+        }
+
+        return try result!.get()
+    }
+
+}
+
+extension RunLoop {
+    func run(mode: Mode = .default, until condition: () -> Bool) {
+        while !condition() {
+            run(mode: mode, before: .distantPast)
+        }
     }
 }

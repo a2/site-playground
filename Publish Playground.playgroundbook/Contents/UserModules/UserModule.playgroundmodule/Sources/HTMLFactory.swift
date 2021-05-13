@@ -424,8 +424,8 @@ $transition-duration: 0.4s;
 }
 """
 
-            return Sass(sourceURL: localFile(named: "sass.dart.js"))
-                .compile(string: sass)
+            return try Sass(scriptSource: String(contentsOf: localFile(named: "sass.dart.js")))
+                .compileSync(styles: sass)
         }
 
         func makeIndexHTML(for index: Index, context: PublishingContext<Website>) throws -> HTML {
