@@ -80,9 +80,9 @@ let publishedWebsite = try fileManager.performAsDefault {
     ])
 }
 
-let outputPath = "/Output"
+let outputPath = "/Output/"
 let paths = try fileManager.subpathsOfDirectory(atPath: outputPath)
-    .map { path in "- " + path[String.Index(outputPath.endIndex, within: outputPath)!...]}
+    .map { path in "- " + path[outputPath.endIndex.samePosition(in: path)!...]}
     .sorted()
     .joined(separator: "\n")
 
