@@ -18,7 +18,7 @@ try fileManager.createDirectory(atPath: "/Resources/images/screens", withInterme
 
 let contents = ["index.md"]
 for child in contents {
-    _ = fileManager.createFile(atPath: "/Content/\(child)", contents: try Data(contentsOf: localFile(named: child)))
+    _ = fileManager.createFile(atPath: "/Content/\(child)", contentsOf: localFile(named: child))
 }
 
 let apps = """
@@ -33,7 +33,7 @@ apps/to-do.md
 """
 
 for child in apps.components(separatedBy: .newlines) {
-    _ = fileManager.createFile(atPath: "/Apps/\((child as NSString).lastPathComponent)", contents: try Data(contentsOf: localFile(named: child)))
+    _ = fileManager.createFile(atPath: "/Apps/\((child as NSString).lastPathComponent)", contentsOf: localFile(named: child))
 }
 
 let images = """
@@ -66,7 +66,7 @@ images/screens/to-do.jpg
 """
 
 for child in images.components(separatedBy: .newlines) {
-    _ = fileManager.createFile(atPath: "/Resources/\(child)", contents: try Data(contentsOf: localFile(named: child)))
+    _ = fileManager.createFile(atPath: "/Resources/\(child)", contentsOf: localFile(named: child))
 }
 
 let indentation: Indentation.Kind = .spaces(2)

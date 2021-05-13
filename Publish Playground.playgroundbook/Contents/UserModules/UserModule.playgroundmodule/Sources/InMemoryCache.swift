@@ -3,14 +3,34 @@ import Foundation
 import Publish
 
 struct InMemoryFile {
-    var contents: Data?
+    enum Contents {
+        case data(Data)
+        case file(URL)
+    }
+
+    var contents: Contents?
 
     init() {
         self.contents = nil
     }
 
     init(contents: Data?) {
-        self.contents = contents
+        self.contents = contents.map(Contents.data)
+    }
+
+    init(contentsOf url: URL?) {
+        self.contents = url.map(Contents.file)
+    }
+
+    func read() -> Data? {
+        guard let contents = contents else { return nil }
+
+        switch contents {
+        case .data(let data):
+            return data
+        case .file(let url):
+            return try? Data(contentsOf: url)
+        }
     }
 }
 
@@ -145,13 +165,6 @@ public class InMemoryFileManager: Files.FileManager {
         self.currentDirectoryPath = "/"
     }
 
-    /*
-    public init(fileManager: InMemoryFileManager, relativePath: String = ".") {
-        self.cache = fileManager.cache
-        self.currentDirectoryPath = relativePath
-    }
-    */
-
     private func prefixed(_ path: String) -> String {
         ((currentDirectoryPath as NSString).appendingPathComponent(path) as NSString).standardizingPath
     }
@@ -217,6 +230,15 @@ public class InMemoryFileManager: Files.FileManager {
         try createDirectoryRecursive(atPath: prefixed(path), withIntermediateDirectories: createIntermediates, attributes: attributes)
     }
 
+    public func createFile(atPath path: String, contentsOf url: URL) -> Bool {
+        do {
+            try cache.setNode(.file(InMemoryFile(contentsOf: url)), atPath: prefixed(path))
+            return true
+        } catch {
+            return false
+        }
+    }
+
     public func createFile(atPath path: String, contents data: Data?, attributes: [FileAttributeKey : Any]?) -> Bool {
         do {
             try cache.setNode(.file(InMemoryFile(contents: data)), atPath: prefixed(path))
@@ -257,7 +279,7 @@ public class InMemoryFileManager: Files.FileManager {
     public func contents(atPath path: String) -> Data? {
         switch cache.node(atPath: path) {
         case .file(let file)?:
-            return file.contents ?? Data()
+            return file.read()
         case .folder?, .none:
             return nil
         }
@@ -272,6 +294,17 @@ public class InMemoryFileManager: Files.FileManager {
         }
 
         try cache.setNode(.file(InMemoryFile(contents: contents)), atPath: path)
+    }
+
+    public func setContents(from url: URL, atPath path: String) throws {
+        switch cache.node(atPath: path) {
+        case .folder:
+            assertionFailure("Cannot set contents at folder path")
+        case .none, .file:
+            break
+        }
+
+        try cache.setNode(.file(InMemoryFile(contentsOf: url)), atPath: path)
     }
 
     public func subsumeItems(atPath sourcePath: String, into destinationPath: String, from otherFileManager: Files.FileManager) throws {
