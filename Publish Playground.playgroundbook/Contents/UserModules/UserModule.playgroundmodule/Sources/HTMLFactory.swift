@@ -716,7 +716,7 @@ private struct ItemTagList<Site: Website>: Component {
 private struct SiteFooter: Component {
     @ComponentBuilder var body: Component {
         Footer {
-            let link = Link("Publish", url: "https://github.com/johnsundell/publish")
+            let link = Link("Publish", url: "https://github.com/JohnSundell/Publish")
             Paragraph(html: "Generated using \(link.render()).")
         }
     }
