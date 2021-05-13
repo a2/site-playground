@@ -17,7 +17,7 @@
 	<key>HasMeaningfulResetPoint</key>
 	<true/>
 	<key>ImageReference</key>
-	<string>Cover.png</string>
+	<string>cover.png</string>
 	<key>SwiftVersion</key>
 	<string>5.3</string>
 	<key>UserAutoImportedAuxiliaryModules</key>
