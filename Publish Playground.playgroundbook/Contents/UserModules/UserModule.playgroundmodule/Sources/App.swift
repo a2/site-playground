@@ -26,7 +26,7 @@ public extension A2.Website {
             A2.App(name: "Bean", title: "Bean, Small Planet"),
             A2.App(name: "Foursquare"),
             A2.App(name: "Outlook", title: "Microsoft Outlook"),
-            A2.App(name: "Rooms", title: "Rooms, Facebook"),
+            A2.App(name: "Rooms", title: "Rooms, Facebook", hasInvertedStatusBar: true),
             A2.App(name: "Shutterstock", hasInvertedStatusBar: true),
             A2.App(name: "To Do", title: "Microsoft To Do"),
         ]
