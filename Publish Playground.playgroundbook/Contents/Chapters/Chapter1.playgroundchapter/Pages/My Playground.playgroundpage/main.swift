@@ -21,13 +21,51 @@ for child in contents {
     _ = fileManager.createFile(atPath: "/Content/\(child)", contents: try Data(contentsOf: localFile(named: child)))
 }
 
-let apps = ["apps/babelgum.md", "apps/backgammon.md", "apps/bean.md", "apps/foursquare.md", "apps/outlook.md", "apps/rooms.md", "apps/shutterstock.md", "apps/to-do.md"]
-for child in apps {
+let apps = """
+apps/babelgum.md
+apps/backgammon.md
+apps/bean.md
+apps/foursquare.md
+apps/outlook.md
+apps/rooms.md
+apps/shutterstock.md
+apps/to-do.md
+"""
+
+for child in apps.components(separatedBy: .newlines) {
     _ = fileManager.createFile(atPath: "/Apps/\((child as NSString).lastPathComponent)", contents: try Data(contentsOf: localFile(named: child)))
 }
 
-let images = ["images/background.jpg", "images/icons/babelgum.png", "images/icons/backgammon.png", "images/icons/bean.png", "images/icons/blank.png", "images/icons/contacts.png", "images/icons/foursquare.png", "images/icons/mail.png", "images/icons/maps.png", "images/icons/messages.png", "images/icons/music.png", "images/icons/outlook.png", "images/icons/photos.png", "images/icons/rooms.png", "images/icons/safari.png", "images/icons/shutterstock.png", "images/icons/to-do.png", "images/icons/twitter.png", "images/screens/babelgum.jpg", "images/screens/backgammon.jpg", "images/screens/bean.jpg", "images/screens/foursquare.jpg", "images/screens/outlook.jpg", "images/screens/rooms.jpg", "images/screens/shutterstock.jpg", "images/screens/to-do.jpg"]
-for child in images {
+let images = """
+images/background.jpg
+images/icons/babelgum.png
+images/icons/backgammon.png
+images/icons/bean.png
+images/icons/blank.png
+images/icons/contacts.png
+images/icons/foursquare.png
+images/icons/mail.png
+images/icons/maps.png
+images/icons/messages.png
+images/icons/music.png
+images/icons/outlook.png
+images/icons/photos.png
+images/icons/rooms.png
+images/icons/safari.png
+images/icons/shutterstock.png
+images/icons/to-do.png
+images/icons/twitter.png
+images/screens/babelgum.jpg
+images/screens/backgammon.jpg
+images/screens/bean.jpg
+images/screens/foursquare.jpg
+images/screens/outlook.jpg
+images/screens/rooms.jpg
+images/screens/shutterstock.jpg
+images/screens/to-do.jpg
+"""
+
+for child in images.components(separatedBy: .newlines) {
     _ = fileManager.createFile(atPath: "/Resources/\(child)", contents: try Data(contentsOf: localFile(named: child)))
 }
 
