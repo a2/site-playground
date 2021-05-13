@@ -465,11 +465,8 @@ $transition-duration: 0.4s;
                         Div {
                             H1(context.site.name)
 
-                            Div {
-                                H2(context.site.subtitle)
-                                index.body
-                            }
-                            .class("content-default")
+                            Div(index.body)
+                                .class("content-default")
 
                             ComponentGroup(members: context.site.homescreen.compactMap { app in
                                 let file = try! context.file(at: app.markdownPath)
@@ -719,6 +716,7 @@ private struct SiteFooter: Component {
     @ComponentBuilder var body: Component {
         Footer {
             let link = Link("Publish", url: "https://github.com/JohnSundell/Publish")
+                .linkTarget(.blank)
             Paragraph(html: "Generated using \(link.render())")
         }
     }
