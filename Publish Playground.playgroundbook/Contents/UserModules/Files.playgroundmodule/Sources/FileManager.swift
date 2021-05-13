@@ -44,14 +44,7 @@ public extension FileManager {
         ("~/Library" as NSString).expandingTildeInPath
     }
     #endif
-
-    func performAsDefault<R>(_ actions: () throws -> R) rethrows -> R {
-        let previousDefault = defaultFileManager
-        defaultFileManager = self
-        defer { defaultFileManager = previousDefault }
-        return try actions()
-    }
 }
 
-internal var defaultFileManager: FileManager = Foundation.FileManager.default
+public var defaultFileManager: FileManager = Foundation.FileManager.default
 extension Foundation.FileManager: FileManager {}

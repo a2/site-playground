@@ -9,6 +9,7 @@ import UserModule
 #endif
 
 let fileManager = InMemoryFileManager()
+defaultFileManager = fileManager
 
 try fileManager.createDirectory(atPath: "/Apps", withIntermediateDirectories: true)
 try fileManager.createDirectory(atPath: "/Content", withIntermediateDirectories: true)
@@ -72,14 +73,12 @@ for resource in images {
     _ = fileManager.createFile(atPath: "/Resources/\(resource.path)", contentsOf: resource.fileURL)
 }
 
-let indentation: Indentation.Kind = .spaces(2)
-let publishedWebsite = try fileManager.performAsDefault {
-    try A2.Website().publish(at: Path("/"), using: [
+let publishedWebsite = try A2.Website()
+    .publish(at: Path("/"), using: [
         .addMarkdownFiles(),
         .copyResources(at: "/Resources/images", to: "/images", includingFolder: true),
-        .generateHTML(withTheme: A2.theme, indentation: indentation),
+        .generateHTML(withTheme: A2.theme, indentation: .spaces(2)),
     ])
-}
 
 let outputPath = "/Output/"
 let paths = try fileManager.subpathsOfDirectory(atPath: outputPath)
