@@ -1,4 +1,4 @@
-// Modified, from https://rderik.com/blog/building-a-server-client-aplication-using-apple-s-network-framework/
+// Based on https://rderik.com/blog/building-a-server-client-aplication-using-apple-s-network-framework/
 
 import Foundation
 import Network
