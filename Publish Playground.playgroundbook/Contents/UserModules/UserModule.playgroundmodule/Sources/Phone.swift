@@ -60,6 +60,7 @@ struct Phone: Component {
                         List(homescreen) { app in
                             Link(app.name, url: "#\(app.id)")
                                 .class("app app-\(app.id)")
+                                .attribute(named: "role", value: "button")
                                 .attribute(named: "title", value: app.name)
                         }
                     }.class("icons animated")
@@ -67,6 +68,7 @@ struct Phone: Component {
                         List(dock) { app in
                             Link(app.name, url: "#\(app.id)")
                                 .class("app app-\(app.id)")
+                                .attribute(named: "role", value: "button")
                                 .attribute(named: "title", value: app.name)
                         }
                     }.class("dock")
