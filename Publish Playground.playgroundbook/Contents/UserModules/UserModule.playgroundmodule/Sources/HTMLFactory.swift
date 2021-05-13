@@ -441,7 +441,7 @@ $transition-duration: 0.4s;
 
             let archiveResource: LocalResource = #fileLiteral(resourceName: "sass.js.aar") // sass.js.aar
             return try Sass(compressedScriptURL: archiveResource.fileURL)!
-                .compileSync(styles: sass)
+                .compileSync(styles: sass, options: Sass.Options(outputStyle: .compressed))
         }
 
         func makeIndexHTML(for index: Index, context: PublishingContext<Website>) throws -> HTML {
