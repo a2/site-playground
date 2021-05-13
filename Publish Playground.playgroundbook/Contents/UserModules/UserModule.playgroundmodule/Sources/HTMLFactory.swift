@@ -439,7 +439,8 @@ $transition-duration: 0.4s;
 }
 """
 
-            return try Sass(compressedScriptURL: localFile(named: "sass.js.aar"))!
+            let archiveResource: LocalResource = #fileLiteral(resourceName: "sass.js.aar") // sass.js.aar
+            return try Sass(compressedScriptURL: archiveResource.fileURL)!
                 .compileSync(styles: sass)
         }
 

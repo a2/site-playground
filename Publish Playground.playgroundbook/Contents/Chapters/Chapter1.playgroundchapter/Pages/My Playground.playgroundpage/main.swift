@@ -16,57 +16,60 @@ try fileManager.createDirectory(atPath: "/Resources/images", withIntermediateDir
 try fileManager.createDirectory(atPath: "/Resources/images/icons", withIntermediateDirectories: true)
 try fileManager.createDirectory(atPath: "/Resources/images/screens", withIntermediateDirectories: true)
 
-let contents = ["index.md"]
-for child in contents {
-    _ = fileManager.createFile(atPath: "/Content/\(child)", contentsOf: localFile(named: child))
+let contents: [LocalResource] = [
+    #fileLiteral(resourceName: "index.md"), // index.md
+]
+
+let apps: [LocalResource] = [
+    #fileLiteral(resourceName: "apps___babelgum.md"), // apps/babelgum.md
+    #fileLiteral(resourceName: "apps___backgammon.md"), // apps/backgammon.md
+    #fileLiteral(resourceName: "apps___bean.md"), // apps/bean.md
+    #fileLiteral(resourceName: "apps___foursquare.md"), // apps/foursquare.md
+    #fileLiteral(resourceName: "apps___outlook.md"), // apps/outlook.md
+    #fileLiteral(resourceName: "apps___rooms.md"), // apps/rooms.md
+    #fileLiteral(resourceName: "apps___shutterstock.md"), // apps/shutterstock.md
+    #fileLiteral(resourceName: "apps___to-do.md"), // apps/to-do.md
+]
+
+let images: [LocalResource] = [
+    #fileLiteral(resourceName: "images___background.jpg"), // images/background.jpg
+    #fileLiteral(resourceName: "images___icons___babelgum.png"), // images/icons/babelgum.png
+    #fileLiteral(resourceName: "images___icons___backgammon.png"), // images/icons/backgammon.png
+    #fileLiteral(resourceName: "images___icons___bean.png"), // images/icons/bean.png
+    #fileLiteral(resourceName: "images___icons___blank.png"), // images/icons/blank.png
+    #fileLiteral(resourceName: "images___icons___contacts.png"), // images/icons/contacts.png
+    #fileLiteral(resourceName: "images___icons___foursquare.png"), // images/icons/foursquare.png
+    #fileLiteral(resourceName: "images___icons___mail.png"), // images/icons/mail.png
+    #fileLiteral(resourceName: "images___icons___maps.png"), // images/icons/maps.png
+    #fileLiteral(resourceName: "images___icons___messages.png"), // images/icons/messages.png
+    #fileLiteral(resourceName: "images___icons___music.png"), // images/icons/music.png
+    #fileLiteral(resourceName: "images___icons___outlook.png"), // images/icons/outlook.png
+    #fileLiteral(resourceName: "images___icons___photos.png"), // images/icons/photos.png
+    #fileLiteral(resourceName: "images___icons___rooms.png"), // images/icons/rooms.png
+    #fileLiteral(resourceName: "images___icons___safari.png"), // images/icons/safari.png
+    #fileLiteral(resourceName: "images___icons___shutterstock.png"), // images/icons/shutterstock.png
+    #fileLiteral(resourceName: "images___icons___to-do.png"), // images/icons/to-do.png
+    #fileLiteral(resourceName: "images___icons___twitter.png"), // images/icons/twitter.png
+    #fileLiteral(resourceName: "images___screens___babelgum.jpg"), // images/screens/babelgum.jpg
+    #fileLiteral(resourceName: "images___screens___backgammon.jpg"), // images/screens/backgammon.jpg
+    #fileLiteral(resourceName: "images___screens___bean.jpg"), // images/screens/bean.jpg
+    #fileLiteral(resourceName: "images___screens___foursquare.jpg"), // images/screens/foursquare.jpg
+    #fileLiteral(resourceName: "images___screens___outlook.jpg"), // images/screens/outlook.jpg
+    #fileLiteral(resourceName: "images___screens___rooms.jpg"), // images/screens/rooms.jpg
+    #fileLiteral(resourceName: "images___screens___shutterstock.jpg"), // images/screens/shutterstock.jpg
+    #fileLiteral(resourceName: "images___screens___to-do.jpg"), // images/screens/to-do.jpg
+]
+
+for resource in contents {
+    _ = fileManager.createFile(atPath: "/Content/\(resource.lastPathComponent)", contentsOf: resource.fileURL)
 }
 
-let apps = """
-apps/babelgum.md
-apps/backgammon.md
-apps/bean.md
-apps/foursquare.md
-apps/outlook.md
-apps/rooms.md
-apps/shutterstock.md
-apps/to-do.md
-"""
-
-for child in apps.components(separatedBy: .newlines) {
-    _ = fileManager.createFile(atPath: "/Apps/\((child as NSString).lastPathComponent)", contentsOf: localFile(named: child))
+for resource in apps {
+    _ = fileManager.createFile(atPath: "/Apps/\(resource.lastPathComponent)", contentsOf: resource.fileURL)
 }
 
-let images = """
-images/background.jpg
-images/icons/babelgum.png
-images/icons/backgammon.png
-images/icons/bean.png
-images/icons/blank.png
-images/icons/contacts.png
-images/icons/foursquare.png
-images/icons/mail.png
-images/icons/maps.png
-images/icons/messages.png
-images/icons/music.png
-images/icons/outlook.png
-images/icons/photos.png
-images/icons/rooms.png
-images/icons/safari.png
-images/icons/shutterstock.png
-images/icons/to-do.png
-images/icons/twitter.png
-images/screens/babelgum.jpg
-images/screens/backgammon.jpg
-images/screens/bean.jpg
-images/screens/foursquare.jpg
-images/screens/outlook.jpg
-images/screens/rooms.jpg
-images/screens/shutterstock.jpg
-images/screens/to-do.jpg
-"""
-
-for child in images.components(separatedBy: .newlines) {
-    _ = fileManager.createFile(atPath: "/Resources/\(child)", contentsOf: localFile(named: child))
+for resource in images {
+    _ = fileManager.createFile(atPath: "/Resources/\(resource.path)", contentsOf: resource.fileURL)
 }
 
 let indentation: Indentation.Kind = .spaces(2)
