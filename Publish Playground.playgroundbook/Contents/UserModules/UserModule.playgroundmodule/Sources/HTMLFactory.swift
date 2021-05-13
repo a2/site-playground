@@ -32,6 +32,10 @@ footer {
   top: 0;
 }
 
+a {
+  color: #0A7AFF;
+}
+
 .content {
   display: flex;
 
@@ -711,10 +715,8 @@ private struct ItemTagList<Site: Website>: Component {
 private struct SiteFooter: Component {
     @ComponentBuilder var body: Component {
         Footer {
-            Paragraph {
-                Text("Generated using ")
-                Link("Publish", url: "https://github.com/johnsundell/publish")
-            }
+            let link = Link("Publish", url: "https://github.com/johnsundell/publish")
+            Paragraph(html: "Generated using \(link.render()).")
         }
     }
 }
