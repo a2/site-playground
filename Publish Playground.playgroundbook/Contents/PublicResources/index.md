@@ -1,4 +1,5 @@
 ---
+title: Home
 ---
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. In euismod hendrerit dolor, eu pretium sem condimentum quis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin consectetur odio accumsan odio tempus consectetur. In metus ex, rhoncus a ultrices vitae, venenatis facilisis mi. Quisque feugiat nisl nec lorem molestie cursus. Ut placerat nisl vitae risus mattis, semper porta felis fringilla. Aenean id lectus orci. Nulla euismod eleifend dui. Aenean dui magna, varius vel consectetur a, gravida ac ante.

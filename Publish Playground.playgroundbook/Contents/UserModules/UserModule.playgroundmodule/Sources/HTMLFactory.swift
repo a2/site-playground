@@ -12,11 +12,24 @@ public extension A2 {
             let sass = """
 html,
 body {
-  padding: 0;
-  margin: 0;
+  height: 100%;
+}
+
+body {
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   font-size: 16px;
-  height: 100%;
+  margin: 40px;
+}
+
+footer {
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.target {
+  left: 0;
+  position: absolute;
+  top: 0;
 }
 
 .content {
@@ -29,6 +42,11 @@ body {
   p {
     line-height: 1.5;
   }
+}
+
+.text-content {
+  margin-left: 40px;
+  min-width: 500px;
 }
 
 @function unit($value) {
@@ -51,7 +69,6 @@ $transition-duration: 0.4s;
   height: unit(2658);
   position: relative;
   width: unit(1296);
-  margin: unit(120);
 
   &::before, &::after {
     border-radius: unit(183);
@@ -375,52 +392,46 @@ $transition-duration: 0.4s;
   }
 }
 
-.text-content {
-  padding-top: unit(120);
-  padding-right: unit(120);
-  min-width: unit(1500);
-}
-
 \(context.site.homescreen.filter { $0.hasInvertedStatusBar }.map { app in "#\(app.id):target ~ .phone .status-bar" }.joined(separator: ",\n")) {
-    color: #000;
+  color: #000;
 }
 
 \(context.site.homescreen.filter { $0.hasInvertedStatusBar }.map { app in "#\(app.id):target ~ .phone .status-bar .path-fill" }.joined(separator: ",\n")) {
-    fill: #000;
+  fill: #000;
 }
 
 \(context.site.homescreen.filter { $0.hasInvertedStatusBar }.map { app in "#\(app.id):target ~ .phone .status-bar .path-stroke" }.joined(separator: ",\n")) {
-    stroke: #000;
+  stroke: #000;
 }
 
 \(context.site.homescreen.map { app in """
 .phone .app-\(app.id)::before {
-    background-image: url("/images/icons/\(app.id).png");
+  background-image: url("/images/icons/\(app.id).png");
 }
 
 .phone .screen-\(app.id) {
-    background-image: url("/images/screens/\(app.id).jpg");
+  background-image: url("/images/screens/\(app.id).jpg");
 }
 """ }.joined(separator: "\n\n"))
 
 \(context.site.dock.map { app in """
 .phone .app-\(app.id)::before {
-    background-image: url("/images/icons/\(app.id).png");
+  background-image: url("/images/icons/\(app.id).png");
 }
 """ }.joined(separator: "\n\n"))
 
 \(context.site.homescreen.map { app in ".content-\(app.id), #\(app.id):target ~ .text-content .content-default" }.joined(separator: ", ")) {
-    display: none;
+  display: none;
 }
 
 \(context.site.homescreen.map { app in "#\(app.id):target ~ .text-content .content-\(app.id)" }.joined(separator: ", ")) {
-    display: unset;
+  display: unset;
 }
 
 \(context.site.homescreen.map { app in "#\(app.id):target ~ .phone .screen-\(app.id)" }.joined(separator: ", ")) {
-    z-index: 1; // bug in Chrome: use `1` not `unset`
-    opacity: unset;
-    transform: unset;
+  opacity: unset;
+  transform: unset;
+  z-index: 1; // bug in Chrome: use `1` not `unset`
 }
 """
 
@@ -437,7 +448,9 @@ $transition-duration: 0.4s;
 
                     ContentWrapper {
                         ComponentGroup(members: context.site.homescreen.map { app in
-                            Div().id(app.id)
+                            Div()
+                                .class("target")
+                                .id(app.id)
                         })
 
                         Phone(homescreen: context.site.homescreen, dock: context.site.dock)
@@ -463,25 +476,11 @@ $transition-duration: 0.4s;
                                 }
                                 .class("content-\(app.id)")
                             })
+
+                            SiteFooter()
                         }
                         .class("text-content")
-
-                        /*
-                         H1(index.title)
-                         Paragraph(context.site.description)
-                         .class("description")
-                         H2("Latest content")
-                         ItemList(
-                         items: context.allItems(
-                         sortedBy: \.date,
-                         order: .descending
-                         ),
-                         site: context.site
-                         )
-                         */
                     }
-
-                    SiteFooter()
                 }
             )
         }
@@ -715,9 +714,6 @@ private struct SiteFooter: Component {
             Paragraph {
                 Text("Generated using ")
                 Link("Publish", url: "https://github.com/johnsundell/publish")
-            }
-            Paragraph {
-                Link("RSS feed", url: "/feed.rss")
             }
         }
     }

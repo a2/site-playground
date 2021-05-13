@@ -205,6 +205,7 @@
 
 /* Begin PBXFileReference section */
 		822FB4AB264CCBAC0053EEF2 /* Sass+Compressed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sass+Compressed.swift"; sourceTree = "<group>"; };
+		822FB4B5264CCE8C0053EEF2 /* PublicResources */ = {isa = PBXFileReference; lastKnownFileType = folder; name = PublicResources; path = "Publish Playground.playgroundbook/Contents/PublicResources"; sourceTree = "<group>"; };
 		82929F64264C4B520080087D /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = main.swift; path = "Publish Playground.playgroundbook/Contents/Chapters/Chapter1.playgroundchapter/Pages/My Playground.playgroundpage/main.swift"; sourceTree = SOURCE_ROOT; };
 		82929F77264C4B5D0080087D /* HorizontalLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalLine.swift; sourceTree = "<group>"; };
 		82929F78264C4B5D0080087D /* Metadata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Metadata.swift; sourceTree = "<group>"; };
@@ -759,6 +760,7 @@
 			isa = PBXGroup;
 			children = (
 				82DA4B582649BFB0001ED636 /* Site */,
+				822FB4B5264CCE8C0053EEF2 /* PublicResources */,
 				82929F74264C4B5D0080087D /* UserModules */,
 				82DA4B572649BFB0001ED636 /* Products */,
 				8292A19E264C4C470080087D /* Frameworks */,
