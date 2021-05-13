@@ -10,6 +10,10 @@ public extension A2 {
     private struct HTMLFactory: Publish.HTMLFactory {
         func makeStylesCSS(context: PublishingContext<Website>) throws -> String {
             let sass = """
+@function unit($value) {
+  @return 0.02rem * $value;
+}
+
 html,
 body {
   height: 100%;
@@ -18,7 +22,7 @@ body {
 body {
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   font-size: 16px;
-  margin: 40px;
+  margin: 2.5rem;
 }
 
 a {
@@ -26,7 +30,7 @@ a {
 }
 
 footer {
-  margin-bottom: 40px;
+  margin-bottom: 2.5rem;
   text-align: center;
 }
 
@@ -38,6 +42,8 @@ footer {
 
 .content {
   display: flex;
+  margin: 0 auto;
+  width: 61rem;
 
   h1, h2 {
     margin: 0;
@@ -49,12 +55,8 @@ footer {
 }
 
 .text-content {
-  margin-left: 40px;
-  min-width: 500px;
-}
-
-@function unit($value) {
-  @return 0.02rem * $value;
+  margin-left: 2.5rem;
+  min-width: 32rem;
 }
 
 $transition-duration: 0.4s;
@@ -717,7 +719,7 @@ private struct SiteFooter: Component {
     @ComponentBuilder var body: Component {
         Footer {
             let link = Link("Publish", url: "https://github.com/JohnSundell/Publish")
-            Paragraph(html: "Generated using \(link.render()).")
+            Paragraph(html: "Generated using \(link.render())")
         }
     }
 }

@@ -32,7 +32,7 @@ public extension FileManager {
 
     func setContents(_ contents: Data?, atPath path: String) throws {
         let url = URL(fileURLWithPath: path)
-        try contents?.write(to: url)
+        try (contents ?? Data())?.write(to: url)
     }
 
     #if os(macOS)
