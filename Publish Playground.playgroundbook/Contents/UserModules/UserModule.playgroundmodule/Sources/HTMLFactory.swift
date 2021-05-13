@@ -21,6 +21,10 @@ body {
   margin: 40px;
 }
 
+a {
+  color: #0A7AFF;
+}
+
 footer {
   margin-bottom: 40px;
   text-align: center;
@@ -30,10 +34,6 @@ footer {
   left: 0;
   position: absolute;
   top: 0;
-}
-
-a {
-  color: #0A7AFF;
 }
 
 .content {
