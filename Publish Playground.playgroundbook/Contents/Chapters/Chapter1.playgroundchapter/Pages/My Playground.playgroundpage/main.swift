@@ -78,8 +78,6 @@ let publishedWebsite = try fileManager.performAsDefault {
         .addMarkdownFiles(),
         .copyResources(at: "/Resources/images", to: "/images", includingFolder: true),
         .generateHTML(withTheme: A2.theme, indentation: indentation),
-        .generateRSSFeed(including: Set(A2.Website.SectionID.allCases), config: .init(indentation: indentation)),
-        .generateSiteMap(indentedBy: indentation),
     ])
 }
 
