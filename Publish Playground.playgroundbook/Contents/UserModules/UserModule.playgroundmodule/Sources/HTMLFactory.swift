@@ -580,7 +580,7 @@ extension Node where Context == HTML.DocumentContext {
                 let url = site.url(for: path)
                 return .socialImageLink(url)
             }),
-            .forEach(inlineStyles, { styles in .style(styles) })
+            .forEach(inlineStyles, { .style($0) })
         )
     }
 }
@@ -619,7 +619,6 @@ private struct SiteHeader<Site: Website>: Component {
         Navigation {
             List(Site.SectionID.allCases) { sectionID in
                 let section = context.sections[sectionID]
-
                 return Link(section.title, url: section.path.absoluteString)
                     .class(sectionID == selectedSelectionID ? "selected" : "")
             }
