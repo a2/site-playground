@@ -475,8 +475,7 @@ $transition-duration: 0.4s;
                                 return Div {
                                     H2(app.title ?? app.name)
                                     Markdown(contents)
-                                    Link("&larr; Back", url: "#")
-
+                                    Link("← Back", url: "#")
                                 }
                                 .class("content-\(app.id)")
                             })
@@ -538,57 +537,11 @@ $transition-duration: 0.4s;
         }
 
         func makeTagListHTML(for page: TagListPage, context: PublishingContext<Website>) throws -> HTML? {
-            HTML(
-                .lang(context.site.language),
-                .head(for: page, on: context.site, stylesheetPaths: []),
-                .body {
-                    SiteHeader(context: context, selectedSelectionID: nil)
-                    ContentWrapper {
-                        H1("Browse all tags")
-                        List(page.tags.sorted()) { tag in
-                            ListItem {
-                                Link(tag.string,
-                                     url: context.site.path(for: tag).absoluteString
-                                )
-                            }
-                            .class("tag")
-                        }
-                        .class("all-tags")
-                    }
-                    SiteFooter()
-                }
-            )
+            nil
         }
 
         func makeTagDetailsHTML(for page: TagDetailsPage, context: PublishingContext<Website>) throws -> HTML? {
-            HTML(
-                .lang(context.site.language),
-                .head(for: page, on: context.site, stylesheetPaths: []),
-                .body {
-                    SiteHeader(context: context, selectedSelectionID: nil)
-                    ContentWrapper {
-                        H1 {
-                            Text("Tagged with ")
-                            Span(page.tag.string).class("tag")
-                        }
-
-                        Link("Browse all tags",
-                             url: context.site.tagListPath.absoluteString
-                        )
-                        .class("browse-all")
-
-                        ItemList(
-                            items: context.items(
-                                taggedWith: page.tag,
-                                sortedBy: \.date,
-                                order: .descending
-                            ),
-                            site: context.site
-                        )
-                    }
-                    SiteFooter()
-                }
-            )
+            nil
         }
     }
 }
@@ -599,12 +552,9 @@ extension Node where Context == HTML.DocumentContext {
         on site: T,
         titleSeparator: String = " | ",
         inlineStyles: [String] = [],
-        stylesheetPaths: [Path] = [],
-        rssFeedPath: Path? = .defaultForRSSFeed,
-        rssFeedTitle: String? = nil
+        stylesheetPaths: [Path] = []
     ) -> Node {
         var title = location.title
-
         if title.isEmpty {
             title = site.name
         } else {
@@ -612,7 +562,6 @@ extension Node where Context == HTML.DocumentContext {
         }
 
         var description = location.description
-
         if description.isEmpty {
             description = site.description
         }
@@ -627,10 +576,6 @@ extension Node where Context == HTML.DocumentContext {
             .forEach(stylesheetPaths, { .stylesheet($0) }),
             .viewport(.accordingToDevice),
             .unwrap(site.favicon, { .favicon($0) }),
-            .unwrap(rssFeedPath, { path in
-                let title = rssFeedTitle ?? "Subscribe to \(site.name)"
-                return .rssFeedLink(path.absoluteString, title: title)
-            }),
             .unwrap(location.imagePath ?? site.imagePath, { path in
                 let url = site.url(for: path)
                 return .socialImageLink(url)
@@ -675,10 +620,8 @@ private struct SiteHeader<Site: Website>: Component {
             List(Site.SectionID.allCases) { sectionID in
                 let section = context.sections[sectionID]
 
-                return Link(section.title,
-                            url: section.path.absoluteString
-                )
-                .class(sectionID == selectedSelectionID ? "selected" : "")
+                return Link(section.title, url: section.path.absoluteString)
+                    .class(sectionID == selectedSelectionID ? "selected" : "")
             }
         }
     }
