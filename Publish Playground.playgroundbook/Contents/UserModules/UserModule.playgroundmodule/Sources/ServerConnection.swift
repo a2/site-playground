@@ -73,6 +73,14 @@ class ServerConnection {
                         Connection: close\n\n
                         """.utf8)
                         self.send(data: headerData + contents, isFinal: true)
+                    } else if let contents = self.fileManager.contents(atPath: "/Output/404/index.html") {
+                        let headerData = Data("""
+                        HTTP/1.1 404 Not Found
+                        Content-Length: \(contents.count)
+                        Content-Type: \(mimeType)
+                        Connection: close\n\n
+                        """.utf8)
+                        self.send(data: headerData + contents, isFinal: true)
                     } else {
                         let headerData = Data("""
                         HTTP/1.1 404 Not Found
