@@ -2,8 +2,8 @@ import Foundation
 import Plot
 import Publish
 
-public extension A2 {
-    static var theme: Theme<Website> {
+extension A2 {
+    public static var theme: Theme<Website> {
         Theme(htmlFactory: HTMLFactory(), resourcePaths: [], file: "HTMLFactory.swift")
     }
 
