@@ -40,9 +40,10 @@ class ServerConnection {
             if let data = data, !data.isEmpty {
                 let message = String(decoding: data, as: UTF8.self)
                 let firstLine = message.rangeOfCharacter(from: .newlines).map { range in String(message[..<range.lowerBound]) } ?? message
-                print(firstLine)
 
                 let firstLineComponents = firstLine.components(separatedBy: " ")
+                print(firstLineComponents.dropLast().joined(separator: " "))
+
                 if firstLineComponents[0].caseInsensitiveCompare("GET") != .orderedSame {
                     let headerData = Data("""
                     HTTP/1.1 405 Method Not Allowed
