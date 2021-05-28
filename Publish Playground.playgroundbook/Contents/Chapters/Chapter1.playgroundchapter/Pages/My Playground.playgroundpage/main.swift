@@ -90,19 +90,35 @@ print()
 print("Generated files:", paths, separator: "\n")
 print()
 
-let server = Server(fileManager: fileManager)
-try server.start(port: 8000)
+let runningServer: Server? = try {
+    guard CommandLine.shouldServe else { return nil }
+    let server = Server(fileManager: fileManager)
+    try server.start(port: CommandLine.port)
+    return server
+}()
 
 #if canImport(PlaygroundSupport)
 import PlaygroundSupport
 import WebKit
 
 let webView = WKWebView()
-webView.load(URLRequest(url: URL(string: "http://localhost:8000")!))
+webView.load(URLRequest(url: URL(string: "http://localhost:\(CommandLine.port)")!))
 
 let page = PlaygroundPage.current
 page.wantsFullScreenLiveView = true
 page.liveView = webView
 #else
-RunLoop.current.run()
+import AppKit
+
+if CommandLine.shouldOpenBrowser {
+    NSWorkspace.shared.open(URL(string: "http://localhost:\(CommandLine.port)")!)
+}
+
+if let exportPath = CommandLine.exportPath {
+    try fileManager.copyItem(atPath: outputPath, toPath: exportPath, in: Foundation.FileManager.default)
+}
+
+if runningServer != nil {
+    RunLoop.main.run()
+}
 #endif

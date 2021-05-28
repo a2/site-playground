@@ -44,6 +44,23 @@ public extension FileManager {
         ("~/Library" as NSString).expandingTildeInPath
     }
     #endif
+
+    func copyItem(atPath sourcePath: String, toPath destinationPath: String, in otherFileManager: FileManager) throws {
+        var isDirectory: ObjCBool = true
+        let fileExists = self.fileExists(atPath: sourcePath, isDirectory: &isDirectory)
+        assert(fileExists, "File \(sourcePath) does not exist")
+
+        if isDirectory.boolValue {
+            try otherFileManager.createDirectory(atPath: destinationPath, withIntermediateDirectories: true)
+            for childItemPath in try contentsOfDirectory(atPath: sourcePath) {
+                let childSourcePath = sourcePath + (sourcePath.hasSuffix("/") ? "" : "/") + childItemPath
+                let childDestinationPath = destinationPath + (destinationPath.hasSuffix("/") ? "" : "/") + childItemPath
+                try copyItem(atPath: childSourcePath, toPath: childDestinationPath, in: otherFileManager)
+            }
+        } else {
+            _ = otherFileManager.createFile(atPath: destinationPath, contents: contents(atPath: sourcePath)!)
+        }
+    }
 }
 
 public var defaultFileManager: FileManager = Foundation.FileManager.default

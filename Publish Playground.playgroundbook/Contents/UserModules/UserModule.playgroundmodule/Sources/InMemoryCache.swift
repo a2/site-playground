@@ -306,19 +306,4 @@ public class InMemoryFileManager: Files.FileManager {
 
         try cache.setNode(.file(InMemoryFile(contentsOf: url)), atPath: path)
     }
-
-    public func subsumeItems(atPath sourcePath: String, into destinationPath: String, from otherFileManager: Files.FileManager) throws {
-        for childItemPath in try otherFileManager.contentsOfDirectory(atPath: sourcePath) {
-            var isDirectory: ObjCBool = true
-            let exists = otherFileManager.fileExists(atPath: childItemPath, isDirectory: &isDirectory)
-            assert(exists, "File \(childItemPath) returned as contents of directory but does not exist")
-
-            if isDirectory.boolValue {
-                try subsumeItems(atPath: "\(sourcePath)/\(childItemPath)", into: "\(destinationPath)/\(childItemPath)", from: otherFileManager)
-            } else {
-                let contents = otherFileManager.contents(atPath: childItemPath)
-                _ = createFile(atPath: childItemPath, contents: contents)
-            }
-        }
-    }
 }
