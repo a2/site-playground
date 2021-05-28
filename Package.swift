@@ -17,7 +17,7 @@ let package = Package(
     name: "Site",
     platforms: [.iOS("13.4"), .macOS("11")],
     products: [
-        .executable(name: "Site", targets: ["Site"]),
+        .executable(name: "site", targets: ["Site"]),
     ],
     dependencies: [],
     targets: [
