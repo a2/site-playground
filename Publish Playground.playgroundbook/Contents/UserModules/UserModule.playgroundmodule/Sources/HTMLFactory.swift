@@ -59,6 +59,17 @@ footer {
   min-width: 32rem;
 }
 
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.textarea[contenteditable]:empty::before {
+  content: "Tap here and type your message.";
+  color: #dbdbdc;
+}
+
 $transition-duration: 0.4s;
 @media (prefers-reduced-motion) {
   .animated {
@@ -384,6 +395,11 @@ $transition-duration: 0.4s;
     z-index: -1;
   }
 
+  .screen-mail {
+    overflow: hidden;
+    text-indent: unset;
+  }
+
   .app::before {
     $mask: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="1.4" clip-rule="evenodd" viewBox="0 0 460 460"%3E%3Cpath d="M460 316v30a202 202 0 01-3 31c-2 10-5 19-9 28a97 97 0 01-43 43 102 102 0 01-28 9c-10 2-20 3-31 3a649 649 0 01-13 0H127a649 649 0 01-13 0 201 201 0 01-31-3c-10-2-19-5-28-9a97 97 0 01-43-43 102 102 0 01-9-28 202 202 0 01-3-31v-13-189-17-13a202 202 0 013-31c2-10 5-19 9-28a97 97 0 0143-43 102 102 0 0128-9 203 203 0 0144-3h206a649 649 0 0113 0c11 0 21 1 31 3s19 5 28 9a97 97 0 0143 43 102 102 0 019 28 202 202 0 013 31 643 643 0 010 30v172z"/%3E%3C/svg%3E');
     -webkit-mask: $mask center/100% 100% no-repeat;
@@ -398,43 +414,43 @@ $transition-duration: 0.4s;
   }
 }
 
-\(context.site.homescreen.filter { $0.hasInvertedStatusBar }.map { app in "#\(app.id):target ~ .phone .status-bar" }.joined(separator: ",\n")) {
+\(context.site.apps.filter { app in !(app is StubApp) && app.screen.hasInvertedStatusBar }.map { app in "#\(app.id):target ~ .phone .status-bar" }.joined(separator: ",\n")) {
   color: #000;
 }
 
-\(context.site.homescreen.filter { $0.hasInvertedStatusBar }.map { app in "#\(app.id):target ~ .phone .status-bar .path-fill" }.joined(separator: ",\n")) {
+\(context.site.apps.filter { app in !(app is StubApp) && app.screen.hasInvertedStatusBar }.map { app in "#\(app.id):target ~ .phone .status-bar .path-fill" }.joined(separator: ",\n")) {
   fill: #000;
 }
 
-\(context.site.homescreen.filter { $0.hasInvertedStatusBar }.map { app in "#\(app.id):target ~ .phone .status-bar .path-stroke" }.joined(separator: ",\n")) {
+\(context.site.apps.filter { app in !(app is StubApp) && app.screen.hasInvertedStatusBar }.map { app in "#\(app.id):target ~ .phone .status-bar .path-stroke" }.joined(separator: ",\n")) {
   stroke: #000;
 }
 
-\(context.site.homescreen.map { app in """
+\(context.site.apps.map { app in """
 .phone .app-\(app.id)::before {
   background-image: url("/images/icons/\(app.id).png");
 }
+""" }.joined(separator: "\n\n"))
 
+\(context.site.apps.filter { app in !(app is StubApp) }.map { app in """
 .phone .screen-\(app.id) {
   background-image: url("/images/screens/\(app.id).jpg");
 }
 """ }.joined(separator: "\n\n"))
 
-\(context.site.dock.map { app in """
-.phone .app-\(app.id)::before {
-  background-image: url("/images/icons/\(app.id).png");
-}
-""" }.joined(separator: "\n\n"))
-
-\(context.site.homescreen.map { app in ".content-\(app.id), #\(app.id):target ~ .text-content .content-default" }.joined(separator: ", ")) {
+\(context.site.apps.filter { app in !(app is StubApp) }.map { app in ".content-\(app.id)" }.joined(separator: ", ")) {
   display: none;
 }
 
-\(context.site.homescreen.map { app in "#\(app.id):target ~ .text-content .content-\(app.id)" }.joined(separator: ", ")) {
+\(context.site.apps.filter { app in !(app is StubApp || app is MailApp) }.map { app in "#\(app.id):target ~ .text-content .content-default" }.joined(separator: ", ")) {
+  display: none;
+}
+
+\(context.site.apps.filter { app in !(app is StubApp) }.map { app in "#\(app.id):target ~ .text-content .content-\(app.id)" }.joined(separator: ", ")) {
   display: unset;
 }
 
-\(context.site.homescreen.map { app in "#\(app.id):target ~ .phone .screen-\(app.id)" }.joined(separator: ", ")) {
+\(context.site.apps.filter { app in !(app is StubApp) }.map { app in "#\(app.id):target ~ .phone .screen-\(app.id)" }.joined(separator: ", ")) {
   opacity: unset;
   transform: unset;
   z-index: 1; // bug in Chrome: use `1` not `unset`
@@ -451,16 +467,14 @@ $transition-duration: 0.4s;
                 .lang(context.site.language),
                 .head(for: index, on: context.site, inlineStyles: [try makeStylesCSS(context: context)]),
                 .body {
-                    // SiteHeader(context: context, selectedSelectionID: nil)
-
                     ContentWrapper {
-                        ComponentGroup(members: context.site.homescreen.map { app in
+                        ComponentGroup(members: context.site.apps.filter { app in !(app is StubApp) }.map { app in
                             Div()
                                 .class("target")
                                 .id(app.id)
                         })
 
-                        Phone(homescreen: context.site.homescreen, dock: context.site.dock)
+                        Phone(apps: context.site.apps)
 
                         Div {
                             H1(context.site.name)
@@ -468,8 +482,12 @@ $transition-duration: 0.4s;
                             Div(index.body)
                                 .class("content-default")
 
-                            ComponentGroup(members: context.site.homescreen.compactMap { app in
-                                let file = try! context.file(at: app.markdownPath)
+                            ComponentGroup(members: context.site.apps.filter { app in app.location == .homescreen }.compactMap { app in
+                                guard let markdownPath = app.markdownPath else {
+                                    return nil
+                                }
+
+                                let file = try! context.file(at: markdownPath)
                                 let contents = try! file.readAsString()
 
                                 return Div {

@@ -2,12 +2,10 @@ import Publish
 import Plot
 
 struct Phone: Component {
-    let homescreen: [A2.App]
-    let dock: [A2.App]
+    let apps: [App]
 
-    init(homescreen: [A2.App], dock: [A2.App]) {
-        self.homescreen = homescreen
-        self.dock = dock
+    init(apps: [App]) {
+        self.apps = apps
     }
 
     @ComponentBuilder var body: Component {
@@ -56,16 +54,18 @@ struct Phone: Component {
 
                 Div {
                     Div().class("background")
+
                     Div {
-                        List(homescreen) { app in
+                        List(apps.filter { app in app.location == .homescreen }) { app in
                             Link(app.name, url: "#\(app.id)")
                                 .class("app app-\(app.id)")
                                 .attribute(named: "role", value: "button")
                                 .attribute(named: "title", value: app.name)
                         }
                     }.class("icons animated")
+
                     Div {
-                        List(dock) { app in
+                        List(apps.filter { app in app.location == .dock }) { app in
                             Link(app.name, url: "#\(app.id)")
                                 .class("app app-\(app.id)")
                                 .attribute(named: "role", value: "button")
@@ -74,10 +74,9 @@ struct Phone: Component {
                     }.class("dock")
                 }.class("homescreen animated")
 
-                ComponentGroup(members: homescreen.map { app in
-                    Link("Return to Homescreen", url: "#")
-                        .class("screen screen-\(app.id) animated")
-                        .attribute(named: "title", value: "Return to Homescreen")
+                ComponentGroup(members: apps.filter { app in !(app is StubApp) }.map { app in
+                    app.screen.body
+                        .class("screen screen-\(app.id) animated", replaceExisting: false)
                 })
             }.class("display")
         }
