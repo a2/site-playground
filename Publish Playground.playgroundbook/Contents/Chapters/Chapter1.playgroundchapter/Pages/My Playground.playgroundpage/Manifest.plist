@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>LiveViewEdgeToEdge</key>
-	<false/>
+	<true/>
 	<key>LiveViewMode</key>
-	<string>HiddenByDefault</string>
+	<string>VisibleByDefault</string>
 	<key>Name</key>
 	<string>My Playground</string>
 </dict>
