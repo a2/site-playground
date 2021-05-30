@@ -38,4 +38,12 @@ public extension CommandLine {
         return (arguments[valueIndex] as NSString).expandingTildeInPath
     }()
     #endif
+
+    static let isVerbose: Bool = {
+        #if canImport(PlaygroundSupport)
+        return true
+        #else
+        return arguments.contains(where: { arg in arg == "--verbose" || arg == "-v" })
+        #endif
+    }()
 }

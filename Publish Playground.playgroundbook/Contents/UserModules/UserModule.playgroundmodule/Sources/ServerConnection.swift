@@ -42,7 +42,9 @@ class ServerConnection {
                 let firstLine = message.rangeOfCharacter(from: .newlines).map { range in String(message[..<range.lowerBound]) } ?? message
 
                 let firstLineComponents = firstLine.components(separatedBy: " ")
-                print(firstLineComponents.dropLast().joined(separator: " "))
+                if CommandLine.isVerbose {
+                    print(firstLineComponents.dropLast().joined(separator: " "))
+                }
 
                 if firstLineComponents[0].caseInsensitiveCompare("GET") != .orderedSame {
                     let headerData = Data("""
