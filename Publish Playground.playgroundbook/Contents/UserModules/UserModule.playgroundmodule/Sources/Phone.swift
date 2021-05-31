@@ -56,21 +56,11 @@ struct Phone: Component {
                     Div().class("background")
 
                     Div {
-                        List(apps.filter { app in app.location == .homescreen }) { app in
-                            Link(app.name, url: "#\(app.id)")
-                                .class("app app-\(app.id)")
-                                .attribute(named: "role", value: "button")
-                                .attribute(named: "title", value: app.name)
-                        }
+                        List(apps.filter { app in app.location == .homescreen }) { app in app.icon }
                     }.class("icons animated")
 
                     Div {
-                        List(apps.filter { app in app.location == .dock }) { app in
-                            Link(app.name, url: "#\(app.id)")
-                                .class("app app-\(app.id)")
-                                .attribute(named: "role", value: "button")
-                                .attribute(named: "title", value: app.name)
-                        }
+                        List(apps.filter { app in app.location == .dock }) { app in app.icon }
                     }.class("dock")
                 }.class("homescreen animated")
 
@@ -81,5 +71,21 @@ struct Phone: Component {
             }.class("display")
         }
         .class("phone")
+    }
+}
+
+private extension App {
+    @ComponentBuilder var icon: Component {
+        if self is StubApp {
+            Div()
+                .class("app app-\(id)")
+                .attribute(named: "role", value: "button")
+                .attribute(named: "title", value: name)
+        } else {
+            Link(name, url: "#\(id)")
+                .class("app app-\(id)")
+                .attribute(named: "role", value: "button")
+                .attribute(named: "title", value: name)
+        }
     }
 }
