@@ -67,13 +67,10 @@ public struct DefaultApp: App {
 
 public struct StubApp: App {
     public var name: String
-    public var title: String?
     public var location: AppLocation
-    public var hasInvertedStatusBar: Bool { false }
 
-    public init(name: String, title: String? = nil, location: AppLocation) {
+    public init(name: String, location: AppLocation) {
         self.name = name
-        self.title = title
         self.location = location
     }
 }
