@@ -47,6 +47,10 @@ class ServerConnection {
                 }
 
                 if firstLineComponents[0].caseInsensitiveCompare("GET") != .orderedSame {
+                    if CommandLine.isVerbose {
+                        print(message[firstLine.endIndex.samePosition(in: message)!...])
+                    }
+
                     let headerData = Data("""
                     HTTP/1.1 405 Method Not Allowed
                     Connection: close

@@ -59,17 +59,6 @@ footer {
   min-width: 32rem;
 }
 
-.clearfix::after {
-  content: "";
-  clear: both;
-  display: table;
-}
-
-.textarea[contenteditable]:empty::before {
-  content: "Tap here and type your message.";
-  color: #dbdbdc;
-}
-
 $transition-duration: 0.4s;
 @media (prefers-reduced-motion) {
   .animated {
@@ -396,8 +385,109 @@ $transition-duration: 0.4s;
   }
 
   .screen-mail {
+    background-color: #000;
     overflow: hidden;
     text-indent: unset;
+
+    input, textarea {
+      font-size: unit(48);
+
+      &::placeholder {
+        color: #a9a9a9;
+      }
+    }
+
+    hr {
+      margin: 0 unit(50);
+      border: 0;
+      border-top: unit(1) solid #c6c6c8;
+    }
+
+    .page {
+      border-radius: unit(30);
+      bottom: 0;
+      position: absolute;
+
+      &.foreground {
+        background: #fff;
+        height: calc(100% - #{unit(170)});
+        width: 100%;
+        z-index: 1;
+      }
+
+      &.background {
+        background: #e0e0e0;
+        width: calc(100% - #{unit(48)});
+        height: calc(100% - #{unit(140)});
+        left: unit(24);
+        border-radius: unit(30);
+      }
+    }
+
+    form {
+      font-size: unit(48);
+    }
+
+    .fieldset {
+      padding: unit(40) 0;
+      margin: 0 unit(50);
+
+      &.flex {
+        display: flex;
+      }
+
+      label, .label {
+        color: #8a8a8d;
+        margin-right: unit(16);
+      }
+
+      textarea {
+        width: 100%;
+        max-width: 100%;
+        height: unit(1080);
+        border: 0;
+      }
+
+      .signature {
+        margin-top: unit(16);
+      }
+
+      input {
+        flex: 1;
+        border: 0;
+        padding: 0;
+        margin: 0;
+      }
+    }
+
+    .cancel {
+      color: #3478F6;
+      display: inline-block;
+      margin: unit(65) unit(50);
+      font-size: unit(48);
+      text-decoration: none;
+    }
+
+    .header {
+      display: flex;
+      padding: unit(40) unit(50);
+
+      .title {
+        flex: 1;
+        font-weight: bold;
+        display: block;
+        font-size: unit(96);
+      }
+    }
+
+    .submit {
+      background: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"%3E%3Cpath d="m49.80467 99.6094c27.2461 0 49.8051-22.60744 49.8051-49.8047 0-27.2461-22.6078-49.8047-49.8539-49.8047-27.1973 0-49.75587 22.5586-49.75587 49.8047 0 27.19726 22.60747 49.8047 49.80467 49.8047zm0-24.6094c-2.1972 0-3.8086-1.5625-3.8086-3.8086v-25.0488l.4395-10.6934-5.0293 6.0547-5.957 6.0059c-.6836.6836-1.6602 1.123-2.6856 1.123-2.0996 0-3.6621-1.6113-3.6621-3.6621 0-1.0742.293-1.9531.9766-2.6367l16.7968-16.7481c1.0254-1.0253 1.8555-1.416 2.9297-1.416 1.1231 0 2.002.4395 2.9785 1.416l16.7481 16.7481c.6836.6836 1.0742 1.5625 1.0742 2.6367 0 2.0508-1.6113 3.6621-3.7109 3.6621-1.0743 0-2.002-.3906-2.6856-1.123l-5.9082-6.0059-5.1269-6.1035.4394 10.7422v25.0488c0 2.2461-1.5625 3.8086-3.8086 3.8086z" fill="%233478F6"/%3E%3C/svg%3E') center/cover;
+      width: unit(107);
+      height: unit(107);
+      border: 0;
+      text-indent: -9999em;
+      cursor: pointer;
+    }
   }
 
   .app::before {
@@ -432,7 +522,7 @@ $transition-duration: 0.4s;
 }
 """ }.joined(separator: "\n\n"))
 
-\(context.site.apps.filter { app in !(app is StubApp) }.map { app in """
+\(context.site.apps.filter { app in app is DefaultApp }.map { app in """
 .phone .screen-\(app.id) {
   background-image: url("/images/screens/\(app.id).jpg");
 }
