@@ -89,7 +89,7 @@ public extension A2.Website {
 
             StubApp(name: "Messages", location: .dock),
             MailApp(),
-            StubApp(name: "Safari", location: .dock),
+            SafariApp(),
             StubApp(name: "Music", location: .dock),
         ]
     }

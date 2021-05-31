@@ -505,6 +505,69 @@ $transition-duration: 0.4s;
     }
   }
 
+  .screen-safari {
+    background-color: #fff;
+
+    .navigation-bar {
+      -webkit-backdrop-filter: blur(20px) saturate(100%);
+      background: rgba(#f9f9f9, 94%);
+      backdrop-filter: blur(20px) saturate(100%);
+      border-bottom: unit(1) solid rgba(#000, 30%);
+      height: unit(300);
+      left: 0;
+      position: absolute;
+      top: 0;
+      width: 100%;
+      z-index: 1;
+    }
+
+    .search-bar {
+      background: rgba(#767680, 12%);
+      border-radius: unit(30);
+      font-size: unit(51);
+      height: unit(108);
+      left: unit(29);
+      position: absolute;
+      text-align: center;
+      top: unit(153);
+      width: calc(100% - #{unit(58)});
+      display: flex;
+      z-index: 1;
+
+      > div {
+        align-self: center;
+        flex: 1;
+      }
+    }
+
+    .toolbar {
+      width: 100%;
+      height: unit(250);
+      left: 0;
+      bottom: 0;
+      position: absolute;
+      -webkit-backdrop-filter: blur(20px) saturate(100%);
+      background: rgba(#f9f9f9, 94%);
+      backdrop-filter: blur(20px) saturate(100%);
+      border-top: unit(1) solid rgba(#000, 30%);
+    }
+
+    .iframe-container {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+    }
+
+    iframe {
+      $scale: 0.5;
+      padding-top: unit(300) / $scale;
+      width: 100% / $scale;
+      height: 100% / $scale;
+      transform: scale($scale);
+      transform-origin: 0 0;
+    }
+  }
+
   .home-indicator {
     background: #000;
     border-radius: unit(7.5);
@@ -517,13 +580,13 @@ $transition-duration: 0.4s;
   }
 
   .app::before {
-    $mask: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="1.4" clip-rule="evenodd" viewBox="0 0 460 460"%3E%3Cpath d="M460 316v30a202 202 0 01-3 31c-2 10-5 19-9 28a97 97 0 01-43 43 102 102 0 01-28 9c-10 2-20 3-31 3a649 649 0 01-13 0H127a649 649 0 01-13 0 201 201 0 01-31-3c-10-2-19-5-28-9a97 97 0 01-43-43 102 102 0 01-9-28 202 202 0 01-3-31v-13-189-17-13a202 202 0 013-31c2-10 5-19 9-28a97 97 0 0143-43 102 102 0 0128-9 203 203 0 0144-3h206a649 649 0 0113 0c11 0 21 1 31 3s19 5 28 9a97 97 0 0143 43 102 102 0 019 28 202 202 0 013 31 643 643 0 010 30v172z"/%3E%3C/svg%3E');
-    -webkit-mask: $mask center/100% 100% no-repeat;
+    $mask: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="1.4" clip-rule="evenodd" viewBox="0 0 460 460"%3E%3Cpath d="M460 316v30a202 202 0 01-3 31c-2 10-5 19-9 28a97 97 0 01-43 43 102 102 0 01-28 9c-10 2-20 3-31 3a649 649 0 01-13 0H127a649 649 0 01-13 0 201 201 0 01-31-3c-10-2-19-5-28-9a97 97 0 01-43-43 102 102 0 01-9-28 202 202 0 01-3-31v-13-189-17-13a202 202 0 013-31c2-10 5-19 9-28a97 97 0 0143-43 102 102 0 0128-9 203 203 0 0144-3h206a649 649 0 0113 0c11 0 21 1 31 3s19 5 28 9a97 97 0 0143 43 102 102 0 019 28 202 202 0 013 31 643 643 0 010 30v172z"/%3E%3C/svg%3E') center/100% 100% no-repeat;
+    -webkit-mask: $mask;
     background: url("/images/icons/blank.png") center/cover;
     content: "";
     height: unit(180);
     left: unit(30);
-    mask: $mask center/100% 100% no-repeat;
+    mask: $mask;
     position: absolute;
     top: 0;
     width: unit(180);
