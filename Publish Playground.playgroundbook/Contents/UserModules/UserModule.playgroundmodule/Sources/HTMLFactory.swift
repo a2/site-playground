@@ -1,4 +1,5 @@
 import Foundation
+import Ink
 import Plot
 import Publish
 
@@ -599,6 +600,7 @@ $transition-duration: 0.4s;
                             Div(index.body)
                                 .class("content-default")
 
+                            let parser = MarkdownParser()
                             ComponentGroup(members: context.site.apps.filter { app in app.location == .homescreen }.compactMap { app in
                                 guard let markdownPath = app.markdownPath else {
                                     return nil
@@ -606,10 +608,11 @@ $transition-duration: 0.4s;
 
                                 let file = try! context.file(at: markdownPath)
                                 let contents = try! file.readAsString()
+                                let markdown = parser.parse(contents)
 
                                 return Div {
-                                    H2(app.title ?? app.name)
-                                    Markdown(contents)
+                                    H2(markdown.metadata["title"] ?? app.name)
+                                    Div.init(html: markdown.html)
                                     Link("← Back", url: "#")
                                 }
                                 .class("content-\(app.id)")

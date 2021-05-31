@@ -20,7 +20,6 @@ public struct Screen {
 public protocol App {
     var id: String { get }
     var name: String { get }
-    var title: String? { get }
     var location: AppLocation { get }
 
     var screen: Screen { get }
@@ -42,13 +41,11 @@ public extension App {
 
 public struct DefaultApp: App {
     public var name: String
-    public var title: String?
     public var location: AppLocation
     public var hasInvertedStatusBar: Bool
 
-    public init(name: String, title: String? = nil, location: AppLocation, hasInvertedStatusBar: Bool = false) {
+    public init(name: String, location: AppLocation, hasInvertedStatusBar: Bool = false) {
         self.name = name
-        self.title = title
         self.location = location
         self.hasInvertedStatusBar = hasInvertedStatusBar
     }
@@ -78,13 +75,13 @@ public extension A2.Website {
     var apps: [App] {
         [
             DefaultApp(name: "Babelgum", location: .homescreen, hasInvertedStatusBar: true),
-            DefaultApp(name: "Backgammon", title: "Backgammon with Buddies", location: .homescreen),
-            DefaultApp(name: "Bean", title: "Bean, Small Planet", location: .homescreen),
+            DefaultApp(name: "Backgammon", location: .homescreen),
+            DefaultApp(name: "Bean", location: .homescreen),
             DefaultApp(name: "Foursquare", location: .homescreen),
-            DefaultApp(name: "Outlook", title: "Microsoft Outlook", location: .homescreen),
-            DefaultApp(name: "Rooms", title: "Rooms, Facebook", location: .homescreen, hasInvertedStatusBar: true),
+            DefaultApp(name: "Outlook", location: .homescreen),
+            DefaultApp(name: "Rooms", location: .homescreen, hasInvertedStatusBar: true),
             DefaultApp(name: "Shutterstock", location: .homescreen, hasInvertedStatusBar: true),
-            DefaultApp(name: "To Do", title: "Microsoft To Do", location: .homescreen),
+            DefaultApp(name: "To Do", location: .homescreen),
 
             StubApp(name: "Messages", location: .dock),
             MailApp(),
