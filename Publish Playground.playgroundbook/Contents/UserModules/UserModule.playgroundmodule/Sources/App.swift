@@ -7,12 +7,19 @@ public enum AppLocation {
     case dock
 }
 
+public enum StatusBarStyle {
+    case darkContent
+    case lightContent
+
+    public static var `default`: Self { .lightContent }
+}
+
 public struct Screen {
-    public var hasInvertedStatusBar: Bool
+    public var statusBarStyle: StatusBarStyle
     public var body: Component
 
-    public init(hasInvertedStatusBar: Bool, @ComponentBuilder body: () -> Component) {
-        self.hasInvertedStatusBar = hasInvertedStatusBar
+    public init(statusBarStyle: StatusBarStyle, @ComponentBuilder body: () -> Component) {
+        self.statusBarStyle = statusBarStyle
         self.body = body()
     }
 }
@@ -32,7 +39,7 @@ public extension App {
     var markdownPath: Path? { "Apps/\(id).md" }
 
     var screen: Screen {
-        Screen(hasInvertedStatusBar: false) {
+        Screen(statusBarStyle: .default) {
             Link("Return to Homescreen", url: "#")
                 .attribute(named: "title", value: "Return to Homescreen")
         }
@@ -42,16 +49,16 @@ public extension App {
 public struct DefaultApp: App {
     public var name: String
     public var location: AppLocation
-    public var hasInvertedStatusBar: Bool
+    public var statusBarStyle: StatusBarStyle
 
-    public init(name: String, location: AppLocation, hasInvertedStatusBar: Bool = false) {
+    public init(name: String, location: AppLocation, statusBarStyle: StatusBarStyle = .default) {
         self.name = name
         self.location = location
-        self.hasInvertedStatusBar = hasInvertedStatusBar
+        self.statusBarStyle = statusBarStyle
     }
 
     public var screen: Screen {
-        Screen(hasInvertedStatusBar: hasInvertedStatusBar) {
+        Screen(statusBarStyle: statusBarStyle) {
             Link("Return to Homescreen", url: "#")
                 .attribute(named: "title", value: "Return to Homescreen")
         }
@@ -74,13 +81,13 @@ public struct StubApp: App {
 public extension A2.Website {
     var apps: [App] {
         [
-            DefaultApp(name: "Babelgum", location: .homescreen, hasInvertedStatusBar: true),
+            DefaultApp(name: "Babelgum", location: .homescreen, statusBarStyle: .darkContent),
             DefaultApp(name: "Backgammon", location: .homescreen),
             DefaultApp(name: "Bean", location: .homescreen),
             DefaultApp(name: "Foursquare", location: .homescreen),
             DefaultApp(name: "Outlook", location: .homescreen),
-            DefaultApp(name: "Rooms", location: .homescreen, hasInvertedStatusBar: true),
-            DefaultApp(name: "Shutterstock", location: .homescreen, hasInvertedStatusBar: true),
+            DefaultApp(name: "Rooms", location: .homescreen, statusBarStyle: .darkContent),
+            DefaultApp(name: "Shutterstock", location: .homescreen, statusBarStyle: .darkContent),
             DefaultApp(name: "To Do", location: .homescreen),
 
             StubApp(name: "Messages", location: .dock),

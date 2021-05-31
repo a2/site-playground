@@ -34,7 +34,7 @@ public struct MailApp: App {
     public init() {}
 
     public var screen: Screen {
-        Screen(hasInvertedStatusBar: false) {
+        Screen(statusBarStyle: .lightContent) {
             Div {
                 Div().class("page background")
                 Div {

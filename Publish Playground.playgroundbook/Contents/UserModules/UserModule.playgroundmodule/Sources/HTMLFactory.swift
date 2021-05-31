@@ -532,15 +532,15 @@ $transition-duration: 0.4s;
   }
 }
 
-\(context.site.apps.filter { app in !(app is StubApp) && app.screen.hasInvertedStatusBar }.map { app in "#\(app.id):target ~ .phone .status-bar" }.joined(separator: ",\n")) {
+\(context.site.apps.filter { app in !(app is StubApp) && app.screen.statusBarStyle == .darkContent }.map { app in "#\(app.id):target ~ .phone .status-bar" }.joined(separator: ",\n")) {
   color: #000;
 }
 
-\(context.site.apps.filter { app in !(app is StubApp) && app.screen.hasInvertedStatusBar }.map { app in "#\(app.id):target ~ .phone .status-bar .path-fill" }.joined(separator: ",\n")) {
+\(context.site.apps.filter { app in !(app is StubApp) && app.screen.statusBarStyle == .darkContent }.map { app in "#\(app.id):target ~ .phone .status-bar .path-fill" }.joined(separator: ",\n")) {
   fill: #000;
 }
 
-\(context.site.apps.filter { app in !(app is StubApp) && app.screen.hasInvertedStatusBar }.map { app in "#\(app.id):target ~ .phone .status-bar .path-stroke" }.joined(separator: ",\n")) {
+\(context.site.apps.filter { app in !(app is StubApp) && app.screen.statusBarStyle == .darkContent }.map { app in "#\(app.id):target ~ .phone .status-bar .path-stroke" }.joined(separator: ",\n")) {
   stroke: #000;
 }
 
