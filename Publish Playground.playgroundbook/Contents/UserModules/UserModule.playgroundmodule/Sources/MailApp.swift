@@ -2,12 +2,6 @@ import Foundation
 import Plot
 import Publish
 
-struct HorizontalRule: Component {
-    var body: Component {
-        Element<Any>.selfClosed(named: "hr", attributes: [])
-    }
-}
-
 private struct Field: Component {
     var name: String
     var title: String
