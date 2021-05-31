@@ -387,8 +387,6 @@ $transition-duration: 0.4s;
 
   .screen-mail {
     background-color: #000;
-    overflow: hidden;
-    text-indent: unset;
 
     input, textarea {
       font-size: unit(48);
@@ -555,6 +553,11 @@ $transition-duration: 0.4s;
   background-image: url("/images/screens/\(app.id).jpg");
 }
 """ }.joined(separator: "\n\n"))
+
+\(context.site.apps.filter { app in !(app is StubApp || app is DefaultApp) }.map { app in ".phone .screen-\(app.id)" }.joined(separator: ", ")) {
+  overflow: hidden;
+  text-indent: unset;
+}
 
 \(context.site.apps.filter { app in !(app is StubApp) }.map { app in ".content-\(app.id)" }.joined(separator: ", ")) {
   display: none;
