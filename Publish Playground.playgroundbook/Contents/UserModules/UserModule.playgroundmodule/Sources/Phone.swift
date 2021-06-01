@@ -78,7 +78,6 @@ private extension App {
     @ComponentBuilder var icon: Component {
         if self is StubApp {
             Div()
-                .attribute(named: "role", value: "button")
                 .attribute(named: "title", value: name)
                 .class("app app-\(id)")
         } else {
