@@ -165,19 +165,46 @@ public class InMemoryFileManager: Files.FileManager {
         self.currentDirectoryPath = "/"
     }
 
+    public init(fileManager: InMemoryFileManager, relativePath: String = ".") {
+        self.cache = fileManager.cache
+        self.currentDirectoryPath = {
+            var path = fileManager.currentDirectoryPath
+            if !path.hasSuffix("/") {
+                path.append("/")
+            }
+
+            switch relativePath {
+            case ".":
+                break
+            case "..":
+                guard let index = path.dropLast(1).lastIndex(of: "/") else {
+                    preconditionFailure("Can't make relative path: currentDirectoryPath=\(fileManager.currentDirectoryPath) relativePath=\(relativePath)")
+                }
+
+                path.removeSubrange(path.index(after: index)...)
+            case let directoryName:
+                path.append(directoryName)
+                path.append("/")
+            }
+
+            return path
+        }()
+    }
+
     private func prefixed(_ path: String) -> String {
         ((currentDirectoryPath as NSString).appendingPathComponent(path) as NSString).standardizingPath
     }
 
     public func subpathsOfDirectory(atPath path: String) throws -> [String] {
-        assert(path.hasPrefix("/"), "Path must be absolute")
+        let prefixedPath = prefixed(path)
+        assert(prefixedPath.hasPrefix("/"), "Path must be absolute")
 
-        guard case .folder(let folder) = cache.node(atPath: prefixed(path)) else {
+        guard case .folder(let folder) = cache.node(atPath: prefixedPath) else {
             throw InMemoryError.noSuchItem
         }
 
-        let separator = path.hasSuffix("/") ? "" : "/"
-        return folder.descendantFiles().map { childPath, _ in path + separator + childPath }
+        let separator = prefixedPath.hasSuffix("/") ? "" : "/"
+        return folder.descendantFiles().map { childPath, _ in prefixedPath + separator + childPath }
     }
 
     public func attributesOfItem(atPath path: String) throws -> [FileAttributeKey: Any] {
@@ -277,7 +304,7 @@ public class InMemoryFileManager: Files.FileManager {
     }
 
     public func contents(atPath path: String) -> Data? {
-        switch cache.node(atPath: path) {
+        switch cache.node(atPath: prefixed(path)) {
         case .file(let file)?:
             return file.read()
         case .folder?, .none:

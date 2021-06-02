@@ -1,5 +1,6 @@
 // Based on https://rderik.com/blog/building-a-server-client-aplication-using-apple-s-network-framework/
 
+import Files
 import Foundation
 import Network
 import UniformTypeIdentifiers
@@ -9,9 +10,9 @@ class ServerConnection {
     private static let maximumLength = 65536
 
     let connection: NWConnection
-    let fileManager: InMemoryFileManager
+    let fileManager: Files.FileManager
 
-    init(nwConnection: NWConnection, fileManager: InMemoryFileManager) {
+    init(nwConnection: NWConnection, fileManager: Files.FileManager) {
         self.fileManager = fileManager
         self.connection = nwConnection
     }
@@ -71,7 +72,7 @@ class ServerConnection {
                         return (path, uti?.preferredMIMEType ?? "text/plain")
                     }()
 
-                    if let contents = self.fileManager.contents(atPath: "/Output\(targetPath)") {
+                    if let contents = self.fileManager.contents(atPath: targetPath) {
                         let headerData = Data("""
                         HTTP/1.1 200 OK
                         Content-Length: \(contents.count)
@@ -79,7 +80,7 @@ class ServerConnection {
                         Connection: close\n\n
                         """.utf8)
                         self.send(data: headerData + contents, isFinal: true)
-                    } else if let contents = self.fileManager.contents(atPath: "/Output/404/index.html") {
+                    } else if let contents = self.fileManager.contents(atPath: "/404/index.html") {
                         let headerData = Data("""
                         HTTP/1.1 404 Not Found
                         Content-Length: \(contents.count)
@@ -140,13 +141,12 @@ class ServerConnection {
 
 extension ServerConnection: Equatable {
     static func == (lhs: ServerConnection, rhs: ServerConnection) -> Bool {
-        lhs.connection === rhs.connection && lhs.fileManager === rhs.fileManager
+        lhs === rhs
     }
 }
 
 extension ServerConnection: Hashable {
     func hash(into hasher: inout Hasher) {
-        hasher.combine(ObjectIdentifier(connection))
-        hasher.combine(ObjectIdentifier(fileManager))
+        hasher.combine(ObjectIdentifier(self))
     }
 }

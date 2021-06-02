@@ -30,10 +30,10 @@ let publishedWebsite = try A2.Website()
         .generateHTML(withTheme: A2.theme, indentation: .spaces(2)),
     ])
 
+let outputFileManager = InMemoryFileManager(fileManager: fileManager, relativePath: "Output")
 if CommandLine.isVerbose {
-    let outputPath = "/Output"
-    let paths = try fileManager.subpathsOfDirectory(atPath: outputPath)
-        .map { path in "- " + path[path.index(after: outputPath.endIndex.samePosition(in: path)!)...] }
+    let paths = try outputFileManager.subpathsOfDirectory(atPath: ".")
+        .map { path in "- " + path[outputFileManager.currentDirectoryPath.endIndex.samePosition(in: path)!...] }
         .sorted()
         .joined(separator: "\n")
 
@@ -44,7 +44,7 @@ if CommandLine.isVerbose {
 
 let runningServer: Server? = try {
     guard CommandLine.shouldServe else { return nil }
-    let server = Server(fileManager: fileManager)
+    let server = Server(fileManager: outputFileManager)
     try server.start(port: CommandLine.port)
     return server
 }()
@@ -70,7 +70,7 @@ if CommandLine.shouldOpenBrowser {
 }
 
 if let exportPath = CommandLine.exportPath {
-    try fileManager.copyItem(atPath: "/Output", toPath: exportPath, in: Foundation.FileManager.default)
+    try outputFileManager.copyItem(atPath: "/", toPath: exportPath, in: Foundation.FileManager.default)
 }
 
 if runningServer != nil {
