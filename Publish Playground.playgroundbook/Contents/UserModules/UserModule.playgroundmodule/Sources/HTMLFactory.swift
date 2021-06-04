@@ -15,11 +15,6 @@ extension A2 {
   @return 0.02rem * $value;
 }
 
-html,
-body {
-  height: 100%;
-}
-
 body {
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   font-size: 16px;
