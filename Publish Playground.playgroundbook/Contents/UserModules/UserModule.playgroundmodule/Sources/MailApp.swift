@@ -79,7 +79,9 @@ public struct MailApp: App {
                         .attribute(named: "title", value: "Return to Homescreen")
                         .class("home-indicator")
                 }
+                .attribute(named: "name", value: "contact")
                 .class("page foreground")
+                .data(named: "netlify", value: "true")
             }
         }
     }
