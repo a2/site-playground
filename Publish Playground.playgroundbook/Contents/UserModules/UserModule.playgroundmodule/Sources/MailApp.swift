@@ -74,14 +74,14 @@ public struct MailApp: App {
                         }
                         .class("fieldset")
                     }
+                    .attribute(named: "name", value: "contact")
+                    .data(named: "netlify", value: "true")
 
                     Link(url: "#") { EmptyComponent() }
                         .attribute(named: "title", value: "Return to Homescreen")
                         .class("home-indicator")
                 }
-                .attribute(named: "name", value: "contact")
                 .class("page foreground")
-                .data(named: "netlify", value: "true")
             }
         }
     }
