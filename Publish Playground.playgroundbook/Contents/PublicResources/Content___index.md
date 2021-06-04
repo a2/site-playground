@@ -4,8 +4,8 @@ title: Home
 
 I’m a **Software Engineer** specializing in Apple platform technologies. I love to create polished visuals and delightful experiences that users love. I work at Microsoft in New York City, helping people achieve more with Outlook Mobile for iOS.
 
-I’m an avid learner of languages, both human and for computer programming. I’m an English native speaker but also proficient in Spanish, French, and German. I gave a talk at Macoun, Europe’s largest conference for German-speaking Apple developers, in Frankfurt in October 2019.
+I’m an avid learner of languages, both human and computer programming. I’m an English native speaker but also proficient in Spanish, French, and German. I've given talks and workshops at conferences all over Europe (in English), as well as my most recently talk at the German-language Macoun conference.
 
-I’m most knowledgeable in Swift as well as Objective-C. You might also find me writing little sites like this with HTML and CSS or scripts in JavaScript, Ruby, Python, or even Bash. I’ve also dabbled with Lua within the PICO-8 fantasy console to make some smaller projects.
+I’m most knowledgeable in Swift as well as Objective-C. You might also find me writing static sites like this with HTML and CSS or scripts in JavaScript, Ruby, Python, or even Bash. I’ve also dabbled with Lua within the PICO-8 fantasy console to make [some smaller projects](https://www.lexaloffle.com/bbs/?uid=32612&mode=carts&sub=0).
 
-Feel free to poke around my interactive portfolio on the iPhone to the left. If you want to get in touch, the [_Mail app_](#mail) is a great place to start.
+👈 Feel free to poke around my interactive portfolio on the iPhone to the left. It's completely JavaScript-free and certainly won't bite you. If you want to get in touch, the [Mail app](#mail) is a great place to start.

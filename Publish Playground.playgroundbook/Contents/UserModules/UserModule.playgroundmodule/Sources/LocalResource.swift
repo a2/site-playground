@@ -25,6 +25,7 @@ public extension LocalResource {
             #fileLiteral(resourceName: "Apps___bean.md"), // Apps/bean.md
             #fileLiteral(resourceName: "Apps___foursquare.md"), // Apps/foursquare.md
             #fileLiteral(resourceName: "Apps___outlook.md"), // Apps/outlook.md
+            #fileLiteral(resourceName: "Apps___potluck.md"), // Apps/potluck.md
             #fileLiteral(resourceName: "Apps___rooms.md"), // Apps/rooms.md
             #fileLiteral(resourceName: "Apps___shutterstock.md"), // Apps/shutterstock.md
             #fileLiteral(resourceName: "Apps___to-do.md"), // Apps/to-do.md
@@ -42,6 +43,7 @@ public extension LocalResource {
             #fileLiteral(resourceName: "Resources___images___icons___music.png"), // Resources/images/icons/music.png
             #fileLiteral(resourceName: "Resources___images___icons___outlook.png"), // Resources/images/icons/outlook.png
             #fileLiteral(resourceName: "Resources___images___icons___photos.png"), // Resources/images/icons/photos.png
+            #fileLiteral(resourceName: "Resources___images___icons___potluck.png"), // Resources/images/icons/potluck.png
             #fileLiteral(resourceName: "Resources___images___icons___rooms.png"), // Resources/images/icons/rooms.png
             #fileLiteral(resourceName: "Resources___images___icons___safari.png"), // Resources/images/icons/safari.png
             #fileLiteral(resourceName: "Resources___images___icons___shutterstock.png"), // Resources/images/icons/shutterstock.png
@@ -52,6 +54,7 @@ public extension LocalResource {
             #fileLiteral(resourceName: "Resources___images___screens___bean.jpg"), // Resources/images/screens/bean.jpg
             #fileLiteral(resourceName: "Resources___images___screens___foursquare.jpg"), // Resources/images/screens/foursquare.jpg
             #fileLiteral(resourceName: "Resources___images___screens___outlook.jpg"), // Resources/images/screens/outlook.jpg
+            #fileLiteral(resourceName: "Resources___images___screens___potluck.jpg"), // Resources/images/screens/potluck.jpg
             #fileLiteral(resourceName: "Resources___images___screens___rooms.jpg"), // Resources/images/screens/rooms.jpg
             #fileLiteral(resourceName: "Resources___images___screens___shutterstock.jpg"), // Resources/images/screens/shutterstock.jpg
             #fileLiteral(resourceName: "Resources___images___screens___to-do.jpg"), // Resources/images/screens/to-do.jpg

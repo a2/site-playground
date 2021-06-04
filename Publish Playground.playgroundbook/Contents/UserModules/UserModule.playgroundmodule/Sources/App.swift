@@ -83,6 +83,7 @@ public extension A2.Website {
             DefaultApp(name: "Bean", location: .homescreen),
             DefaultApp(name: "Foursquare", location: .homescreen),
             DefaultApp(name: "Outlook", location: .homescreen),
+            DefaultApp(name: "Potluck", location: .homescreen),
             DefaultApp(name: "Rooms", location: .homescreen, statusBarStyle: .darkContent),
             DefaultApp(name: "Shutterstock", location: .homescreen, statusBarStyle: .darkContent),
             DefaultApp(name: "To Do", location: .homescreen),

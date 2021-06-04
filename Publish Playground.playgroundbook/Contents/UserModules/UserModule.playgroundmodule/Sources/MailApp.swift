@@ -22,7 +22,6 @@ private struct Field: Component {
 
 public struct MailApp: App {
     public var name: String { "Mail" }
-    public var title: String? { nil }
     public var location: AppLocation { .dock }
 
     public init() {}

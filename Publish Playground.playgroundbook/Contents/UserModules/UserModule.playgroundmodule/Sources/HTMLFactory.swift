@@ -569,7 +569,7 @@ $transition-duration: 0.4s;
     }
   }
 
-  .home-indicator {
+  .home-indicator, .screen-bean::after, .screen-potluck::after {
     background: #000;
     border-radius: unit(7.5);
     bottom: unit(30);
@@ -578,6 +578,11 @@ $transition-duration: 0.4s;
     left: 50%;
     transform: translate(-50%);
     width: unit(417);
+  }
+
+  .screen-bean::after, .screen-potluck::after {
+    background: #fff;
+    content: "";
   }
 
   .app::before {
