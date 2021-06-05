@@ -59,7 +59,7 @@ public final class Sass {
 
     #if canImport(WebKit)
     private static func parseValue(_ value: Any) -> Result<String, Error> {
-        guard let object = value as? [AnyHashable: Any], let css = object["css"] as? String else {
+        guard let css = value as? String else {
             return .failure(SassError.typeCoercionFailure)
         }
 
@@ -70,13 +70,13 @@ public final class Sass {
     public func compile(styles: String, options: Options = .init(), completionHandler: @escaping (Result<String, Error>) -> Void) {
         let optionsDictionary = options.toDictionary().merging(["data": styles], uniquingKeysWith: { _, new in new })
         #if canImport(WebKit)
-        let wrapperScript = "return exports = {}, require = () => {}, process = { env: {}, cwd: () => \"\" }, Buffer = { from: x => x }, eval(script), exports.renderSync(options)"
+        let wrapperScript = "return exports = {}, require = () => {}, process = { env: {}, cwd: () => \"\" }, Buffer = { from: x => x }, eval(script), result = exports.renderSync(options), result.css.toString()"
         webView.callAsyncJavaScript(wrapperScript, arguments: ["script": scriptSource, "options": optionsDictionary], in: nil, in: .defaultClient) { result in
             completionHandler(result.flatMap(Self.parseValue))
         }
         #else
         let optionsJSON = try! String(decoding: JSONSerialization.data(withJSONObject: optionsDictionary), as: UTF8.self)
-        let wrapperScript = "try { __non_webpack_require__ = require, fs = __non_webpack_require__(\"fs\"), require = () => ({ pathToFileURL: null }), Buffer = { from: x => x }, eval(fs.readFileSync('/dev/stdin', 'utf-8').toString()), options = \(optionsJSON), result = exports.renderSync(options), process.stdout.write(result.css + \"\\n\") } catch (error) { process.stderr.write(error.toString() + \"\\n\") }"
+        let wrapperScript = "try { _require = require, fs = _require(\"fs\"), require = () => ({ pathToFileURL: null }), eval(fs.readFileSync('/dev/stdin', 'utf-8').toString()), options = \(optionsJSON), result = exports.renderSync(options), process.stdout.write(result.css + \"\\n\") } catch (error) { process.stderr.write(error.toString() + \"\\n\") }"
         do {
             let stdin = Pipe(), stdout = Pipe()
 
