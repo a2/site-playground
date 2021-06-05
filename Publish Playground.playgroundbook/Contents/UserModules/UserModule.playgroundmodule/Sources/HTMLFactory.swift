@@ -556,10 +556,10 @@ $transition-duration: 0.4s;
 
     iframe {
       $scale: 0.5;
-      padding-bottom: unit(250) / $scale;
-      padding-top: unit(300) / $scale;
-      width: 100% / $scale;
-      height: calc(#{100% / $scale} - #{unit(550) / $scale});
+      padding-bottom: div(unit(250), $scale);
+      padding-top: div(unit(300), $scale);
+      width: div(100%, $scale);
+      height: calc(div(100%, $scale) - div(unit(550), $scale));
       transform: scale($scale);
       transform-origin: 0 0;
     }
@@ -643,8 +643,8 @@ $transition-duration: 0.4s;
 }
 """
 
-            let archiveResource: LocalResource = #fileLiteral(resourceName: "sass.js.aar") // sass.js.aar
-            return try Sass(compressedScriptURL: archiveResource.fileURL)!
+            let archiveResource: LocalResource = #fileLiteral(resourceName: "sass.dart.js") // sass.dart.js
+            return try Sass(scriptSource: String(contentsOf: archiveResource.fileURL))
                 .compileSync(styles: sass, options: Sass.Options(outputStyle: .compressed))
         }
 

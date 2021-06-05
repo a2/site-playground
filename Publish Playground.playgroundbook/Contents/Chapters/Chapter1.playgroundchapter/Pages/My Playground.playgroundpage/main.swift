@@ -1,8 +1,11 @@
 import Files
 import Foundation
-import Network
 import Plot
 import Publish
+
+#if canImport(Network)
+import Network
+#endif
 
 #if canImport(UserModule)
 import UserModule
@@ -42,15 +45,16 @@ if CommandLine.isVerbose {
     print()
 }
 
+#if canImport(Network)
 let runningServer: Server? = try {
     guard CommandLine.shouldServe else { return nil }
     let server = Server(fileManager: outputFileManager)
     try server.start(port: CommandLine.port)
     return server
 }()
+#endif
 
 #if canImport(PlaygroundSupport)
-
 import PlaygroundSupport
 import WebKit
 
@@ -60,21 +64,22 @@ webView.load(URLRequest(url: URL(string: "http://localhost:\(CommandLine.port)")
 let page = PlaygroundPage.current
 page.wantsFullScreenLiveView = true
 page.liveView = webView
-
 #else
-
+#if canImport(AppKit)
 import AppKit
 
 if CommandLine.shouldOpenBrowser {
     NSWorkspace.shared.open(URL(string: "http://localhost:\(CommandLine.port)")!)
 }
+#endif
 
 if let exportPath = CommandLine.exportPath {
     try outputFileManager.copyItem(atPath: "/", toPath: exportPath, in: Foundation.FileManager.default)
 }
 
+#if canImport(Network)
 if runningServer != nil {
     RunLoop.main.run()
 }
-
+#endif
 #endif

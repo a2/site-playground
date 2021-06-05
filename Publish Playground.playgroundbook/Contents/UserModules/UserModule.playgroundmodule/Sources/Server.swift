@@ -1,5 +1,7 @@
 // Based on https://rderik.com/blog/building-a-server-client-aplication-using-apple-s-network-framework/
 
+#if canImport(Network)
+
 import Foundation
 import Network
 
@@ -52,3 +54,5 @@ public class Server {
         listener = nil
     }
 }
+
+#endif

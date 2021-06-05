@@ -28,18 +28,14 @@ let package = Package(
             exclude: ["Manifest.plist"],
             sources: ["main.swift"],
             linkerSettings: [
-                .linkedFramework("Foundation"),
-                .linkedFramework("Network"),
+                .linkedFramework("Network", .when(platforms: [.macOS, .iOS])),
             ]
         ),
         .target(
             name: "Codextended",
             path: userModules,
             exclude: excludes(for: "Codextended.playgroundmodule"),
-            sources: ["Codextended.playgroundmodule"],
-            linkerSettings: [
-                .linkedFramework("Foundation"),
-            ]
+            sources: ["Codextended.playgroundmodule"]
         ),
         .target(
             name: "Files",
@@ -48,26 +44,19 @@ let package = Package(
             sources: ["Files.playgroundmodule"],
             linkerSettings: [
                 .linkedFramework("AppKit", .when(platforms: [.macOS])),
-                .linkedFramework("Foundation"),
             ]
         ),
         .target(
             name: "Ink",
             path: userModules,
             exclude: excludes(for: "Ink.playgroundmodule"),
-            sources: ["Ink.playgroundmodule"],
-            linkerSettings: [
-                .linkedFramework("Foundation"),
-            ]
+            sources: ["Ink.playgroundmodule"]
         ),
         .target(
             name: "Plot",
             path: userModules,
             exclude: excludes(for: "Plot.playgroundmodule"),
-            sources: ["Plot.playgroundmodule"],
-            linkerSettings: [
-                .linkedFramework("Foundation"),
-            ]
+            sources: ["Plot.playgroundmodule"]
         ),
         .target(
             name: "Publish",
@@ -83,10 +72,7 @@ let package = Package(
             name: "Sweep",
             path: userModules,
             exclude: excludes(for: "Sweep.playgroundmodule"),
-            sources: ["Sweep.playgroundmodule"],
-            linkerSettings: [
-                .linkedFramework("Foundation"),
-            ]
+            sources: ["Sweep.playgroundmodule"]
         ),
         .target(
             name: "UserModule",
@@ -95,10 +81,8 @@ let package = Package(
             exclude: excludes(for: "UserModule.playgroundmodule"),
             sources: ["UserModule.playgroundmodule"],
             linkerSettings: [
-                .linkedFramework("Foundation"),
-                .linkedFramework("System"),
-                .linkedFramework("UniformTypeIdentifiers"),
-                .linkedLibrary("AppleArchive"),
+                .linkedFramework("Network", .when(platforms: [.macOS, .iOS])),
+                .linkedFramework("UniformTypeIdentifiers", .when(platforms: [.macOS, .iOS])),
             ]
         ),
     ]

@@ -1,5 +1,7 @@
 // Based on https://rderik.com/blog/building-a-server-client-aplication-using-apple-s-network-framework/
 
+#if canImport(Network)
+
 import Files
 import Foundation
 import Network
@@ -150,3 +152,5 @@ extension ServerConnection: Hashable {
         hasher.combine(ObjectIdentifier(self))
     }
 }
+
+#endif
