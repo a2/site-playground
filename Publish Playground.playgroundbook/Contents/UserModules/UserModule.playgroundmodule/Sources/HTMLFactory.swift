@@ -628,7 +628,7 @@ $transition-duration: 0.4s;
   display: none;
 }
 
-\(context.site.apps.filter { app in !(app is StubApp || app is MailApp) }.map { app in "#\(app.id):target ~ .text-content .content-default" }.joined(separator: ", ")) {
+\(context.site.apps.filter { app in !(app is StubApp || app is MailApp || app is SafariApp) }.map { app in "#\(app.id):target ~ .text-content .content-default" }.joined(separator: ", ")) {
   display: none;
 }
 
