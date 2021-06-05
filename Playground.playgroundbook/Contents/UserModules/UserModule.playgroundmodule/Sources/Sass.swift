@@ -68,41 +68,28 @@ public final class Sass {
     #endif
 
     public func compile(styles: String, options: Options = .init(), completionHandler: @escaping (Result<String, Error>) -> Void) {
-        #if canImport(WebKit)
         let optionsDictionary = options.toDictionary().merging(["data": styles], uniquingKeysWith: { _, new in new })
+        #if canImport(WebKit)
         let wrapperScript = "return exports = {}, require = () => {}, process = { env: {}, cwd: () => \"\" }, Buffer = { from: x => x }, eval(script), exports.renderSync(options)"
         webView.callAsyncJavaScript(wrapperScript, arguments: ["script": scriptSource, "options": optionsDictionary], in: nil, in: .defaultClient) { result in
             completionHandler(result.flatMap(Self.parseValue))
         }
         #else
+        let optionsJSON = try! String(decoding: JSONSerialization.data(withJSONObject: optionsDictionary), as: UTF8.self)
+        let wrapperScript = "try { __non_webpack_require__ = require, fs = __non_webpack_require__(\"fs\"), require = () => ({ pathToFileURL: null }), Buffer = { from: x => x }, eval(fs.readFileSync('/dev/stdin', 'utf-8').toString()), options = \(optionsJSON), result = exports.renderSync(options), process.stdout.write(result.css + \"\\n\") } catch (error) { process.stderr.write(error.toString() + \"\\n\") }"
         do {
             let stdin = Pipe(), stdout = Pipe()
 
             let process = Process()
-            process.executableURL = URL(fileURLWithPath: "/usr/local/bin/sass")
+            process.executableURL = URL(fileURLWithPath: "/usr/bin/env")
             process.standardInput = stdin
             process.standardOutput = stdout
-            process.arguments = {
-                var arguments = ["--stdin"]
-
-                if options.indentedSyntax {
-                    arguments.append("--indented")
-                }
-
-                switch options.outputStyle {
-                case .expanded:
-                    arguments.append("--style=expanded")
-                case .compressed:
-                    arguments.append("--style=compressed")
-                }
-
-                return arguments
-            }()
+            process.arguments = ["node", "-e", wrapperScript]
 
             try process.run()
 
             let stdinHandle = stdin.fileHandleForWriting
-            try stdinHandle.write(contentsOf: Data(styles.utf8))
+            try stdinHandle.write(contentsOf: Data(scriptSource.utf8))
             try stdinHandle.close()
 
             process.waitUntilExit()
