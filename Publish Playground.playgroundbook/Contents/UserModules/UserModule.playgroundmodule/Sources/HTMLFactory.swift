@@ -436,10 +436,11 @@ $transition-duration: 0.4s;
       }
 
       textarea {
-        width: 100%;
-        max-width: 100%;
-        height: unit(1080);
         border: 0;
+        height: unit(1080);
+        padding: 0;
+        resize: none;
+        width: 100%;
       }
 
       .signature {
