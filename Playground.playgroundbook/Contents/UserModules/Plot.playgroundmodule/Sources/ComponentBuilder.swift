@@ -13,7 +13,13 @@ import Foundation
 /// to have its contents be processed by this builder. Note that you never have to
 /// call any of the methods defined within this type directly. Instead, the Swift
 /// compiler will automatically map your expressions to calls into this builder type.
-@_functionBuilder public enum ComponentBuilder {
+#if swift(>=5.4)
+@resultBuilder public enum ComponentBuilder {}
+#else
+@_functionBuilder public enum ComponentBuilder {}
+#endif
+
+extension ComponentBuilder {
     /// Build a `ComponentGroup` from a list of components.
     /// - parameter components: The components that should be included in the group.
     public static func buildBlock(_ components: Component...) -> ComponentGroup {

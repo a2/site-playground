@@ -1,8 +1,8 @@
 // swift-tools-version:5.3
 import PackageDescription
 
-let page = "Publish Playground.playgroundbook/Contents/Chapters/Chapter1.playgroundchapter/Pages"
-let userModules = "Publish Playground.playgroundbook/Contents/UserModules"
+let page = "Playground.playgroundbook/Contents/Chapters/Main.playgroundchapter/Pages"
+let userModules = "Playground.playgroundbook/Contents/UserModules"
 
 func excludes(for target: String? = nil) -> [String] {
     var targets = ["Codextended.playgroundmodule", "Files.playgroundmodule", "Ink.playgroundmodule", "Plot.playgroundmodule", "Publish.playgroundmodule", "Sweep.playgroundmodule", "UserModule.playgroundmodule"]
@@ -24,7 +24,7 @@ let package = Package(
         .target(
             name: "Site",
             dependencies: ["Files", "Plot", "Publish", "UserModule"],
-            path: page + "/My Playground.playgroundpage",
+            path: page + "/Main.playgroundpage",
             exclude: ["Manifest.plist"],
             sources: ["main.swift"],
             linkerSettings: [
