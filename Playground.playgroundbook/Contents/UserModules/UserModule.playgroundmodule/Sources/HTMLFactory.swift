@@ -556,10 +556,10 @@ $transition-duration: 0.4s;
 
     iframe {
       $scale: 0.5;
-      padding-bottom: div(unit(250), $scale);
-      padding-top: div(unit(300), $scale);
-      width: div(100%, $scale);
-      height: calc(div(100%, $scale) - div(unit(550), $scale));
+      padding-bottom: unit(250) / $scale;
+      padding-top: unit(300) / $scale;
+      width: 100% / $scale;
+      height: calc(#{100% / $scale} - #{unit(550) / $scale});
       transform: scale($scale);
       transform-origin: 0 0;
     }
