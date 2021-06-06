@@ -69,7 +69,7 @@ On Linux, where this site is compiled, the _WebKit_ framework is unavailable, an
 
 ## Website Inspiration
 
-<img src=".github/sketch.jpeg" alt="Linea.app sketch of website prototype" align="center" width="512" />
+![.github/sketch.jpeg](Linea.app sketch of website prototype)
 
 As a developer for iOS and Apple's other platform technologies, I thought about what it would look like if my website, which showcases my iOS work, itself looked like an iPhone. I drew the above sketch in the [IconFactory's Linea app](https://linea-app.com) on November 29, 2019. I started implementing what would become this Swift Playgrounds project in 2020, but got distracted by other work and side projects until May 2021 when I got Playgrounds to build _Publish_ sites. That's when I decided to combine my website prototype idea and my Swift Playgrounds work.
 
