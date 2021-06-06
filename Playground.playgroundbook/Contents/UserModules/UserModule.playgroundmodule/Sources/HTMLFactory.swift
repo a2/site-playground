@@ -863,9 +863,10 @@ private struct ItemTagList<Site: Website>: Component {
 private struct SiteFooter: Component {
     @ComponentBuilder var body: Component {
         Footer {
-            let link = Link("Publish", url: "https://github.com/JohnSundell/Publish")
-                .linkTarget(.blank)
-            Paragraph(html: "Generated using \(link.render())")
+            Paragraph {
+                Text("Generated with ")
+                Link("Swift Playgrounds", url: "https://github.com/a2/site-playground")
+            }
         }
     }
 }
