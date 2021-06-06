@@ -19,9 +19,7 @@ public struct SafariApp: App {
 
                 Div {
                     IFrame(url: "/", addBorder: false, allowFullScreen: false, enabledFeatureNames: [])
-                        .attribute(named: "height", value: "100%")
                         .attribute(named: "loading", value: "lazy")
-                        .attribute(named: "width", value: "100%")
                 }.class("iframe-container")
 
                 Div().class("toolbar")
