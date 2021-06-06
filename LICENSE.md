@@ -22,7 +22,7 @@ SOFTWARE.
 
 ---
 
-This software inctorporates material from third parties:
+This software incorporates material from third parties:
 
 ## iPhone Design
 
