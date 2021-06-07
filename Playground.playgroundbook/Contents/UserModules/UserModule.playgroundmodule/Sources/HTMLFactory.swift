@@ -962,6 +962,7 @@ private struct SiteFooter: Component {
             Paragraph {
                 Text("Generated with ")
                 Link("Swift Playgrounds", url: "https://github.com/a2/site-playground")
+                    .data(named: "goatcounter-click", value: "github")
             }
         }
     }
