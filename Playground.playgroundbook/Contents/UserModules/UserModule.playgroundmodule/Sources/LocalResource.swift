@@ -31,6 +31,7 @@ public extension LocalResource {
             #fileLiteral(resourceName: "Apps___to-do.md"), // Apps/to-do.md
             #fileLiteral(resourceName: "Content___index.md"), // Content/index.md
             #fileLiteral(resourceName: "Resources___images___background.jpg"), // Resources/images/background.jpg
+            #fileLiteral(resourceName: "Resources___images___background~dark.jpg"), // Resources/images/background~dark.jpg
             #fileLiteral(resourceName: "Resources___images___icons___babelgum.png"), // Resources/images/icons/babelgum.png
             #fileLiteral(resourceName: "Resources___images___icons___backgammon.png"), // Resources/images/icons/backgammon.png
             #fileLiteral(resourceName: "Resources___images___icons___bean.png"), // Resources/images/icons/bean.png
@@ -50,14 +51,19 @@ public extension LocalResource {
             #fileLiteral(resourceName: "Resources___images___icons___to-do.png"), // Resources/images/icons/to-do.png
             #fileLiteral(resourceName: "Resources___images___icons___twitter.png"), // Resources/images/icons/twitter.png
             #fileLiteral(resourceName: "Resources___images___screens___babelgum.jpg"), // Resources/images/screens/babelgum.jpg
+            #fileLiteral(resourceName: "Resources___images___screens___babelgum~dark.jpg"), // Resources/images/screens/babelgum~dark.jpg
             #fileLiteral(resourceName: "Resources___images___screens___backgammon.jpg"), // Resources/images/screens/backgammon.jpg
+            #fileLiteral(resourceName: "Resources___images___screens___backgammon~dark.jpg"), // Resources/images/screens/backgammon~dark.jpg
             #fileLiteral(resourceName: "Resources___images___screens___bean.jpg"), // Resources/images/screens/bean.jpg
             #fileLiteral(resourceName: "Resources___images___screens___foursquare.jpg"), // Resources/images/screens/foursquare.jpg
             #fileLiteral(resourceName: "Resources___images___screens___outlook.jpg"), // Resources/images/screens/outlook.jpg
+            #fileLiteral(resourceName: "Resources___images___screens___outlook~dark.jpg"), // Resources/images/screens/outlook~dark.jpg
             #fileLiteral(resourceName: "Resources___images___screens___potluck.jpg"), // Resources/images/screens/potluck.jpg
             #fileLiteral(resourceName: "Resources___images___screens___rooms.jpg"), // Resources/images/screens/rooms.jpg
             #fileLiteral(resourceName: "Resources___images___screens___shutterstock.jpg"), // Resources/images/screens/shutterstock.jpg
+            #fileLiteral(resourceName: "Resources___images___screens___shutterstock~dark.jpg"), // Resources/images/screens/shutterstock~dark.jpg
             #fileLiteral(resourceName: "Resources___images___screens___to-do.jpg"), // Resources/images/screens/to-do.jpg
+            #fileLiteral(resourceName: "Resources___images___screens___to-do~dark.jpg"), // Resources/images/screens/to-do~dark.jpg
         ]
     }
 }

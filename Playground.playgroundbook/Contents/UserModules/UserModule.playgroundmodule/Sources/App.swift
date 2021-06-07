@@ -10,6 +10,7 @@ public enum AppLocation {
 public enum StatusBarStyle {
     case darkContent
     case lightContent
+    case adaptive
 
     public static var `default`: Self { .lightContent }
 }
@@ -78,14 +79,14 @@ public struct StubApp: App {
 public extension A2.Website {
     var apps: [App] {
         [
-            DefaultApp(name: "Babelgum", location: .homescreen, statusBarStyle: .darkContent),
+            DefaultApp(name: "Babelgum", location: .homescreen, statusBarStyle: .adaptive),
             DefaultApp(name: "Backgammon", location: .homescreen),
             DefaultApp(name: "Bean", location: .homescreen),
             DefaultApp(name: "Foursquare", location: .homescreen),
             DefaultApp(name: "Outlook", location: .homescreen),
             DefaultApp(name: "Potluck", location: .homescreen),
             DefaultApp(name: "Rooms", location: .homescreen, statusBarStyle: .darkContent),
-            DefaultApp(name: "Shutterstock", location: .homescreen, statusBarStyle: .darkContent),
+            DefaultApp(name: "Shutterstock", location: .homescreen, statusBarStyle: .adaptive),
             DefaultApp(name: "To Do", location: .homescreen),
 
             StubApp(name: "Messages", location: .dock),

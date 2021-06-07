@@ -15,6 +15,55 @@ extension A2 {
   @return 0.02rem * $value;
 }
 
+:root {
+  --background-color: #fff;
+  --blockquote-background-color: #{rgba(#787880, 20%)};
+  --elevated-background-color: #fff;
+  --horizontal-rule-color: #c6c6c8;
+  --link-color: #0A7AFF;
+  --mail-button-color: #3478F6;
+  --mail-button-invalid-color: #dbdbdc;
+  --mail-input-placeholder-color: #{rgba(#3c3c43, 30%)};
+  --mail-label-text-color: #8a8a8d;
+  --navigation-bar-backdrop-filter: blur(20px) saturate(100%);
+  --navigation-bar-background-color: #{rgba(#f9f9f9, 94%)};
+  --navigation-bar-border-color: #{rgba(#000, 30%)};
+  --search-bar-background-color: #{rgba(#767680, 12%)};
+  --search-bar-text-color: #000;
+  --status-bar-color: #000;
+  --text-color: #000;
+  --toolbar-background-color: #{rgba(#f9f9f9, 94%)};
+  --toolbar-border-color: #{rgba(#000, 30%)};
+  --unelevated-background-color: #e0e0e0;
+
+  @media (prefers-color-scheme: dark) {
+    --background-color: #000;
+    --blockquote-background-color: #{rgba(#787880, 36%)};
+    --elevated-background-color: #1c1c1e;
+    --horizontal-rule-color: #3d3d41;
+    --link-color: #0084FF;
+    --mail-button-color: #3b82f6;
+    --mail-button-invalid-color: #414144;
+    --mail-input-placeholder-color: #{rgba(#ebebf5, 30%)};
+    --mail-label-text-color: #98989e;
+    --navigation-bar-backdrop-filter: blur(20px) saturate(130%);
+    --navigation-bar-background-color: #{rgba(#1d1d1d, 94%)};
+    --navigation-bar-border-color: #{rgba(#fff, 15%)};
+    --search-bar-background-color: #{rgba(#767680, 24%)};
+    --search-bar-text-color: #fff;
+    --status-bar-color: #fff;
+    --text-color: #fff;
+    --toolbar-background-color: #{rgba(#161616, 80%)};
+    --toolbar-border-color: #{rgba(#fff, 16%)};
+    --unelevated-background-color: #141415;
+  }
+}
+
+html {
+  background: var(--background-color);
+  color: var(--text-color);
+}
+
 body {
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   font-size: 16px;
@@ -22,7 +71,8 @@ body {
 }
 
 a {
-  color: #0A7AFF;
+  color: var(--link-color);
+  text-decoration: none;
 }
 
 footer {
@@ -53,6 +103,19 @@ footer {
 .text-content {
   margin-left: 2.5rem;
   min-width: 32rem;
+}
+
+.content-default {
+  blockquote {
+    background: var(--blockquote-background-color);
+    border-radius: 1rem;
+    margin: 0;
+    padding: 1rem;
+
+    p {
+      margin: 0;
+    }
+  }
 }
 
 $transition-duration: 0.4s;
@@ -260,6 +323,10 @@ $transition-duration: 0.4s;
         position: absolute;
         top: 0;
         width: 100%;
+
+        @media (prefers-color-scheme: dark) {
+          background-image: url("/images/background~dark.jpg");
+        }
       }
 
       .icons {
@@ -381,20 +448,22 @@ $transition-duration: 0.4s;
   }
 
   .screen-mail {
-    background-color: #000;
+    background: #000;
 
     input, textarea {
+      background: transparent;
+      color: var(--text-color);
       font-size: unit(48);
 
       &::placeholder {
-        color: #a9a9a9;
+        color: var(--mail-input-placeholder-color);
       }
     }
 
     hr {
       margin: 0 unit(50);
       border: 0;
-      border-top: unit(1) solid #c6c6c8;
+      border-top: unit(1) solid var(--horizontal-rule-color);
     }
 
     .page {
@@ -403,14 +472,14 @@ $transition-duration: 0.4s;
       position: absolute;
 
       &.foreground {
-        background: #fff;
+        background: var(--elevated-background-color);
         height: calc(100% - #{unit(170)});
         width: 100%;
         z-index: 1;
       }
 
       &.background {
-        background: #e0e0e0;
+        background: var(--unelevated-background-color);
         width: calc(100% - #{unit(48)});
         height: calc(100% - #{unit(140)});
         left: unit(24);
@@ -431,7 +500,7 @@ $transition-duration: 0.4s;
       }
 
       label, .label {
-        color: #8a8a8d;
+        color: var(--mail-label-text-color);
         margin-right: unit(16);
       }
 
@@ -456,7 +525,7 @@ $transition-duration: 0.4s;
     }
 
     .cancel {
-      color: #3478F6;
+      color: var(--mail-button-color);
       display: inline-block;
       margin: unit(65) unit(50);
       font-size: unit(48);
@@ -476,7 +545,7 @@ $transition-duration: 0.4s;
     }
 
     .submit {
-      background: #fff;
+      background: transparent;
       border: 0;
       height: unit(107);
       padding: 0;
@@ -488,6 +557,7 @@ $transition-duration: 0.4s;
       }
 
       path {
+        fill: var(--mail-button-invalid-color);
         transition: $transition-duration fill;
       }
     }
@@ -496,19 +566,20 @@ $transition-duration: 0.4s;
       cursor: pointer;
 
       path {
-        fill: #3478F6;
+        fill: var(--mail-button-color);
       }
     }
   }
 
   .screen-safari {
-    background-color: #fff;
+    background: #fff;
+    color: #000;
 
     .navigation-bar {
-      -webkit-backdrop-filter: blur(20px) saturate(100%);
-      background: rgba(#f9f9f9, 94%);
-      backdrop-filter: blur(20px) saturate(100%);
-      border-bottom: unit(1) solid rgba(#000, 30%);
+      -webkit-backdrop-filter: var(--navigation-bar-backdrop-filter);
+      background: var(--navigation-bar-background-color);
+      backdrop-filter: var(--navigation-bar-backdrop-filter);
+      border-bottom: unit(1) solid var(--navigation-bar-border-color);
       height: unit(300);
       left: 0;
       position: absolute;
@@ -518,8 +589,9 @@ $transition-duration: 0.4s;
     }
 
     .search-bar {
-      background: rgba(#767680, 12%);
+      background: var(--search-bar-background-color);
       border-radius: unit(30);
+      color: var(--search-bar-text-color);
       font-size: unit(51);
       height: unit(108);
       left: unit(29);
@@ -543,9 +615,9 @@ $transition-duration: 0.4s;
       bottom: 0;
       position: absolute;
       -webkit-backdrop-filter: blur(20px) saturate(100%);
-      background: rgba(#f9f9f9, 94%);
+      background: var(--toolbar-background-color);
       backdrop-filter: blur(20px) saturate(100%);
-      border-top: unit(1) solid rgba(#000, 30%);
+      border-top: unit(1) solid var(--toolbar-border-color);
     }
 
     .iframe-container {
@@ -556,6 +628,7 @@ $transition-duration: 0.4s;
 
     iframe {
       $scale: 0.5;
+      background-color: var(--background-color);
       padding-bottom: unit(250) / $scale;
       padding-top: unit(300) / $scale;
       width: 100% / $scale;
@@ -574,6 +647,10 @@ $transition-duration: 0.4s;
     left: 50%;
     transform: translate(-50%);
     width: unit(417);
+  }
+
+  .screen-mail .home-indicator, .screen-safari .home-indicator {
+    background: var(--status-bar-color);
   }
 
   .screen-bean::after, .screen-potluck::after {
@@ -607,6 +684,18 @@ $transition-duration: 0.4s;
   stroke: #000;
 }
 
+\(context.site.apps.filter { app in !(app is StubApp) && app.screen.statusBarStyle == .adaptive }.map { app in "#\(app.id):target ~ .phone .status-bar" }.joined(separator: ",\n")) {
+  color: var(--status-bar-color);
+}
+
+\(context.site.apps.filter { app in !(app is StubApp) && app.screen.statusBarStyle == .adaptive }.map { app in "#\(app.id):target ~ .phone .status-bar .path-fill" }.joined(separator: ",\n")) {
+  fill: var(--status-bar-color);
+}
+
+\(context.site.apps.filter { app in !(app is StubApp) && app.screen.statusBarStyle == .adaptive }.map { app in "#\(app.id):target ~ .phone .status-bar .path-stroke" }.joined(separator: ",\n")) {
+  stroke: var(--status-bar-color);
+}
+
 \(context.site.apps.map { app in """
 .phone .app-\(app.id)::before {
   background-image: url("/images/icons/\(app.id).png");
@@ -615,7 +704,12 @@ $transition-duration: 0.4s;
 
 \(context.site.apps.filter { app in app is DefaultApp }.map { app in """
 .phone .screen-\(app.id) {
-  background-image: url("/images/screens/\(app.id).jpg");
+  background-image: url("/images/screens/\(app.id).jpg");\((try? context.outputFile(at: "/images/screens/\(app.id)~dark.jpg")) == nil ? "" : """
+
+  @media (prefers-color-scheme: dark) {
+    background-image: url("/images/screens/\(app.id)~dark.jpg");
+  }
+""")
 }
 """ }.joined(separator: "\n\n"))
 

@@ -9,7 +9,7 @@ public struct SafariApp: App {
     public init() {}
 
     public var screen: Screen {
-        Screen(statusBarStyle: .darkContent) {
+        Screen(statusBarStyle: .adaptive) {
             Div {
                 Div {
                     Div {

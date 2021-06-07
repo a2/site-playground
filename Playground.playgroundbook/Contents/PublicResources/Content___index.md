@@ -8,4 +8,6 @@ I’m an avid learner of languages, both human and computer programming. I’m a
 
 I’m most knowledgeable in Swift as well as Objective-C. You might also find me writing static sites like this with HTML and CSS or scripts in JavaScript, Ruby, Python, or even Bash. I’ve also dabbled with Lua within the PICO-8 fantasy console to make [some smaller projects](https://www.lexaloffle.com/bbs/?uid=32612&mode=carts&sub=0).
 
-👈 Feel free to poke around my interactive portfolio on the iPhone to the left. It's completely JavaScript-free and certainly won't bite you. If you want to get in touch, the [Mail app](#mail) is a great place to start.
+> 👈 **Feel free to poke around my interactive portfolio on the iPhone to the left.**
+> The phone model runs via CSS and you can read more about it on [GitHub](https://github.com/a2/site-playground).  
+> If you want to get in touch, the [Mail app](#mail) is a great place to start.
