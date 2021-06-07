@@ -876,6 +876,7 @@ extension Node where Context == HTML.DocumentContext {
             .forEach(stylesheetPaths, { .stylesheet($0) }),
             .meta(.name("viewport"), .content("width=1100")),
             .unwrap(site.favicon, { .favicon($0) }),
+            .link(.rel(.maskIcon), .href("/favicon.svg"), .attribute(named: "color", value: "black")),
             .unwrap(location.imagePath ?? site.imagePath, { path in
                 let url = site.url(for: path)
                 return .socialImageLink(url)

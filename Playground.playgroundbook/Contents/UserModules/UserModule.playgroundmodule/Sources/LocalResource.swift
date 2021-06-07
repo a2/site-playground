@@ -30,6 +30,8 @@ public extension LocalResource {
             #fileLiteral(resourceName: "Apps___shutterstock.md"), // Apps/shutterstock.md
             #fileLiteral(resourceName: "Apps___to-do.md"), // Apps/to-do.md
             #fileLiteral(resourceName: "Content___index.md"), // Content/index.md
+            #fileLiteral(resourceName: "Resources___favicon.png"), // Resources/favicon.png
+            #fileLiteral(resourceName: "Resources___favicon.svg"), // Resources/favicon.svg
             #fileLiteral(resourceName: "Resources___images___background.jpg"), // Resources/images/background.jpg
             #fileLiteral(resourceName: "Resources___images___background~dark.jpg"), // Resources/images/background~dark.jpg
             #fileLiteral(resourceName: "Resources___images___icons___babelgum.png"), // Resources/images/icons/babelgum.png

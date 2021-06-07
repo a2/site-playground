@@ -29,7 +29,7 @@ for resource in LocalResource.all {
 let publishedWebsite = try A2.Website()
     .publish(at: Path("/"), using: [
         .addMarkdownFiles(at: "/Content"),
-        .copyResources(at: "/Resources/images", to: "/images", includingFolder: true),
+        .copyResources(at: "/Resources", includingFolder: true),
         .generateHTML(withTheme: A2.theme, indentation: .spaces(2)),
     ])
 
