@@ -30,6 +30,7 @@ let publishedWebsite = try A2.Website()
     .publish(at: Path("/"), using: [
         .addMarkdownFiles(at: "/Content"),
         .copyResources(at: "/Resources", includingFolder: true),
+        .addPage(Page(path: "404", content: Content())),
         .generateHTML(withTheme: A2.theme, indentation: .spaces(2)),
     ])
 

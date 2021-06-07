@@ -4,11 +4,17 @@ import Publish
 
 extension A2 {
     public struct Website: Publish.Website {
-        public enum SectionID: String, WebsiteSectionID {
-            case unknown = "404"
+        public struct SectionID: WebsiteSectionID {
+            public static var allCases: [A2.Website.SectionID] { [] }
+
+            public init?(rawValue: String) { nil }
+
+            public var rawValue: String { fatalError() }
         }
         
-        public struct ItemMetadata: WebsiteItemMetadata {}
+        public struct ItemMetadata: WebsiteItemMetadata {
+            public init() {}
+        }
         
         public var url = URL(string: "https://a2.io")!
         public var name = "Alexsander Akers"
