@@ -85,6 +85,7 @@ private extension App {
                 .attribute(named: "role", value: "button")
                 .attribute(named: "title", value: name)
                 .class("app app-\(id)")
+                .data(named: "goatcounter-click", value: id)
                 .linkTarget(id == "safari" ? .top : nil)
         }
     }

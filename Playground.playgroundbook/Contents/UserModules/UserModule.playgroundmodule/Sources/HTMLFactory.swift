@@ -881,7 +881,8 @@ extension Node where Context == HTML.DocumentContext {
                 let url = site.url(for: path)
                 return .socialImageLink(url)
             }),
-            .forEach(inlineStyles, { .style($0) })
+            .forEach(inlineStyles, { .style($0) }),
+            .script(.src("//gc.zgo.at/count.js"), .data(named: "goatcounter", value: "https://a2io.goatcounter.com/count"))
         )
     }
 }
