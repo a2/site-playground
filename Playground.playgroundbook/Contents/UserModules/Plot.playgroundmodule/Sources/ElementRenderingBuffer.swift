@@ -20,12 +20,14 @@ internal final class ElementRenderingBuffer {
 
     func add(_ attribute: AnyAttribute) {
         if let existingIndex = attributeIndexes[attribute.name] {
-            if !attribute.replaceExisting,
-               let existingValue = attributes[existingIndex].value,
-               let newValue = attribute.value {
-                attributes[existingIndex].value = existingValue + " " + newValue
-            } else {
+            if attribute.replaceExisting {
                 attributes[existingIndex].value = attribute.value
+            } else if let newValue = attribute.nonEmptyValue {
+                if let existingValue = attributes[existingIndex].nonEmptyValue {
+                    attributes[existingIndex].value = existingValue + " " + newValue
+                } else {
+                    attributes[existingIndex].value = newValue
+                }
             }
         } else {
             attributeIndexes[attribute.name] = attributes.count
@@ -33,8 +35,8 @@ internal final class ElementRenderingBuffer {
         }
     }
 
-    func add(_ text: String) {
-        if indentation != nil {
+    func add(_ text: String, isPlainText: Bool) {
+        if !isPlainText, indentation != nil {
             body.append("\n")
         }
 
