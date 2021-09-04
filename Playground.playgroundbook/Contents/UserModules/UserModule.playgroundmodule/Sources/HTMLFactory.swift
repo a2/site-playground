@@ -34,6 +34,8 @@ extension A2 {
   --text-color: #000;
   --toolbar-background-color: #{rgba(#f9f9f9, 94%)};
   --toolbar-border-color: #{rgba(#000, 30%)};
+  --toolbar-disabled-item-color: #BFBFBF;
+  --toolbar-item-color: #0A7AFF;
   --unelevated-background-color: #e0e0e0;
 
   @media (prefers-color-scheme: dark) {
@@ -55,6 +57,8 @@ extension A2 {
     --text-color: #fff;
     --toolbar-background-color: #{rgba(#161616, 80%)};
     --toolbar-border-color: #{rgba(#fff, 16%)};
+    --toolbar-disabled-item-color: #4D4D4D;
+    --toolbar-item-color: #5A91F7;
     --unelevated-background-color: #141415;
   }
 }
@@ -615,15 +619,31 @@ $transition-duration: 0.4s;
     }
 
     .toolbar {
-      width: 100%;
-      height: unit(250);
+      width: calc(100% - #{unit(48)});
+      height: unit(133);
       left: 0;
       bottom: 0;
       position: absolute;
+      display: flex;
+      justify-content: space-between;
+      padding: unit(9) unit(24) unit(108);
       -webkit-backdrop-filter: blur(20px) saturate(100%);
       background: var(--toolbar-background-color);
       backdrop-filter: blur(20px) saturate(100%);
       border-top: unit(1) solid var(--toolbar-border-color);
+
+      svg {
+        height: unit(132);
+        width: unit(132);
+      }
+
+      > a svg path {
+        fill: var(--toolbar-item-color);
+      }
+
+      > svg path {
+        fill: var(--toolbar-disabled-item-color);
+      }
     }
 
     .iframe-container {
