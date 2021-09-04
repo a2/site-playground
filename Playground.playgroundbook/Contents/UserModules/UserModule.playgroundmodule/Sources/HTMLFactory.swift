@@ -506,6 +506,7 @@ $transition-duration: 0.4s;
 
       textarea {
         border: 0;
+        font-family: inherit;
         height: unit(1080);
         padding: 0;
         resize: none;
