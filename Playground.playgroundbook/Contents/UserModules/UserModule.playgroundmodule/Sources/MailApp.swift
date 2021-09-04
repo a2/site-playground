@@ -67,6 +67,9 @@ public struct MailApp: App {
                         Field(name: "from", title: "From:", type: .text, placeholder: "Your Name")
                         Field(name: "email", title: "Reply To:", type: .email, placeholder: "Email Address")
 
+                        Div()
+                            .data(named: "netlify-recaptcha", value: "true")
+
                         Div {
                             TextArea(text: "", name: "message", numberOfRows: 0, numberOfColumns: nil, isRequired: true)
                                 .attribute(named: "placeholder", value: "Tap here to type your message.")
@@ -76,6 +79,7 @@ public struct MailApp: App {
                     }
                     .attribute(named: "name", value: "contact")
                     .data(named: "netlify", value: "true")
+                    .data(named: "netlify-recaptcha", value: "true")
 
                     Link(url: "#") { EmptyComponent() }
                         .attribute(named: "title", value: "Return to Homescreen")
