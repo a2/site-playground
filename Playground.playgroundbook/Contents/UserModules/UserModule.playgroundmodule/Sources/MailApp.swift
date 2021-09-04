@@ -75,6 +75,7 @@ public struct MailApp: App {
                         .class("fieldset")
 
                         Div()
+                            .class("captcha-container")
                             .data(named: "netlify-recaptcha", value: "true")
                     }
                     .attribute(named: "name", value: "contact")

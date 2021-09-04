@@ -491,6 +491,11 @@ $transition-duration: 0.4s;
       font-size: unit(48);
     }
 
+    .captcha-container {
+      display: flex;
+      justify-content: center;
+    }
+
     .fieldset {
       padding: unit(40) 0;
       margin: 0 unit(50);
