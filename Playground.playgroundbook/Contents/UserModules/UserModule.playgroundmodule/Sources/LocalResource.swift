@@ -29,6 +29,7 @@ public extension LocalResource {
             #fileLiteral(resourceName: "Apps___rooms.md"), // Apps/rooms.md
             #fileLiteral(resourceName: "Apps___shutterstock.md"), // Apps/shutterstock.md
             #fileLiteral(resourceName: "Apps___to-do.md"), // Apps/to-do.md
+            #fileLiteral(resourceName: "Apps___twitter.md"), // Apps/twitter.md
             #fileLiteral(resourceName: "Content___index.md"), // Content/index.md
             #fileLiteral(resourceName: "Resources___favicon.png"), // Resources/favicon.png
             #fileLiteral(resourceName: "Resources___favicon.svg"), // Resources/favicon.svg
@@ -66,6 +67,8 @@ public extension LocalResource {
             #fileLiteral(resourceName: "Resources___images___screens___shutterstock~dark.jpg"), // Resources/images/screens/shutterstock~dark.jpg
             #fileLiteral(resourceName: "Resources___images___screens___to-do.jpg"), // Resources/images/screens/to-do.jpg
             #fileLiteral(resourceName: "Resources___images___screens___to-do~dark.jpg"), // Resources/images/screens/to-do~dark.jpg
+            #fileLiteral(resourceName: "Resources___images___screens___twitter.jpg"), // Resources/images/screens/twitter.jpg
+            #fileLiteral(resourceName: "Resources___images___screens___twitter~dark.jpg"), // Resources/images/screens/twitter~dark.jpg
         ]
     }
 }

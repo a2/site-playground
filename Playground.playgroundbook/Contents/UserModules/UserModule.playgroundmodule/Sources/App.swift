@@ -88,6 +88,7 @@ public extension A2.Website {
             DefaultApp(name: "Rooms", location: .homescreen, statusBarStyle: .darkContent),
             DefaultApp(name: "Shutterstock", location: .homescreen, statusBarStyle: .adaptive),
             DefaultApp(name: "To Do", location: .homescreen),
+            DefaultApp(name: "Twitter", location: .homescreen),
 
             StubApp(name: "Messages", location: .dock),
             MailApp(),
